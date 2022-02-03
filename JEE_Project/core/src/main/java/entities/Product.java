@@ -21,8 +21,8 @@ public abstract class Product {
     @Column(name = "price")
     private float price;
 
-    @Column(name = "availability")
-    private boolean availability;
+    @Column(name = "quantity")
+    private int quantity;
 
     @Column(name = "rating")
     private float rating;
