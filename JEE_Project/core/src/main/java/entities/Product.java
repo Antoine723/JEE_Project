@@ -5,7 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@Entity
+@MappedSuperclass
 @Getter @Setter
 public abstract class Product {
 
