@@ -11,7 +11,7 @@ public class AppConfig {
 
     public static final String DB_HOST = "localhost:3306";
 
-    public static final String DB_SCHEMA = "junia_lab03";
+    public static final String DB_SCHEMA = "videoGameWeb";
 
     public static final String DB_USER = "root";
 

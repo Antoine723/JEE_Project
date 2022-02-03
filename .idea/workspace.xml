@@ -10,20 +10,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c57fdfad-c48a-4bee-9e64-139f3eac9fea" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/JEE_Project/web/src/main/java/controllers/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/Comment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/Console.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/Game.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/Order.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Notes projet.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/~$tes projet.docx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JEE_Project/core/core.iml" beforeDir="false" afterPath="$PROJECT_DIR$/JEE_Project/core/core.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JEE_Project/core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/JEE_Project/core/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JEE_Project/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/JEE_Project/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JEE_Project/web/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/JEE_Project/web/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JEE_Project/web/src/main/java/controllers/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/JEE_Project/web/src/main/java/controllers/TestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JEE_Project/web/src/main/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/JEE_Project/web/src/main/resources/logback.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JEE_Project/web/target/classes/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/JEE_Project/web/target/classes/logback.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JEE_Project/web/target/web-1.0-SNAPSHOT/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/JEE_Project/web/target/web-1.0-SNAPSHOT/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JEE_Project/web/target/web-1.0-SNAPSHOT/WEB-INF/classes/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/JEE_Project/web/target/web-1.0-SNAPSHOT/WEB-INF/classes/logback.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JEE_Project/web/web.iml" beforeDir="false" afterPath="$PROJECT_DIR$/JEE_Project/web/web.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/core/src/main/java/config/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/config/AppConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,11 +66,15 @@
     </option>
   </component>
   <component name="ProjectId" id="24ZPShGqiJDrJyjnzDx7TqREEE7" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -203,7 +203,7 @@
       <updated>1643835137329</updated>
       <workItem from="1643835141237" duration="1000000" />
       <workItem from="1643836163023" duration="3763000" />
-      <workItem from="1643878541181" duration="5426000" />
+      <workItem from="1643878541181" duration="5874000" />
     </task>
     <servers />
   </component>
@@ -220,5 +220,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
