@@ -16,6 +16,9 @@ public class Order extends GenericEntity {
     @Column(name = "orderNumber")
     private UUID orderNumber;
 
+    @Column(name = "address")
+    private String address;
+
     @OneToMany
     @JoinColumn(name = "order_id")
     private List<Product> products = new ArrayList<>();

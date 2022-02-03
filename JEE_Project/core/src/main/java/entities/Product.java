@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -21,5 +22,11 @@ public abstract class Product extends GenericEntity {
 
     @Column(name = "rating")
     private float rating;
+
+    @Column(name = "img")
+    private String img;
+
+    @Column(name = "releaseYear")
+    private Date releaseYear;
 
 }
