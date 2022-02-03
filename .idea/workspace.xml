@@ -9,10 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c57fdfad-c48a-4bee-9e64-139f3eac9fea" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/~$tes projet.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Notes projet.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Notes projet.docx" afterDir="false" />
-    </list>
+    <list default="true" id="c57fdfad-c48a-4bee-9e64-139f3eac9fea" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -195,7 +192,7 @@
       <updated>1643835137329</updated>
       <workItem from="1643835141237" duration="1000000" />
       <workItem from="1643836163023" duration="3763000" />
-      <workItem from="1643878541181" duration="6212000" />
+      <workItem from="1643878541181" duration="6365000" />
     </task>
     <servers />
   </component>
