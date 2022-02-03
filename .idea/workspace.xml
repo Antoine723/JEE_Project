@@ -10,16 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c57fdfad-c48a-4bee-9e64-139f3eac9fea" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/Comment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/Console.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/Game.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/Order.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Notes projet.docx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/~$tes projet.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JEE_Project/core/src/main/java/config/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/config/AppConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Notes projet.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Notes projet.docx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +72,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/videoGames" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../junia_jee_2022_lab03-master" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -203,7 +195,7 @@
       <updated>1643835137329</updated>
       <workItem from="1643835141237" duration="1000000" />
       <workItem from="1643836163023" duration="3763000" />
-      <workItem from="1643878541181" duration="5874000" />
+      <workItem from="1643878541181" duration="6212000" />
     </task>
     <servers />
   </component>
