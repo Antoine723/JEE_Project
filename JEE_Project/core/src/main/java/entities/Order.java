@@ -11,12 +11,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "Order")
 @Getter @Setter
-public class Order {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private Long id;
+public class Order extends GenericEntity {
 
     @Column(name = "orderNumber")
     private UUID orderNumber;

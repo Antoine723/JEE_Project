@@ -12,7 +12,7 @@ import java.util.List;
 
 @Entity
 @Getter @Setter
-public class Game extends Product{
+public class Game extends Product {
 
     @Column(name="offline_players_number")
     private int offlinePlayersNumber;

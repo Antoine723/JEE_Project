@@ -7,5 +7,5 @@ import javax.persistence.Entity;
 
 @Entity
 @Getter @Setter
-public class Console extends Product{
+public class Console extends Product {
 }

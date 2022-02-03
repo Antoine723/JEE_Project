@@ -9,12 +9,7 @@ import java.util.Date;
 @Entity
 @Table(name = "User")
 @Getter @Setter
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private Long id;
+public class User extends GenericEntity {
 
     @Column(name = "name")
     private String name;

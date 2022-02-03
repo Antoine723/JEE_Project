@@ -9,10 +9,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c57fdfad-c48a-4bee-9e64-139f3eac9fea" name="Changes" comment="ignore ide config">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="c57fdfad-c48a-4bee-9e64-139f3eac9fea" name="Changes" comment="update word">
+      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/dao/CommentDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/dao/ConsoleDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/dao/GameDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/dao/GenericDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/dao/OrderDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/dao/UserDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/GenericEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/service/CommentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/service/ConsoleService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/service/GameService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/service/GenericService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/service/OrderService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Notes projet.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Notes projet.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/core/src/main/java/config/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/config/AppConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/Comment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/Console.java" beforeDir="false" afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/Console.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +46,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -108,6 +127,8 @@
       <recent name="C:\Users\nonoa\Documents\ISEN\M2\JEE\JEE_Project\JEE_Project\web\src\main" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="service" />
+      <recent name="dao" />
       <recent name="" />
       <recent name="config" />
     </key>
@@ -214,7 +235,7 @@
       <workItem from="1643836163023" duration="3763000" />
       <workItem from="1643878541181" duration="6365000" />
       <workItem from="1643893628566" duration="269000" />
-      <workItem from="1643900284959" duration="3920000" />
+      <workItem from="1643900284959" duration="4820000" />
     </task>
     <task id="LOCAL-00001" summary="modif word">
       <created>1643904903521</created>
@@ -251,7 +272,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643906223082</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="update word">
+      <created>1643906484872</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1643906484872</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -272,6 +300,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="modif word" />
     <MESSAGE value="ignore ide config" />
-    <option name="LAST_COMMIT_MESSAGE" value="ignore ide config" />
+    <MESSAGE value="update word" />
+    <option name="LAST_COMMIT_MESSAGE" value="update word" />
   </component>
 </project>

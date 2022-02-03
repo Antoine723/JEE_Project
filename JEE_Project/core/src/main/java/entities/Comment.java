@@ -9,12 +9,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Comment")
 @Getter @Setter
-public class Comment {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private Long id;
+public class Comment extends GenericEntity {
 
     @Column(name = "content")
     private String content;
