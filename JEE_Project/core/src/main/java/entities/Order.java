@@ -22,7 +22,7 @@ public class Order {
     private UUID orderNumber;
 
     @OneToMany
-    @JoinColumn(name = "product_id")
+    @JoinColumn(name = "order_id")
     private List<Product> products = new ArrayList<>();
 
     @OneToOne
