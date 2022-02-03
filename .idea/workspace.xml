@@ -10,8 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c57fdfad-c48a-4bee-9e64-139f3eac9fea" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/~$tes projet.docx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Notes projet.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Notes projet.docx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,11 +32,15 @@
   <component name="JpbToolWindowState">
     <option name="myId2FirstActivated">
       <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="true" />
         <entry key="com.haulmont.jpb.jpaStructure" value="true" />
       </map>
     </option>
     <option name="myId2Visible">
       <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="false" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="false" />
         <entry key="com.haulmont.jpb.jpaStructure" value="false" />
       </map>
     </option>
@@ -74,6 +78,10 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../junia_jee_2022_lab03-master" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -198,6 +206,7 @@
       <workItem from="1643836163023" duration="3763000" />
       <workItem from="1643878541181" duration="6365000" />
       <workItem from="1643893628566" duration="269000" />
+      <workItem from="1643900284959" duration="2343000" />
     </task>
     <servers />
   </component>
