@@ -7,8 +7,12 @@
   </appender>
 
 
-  <root level="info">
-    <appender-ref ref="console" />
+  <root level="warn">
+    <appender-ref ref="console"/>
   </root>
+
+  <logger name="controllers" level="info" additivity="false">
+    <appender-ref ref="console"/>
+  </logger>
 
 </configuration>

@@ -10,15 +10,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c57fdfad-c48a-4bee-9e64-139f3eac9fea" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/JEE_Project/core/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/config/AppConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/config/DBConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JEE_Project/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JEE_Project/web/src/main/java/Initializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JEE_Project/web/src/main/java/config/WebConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JEE_Project/web/src/main/java/controllers/TestController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JEE_Project/web/src/main/resources/logback.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JEE_Project/web/src/main/webapp/WEB-INF/velocity/test.vm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JEE_Project/web/src/main/java/controllers/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/core/core.iml" beforeDir="false" afterPath="$PROJECT_DIR$/JEE_Project/core/core.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/JEE_Project/core/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/JEE_Project/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/web/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/JEE_Project/web/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/web/src/main/java/controllers/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/JEE_Project/web/src/main/java/controllers/TestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/web/src/main/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/JEE_Project/web/src/main/resources/logback.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/web/target/classes/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/JEE_Project/web/target/classes/logback.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/web/target/web-1.0-SNAPSHOT/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/JEE_Project/web/target/web-1.0-SNAPSHOT/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/web/target/web-1.0-SNAPSHOT/WEB-INF/classes/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/JEE_Project/web/target/web-1.0-SNAPSHOT/WEB-INF/classes/logback.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/web/web.iml" beforeDir="false" afterPath="$PROJECT_DIR$/JEE_Project/web/web.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +62,13 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="ProjectId" id="24ZPShGqiJDrJyjnzDx7TqREEE7" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -66,11 +78,13 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/JEE_Project/web/src/main/resources" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/videoGames" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -91,7 +105,6 @@
   </component>
   <component name="RunManager">
     <configuration name="Tomcat 9.0.56" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.56" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/test" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="web:war exploded">
@@ -102,9 +115,10 @@
       </deployment>
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="2a565c5d-08d7-4f29-a913-fec75ff351bf" />
+        <option name="JNDI_PORT" value="1000" />
       </server-settings>
-      <predefined_log_file enabled="true" id="Tomcat" />
-      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <log_file alias="Tomcat Localhost Log" path="%IDEA_RUN:CATALINA_BASE%/logs/localhost.*" />
+      <log_file alias="Tomcat Catalina Log" path="%IDEA_RUN:CATALINA_BASE%/logs/catalina.*" />
       <predefined_log_file id="Tomcat Manager" />
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
@@ -188,7 +202,8 @@
       <option name="presentableId" value="Default" />
       <updated>1643835137329</updated>
       <workItem from="1643835141237" duration="1000000" />
-      <workItem from="1643836163023" duration="3728000" />
+      <workItem from="1643836163023" duration="3763000" />
+      <workItem from="1643878541181" duration="5426000" />
     </task>
     <servers />
   </component>
