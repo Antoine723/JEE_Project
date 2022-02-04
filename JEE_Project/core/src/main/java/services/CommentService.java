@@ -1,15 +1,15 @@
-package service;
+package services;
 
 import dao.GenericDao;
-import entities.Game;
+import entities.Comment;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class GameService extends GenericService<Game> {
+public class CommentService extends GenericService<Comment> {
 
-    public GameService(GenericDao<Game> internalDao) {
+    public CommentService(GenericDao<Comment> internalDao) {
         super(internalDao);
     }
 

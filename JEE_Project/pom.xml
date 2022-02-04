@@ -12,6 +12,7 @@
     <modules>
         <module>web</module>
         <module>core</module>
+        <module>data</module>
     </modules>
 
     <properties>

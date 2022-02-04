@@ -6,7 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan(basePackages = "service")
+@ComponentScan(basePackages = "services")
 public class AppConfig {
 
     public static final String DB_HOST = "localhost:3306";

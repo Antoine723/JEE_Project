@@ -1,7 +1,6 @@
-package service;
+package services;
 
 import dao.GenericDao;
-import entities.Order;
 import entities.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

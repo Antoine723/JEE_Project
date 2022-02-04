@@ -1,16 +1,15 @@
-package service;
+package services;
 
 import dao.GenericDao;
-import entities.Game;
-import entities.Order;
+import entities.Console;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class OrderService extends GenericService<Order> {
+public class ConsoleService extends GenericService<Console> {
 
-    public OrderService(GenericDao<Order> internalDao) {
+    public ConsoleService(GenericDao<Console> internalDao) {
         super(internalDao);
     }
 
