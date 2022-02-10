@@ -10,27 +10,45 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c57fdfad-c48a-4bee-9e64-139f3eac9fea" name="Changes" comment="update word">
-      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/dao/CommentDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/dao/ConsoleDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/dao/GameDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/dao/GenericDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/dao/OrderDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/dao/UserDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/GenericEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/service/CommentService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/service/ConsoleService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/service/GameService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/service/GenericService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/service/OrderService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JEE_Project/core/src/main/java/config/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/config/AppConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/Comment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/Console.java" beforeDir="false" afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/Console.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/JEE_Project.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/core/core.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/core/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/core/src/main/java/config/AppConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/core/src/main/java/config/DBConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/core/src/main/java/dao/CommentDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/core/src/main/java/dao/ConsoleDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/core/src/main/java/dao/GameDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/core/src/main/java/dao/GenericDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/core/src/main/java/dao/OrderDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/core/src/main/java/dao/UserDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/Comment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/Console.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/Game.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/GenericEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/Order.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/Product.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/core/src/main/java/entities/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/core/src/main/java/services/CommentService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/core/src/main/java/services/ConsoleService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/core/src/main/java/services/GameService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/core/src/main/java/services/GenericService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/core/src/main/java/services/OrderService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/core/src/main/java/services/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/data/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/data/src/main/java/Application.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/JEE_Project/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/web/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/web/src/main/java/Initializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/web/src/main/java/config/WebConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/web/src/main/resources/logback.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/web/src/main/webapp/WEB-INF/velocity/test.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/web/target/classes/logback.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/web/target/web-1.0-SNAPSHOT/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/web/target/web-1.0-SNAPSHOT/WEB-INF/classes/logback.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/web/target/web-1.0-SNAPSHOT/WEB-INF/velocity/test.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEE_Project/web/web.iml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,12 +122,12 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../junia_jee_2022_lab03-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/demo" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -236,6 +254,10 @@
       <workItem from="1643878541181" duration="6365000" />
       <workItem from="1643893628566" duration="269000" />
       <workItem from="1643900284959" duration="4820000" />
+      <workItem from="1644240409512" duration="1926000" />
+      <workItem from="1644245811350" duration="224000" />
+      <workItem from="1644511951469" duration="274000" />
+      <workItem from="1644512261608" duration="1212000" />
     </task>
     <task id="LOCAL-00001" summary="modif word">
       <created>1643904903521</created>
