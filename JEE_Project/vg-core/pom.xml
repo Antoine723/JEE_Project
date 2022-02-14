@@ -8,7 +8,6 @@
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.videoGamesWeb</groupId>
 	<artifactId>vg-core</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>vg-core</name>
@@ -17,4 +16,10 @@
 		<java.version>11</java.version>
 	</properties>
 
+	<dependencies>
+		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>javax.persistence-api</artifactId>
+		</dependency>
+	</dependencies>
 </project>
