@@ -8,8 +8,8 @@
 		<version>2.6.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.application</groupId>
-	<artifactId>videoGamesWeb</artifactId>
+	<groupId>com.videoGamesWeb</groupId>
+	<artifactId>video-games-web-project</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>jeeProject</name>
@@ -17,6 +17,10 @@
 	<properties>
 		<java.version>11</java.version>
 	</properties>
+	<modules>
+		<module>vg-core</module>
+		<module>vg-web</module>
+	</modules>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
