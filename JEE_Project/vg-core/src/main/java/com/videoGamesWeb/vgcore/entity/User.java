@@ -13,8 +13,14 @@ public class User extends GenericEntity {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "password")
+    private String password;
+
     @Column(name = "mail")
     private String mail;
+
+    @Column(name = "address")
+    private String address;
 
     @Column(name = "nbrComments")
     private int nbrComments;
