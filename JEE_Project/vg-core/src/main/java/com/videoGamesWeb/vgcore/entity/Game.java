@@ -14,7 +14,7 @@ public class Game extends Product {
     @Column(name="offline_players_number")
     private int offlinePlayersNumber;
 
-    @Column(name="offline_players_number")
+    @Column(name="online_players_number")
     private int onlinePlayersNumber;
 
     @OneToMany
