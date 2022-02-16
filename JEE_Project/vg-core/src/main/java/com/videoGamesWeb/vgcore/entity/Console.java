@@ -7,5 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Getter @Setter
+@DiscriminatorValue("1")
+@Table(name="Console")
 public class Console extends Product {
 }

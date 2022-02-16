@@ -7,8 +7,10 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Getter @Setter
+@DiscriminatorColumn(name="product_type",
+discriminatorType = DiscriminatorType.INTEGER)
 public abstract class Product extends GenericEntity {
 
     @Column(name = "name")
