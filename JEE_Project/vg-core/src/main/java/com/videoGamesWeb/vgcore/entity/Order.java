@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name = "Order")
+@Table(name = "orders")
 @Getter @Setter
 public class Order extends GenericEntity {
 
@@ -19,11 +19,10 @@ public class Order extends GenericEntity {
     @Column(name = "address")
     private String address;
 
-    @OneToMany
-    @JoinColumn(name = "order_id")
+    @ManyToMany //TODO A bouger dans "Panier" ?
     private List<Product> products = new ArrayList<>();
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 

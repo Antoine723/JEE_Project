@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -30,5 +31,8 @@ public abstract class Product extends GenericEntity {
 
     @Column(name = "releaseYear")
     private Date releaseYear;
+
+    @ManyToMany //TODO à lier avec panier plutôt ?
+    List<Order> orders;
 
 }

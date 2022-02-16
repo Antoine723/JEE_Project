@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "User")
@@ -24,5 +25,8 @@ public class User extends GenericEntity {
 
     @Column(name = "nbrComments")
     private int nbrComments;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Order> orders;
 
 }
