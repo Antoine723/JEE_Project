@@ -9,7 +9,7 @@ import java.util.List;
 @Entity
 @Getter @Setter
 @DiscriminatorValue("1")
-@Table(name="Console")
+@Table(name="console")
 public class Console extends Product {
 
     @ManyToMany

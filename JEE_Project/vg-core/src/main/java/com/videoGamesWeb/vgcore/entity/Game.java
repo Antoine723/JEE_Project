@@ -10,7 +10,7 @@ import java.util.List;
 @Entity
 @Getter @Setter
 @DiscriminatorValue("2")
-@Table(name="Game")
+@Table(name="game")
 public class Game extends Product {
 
     @Column(name="offline_players_number")

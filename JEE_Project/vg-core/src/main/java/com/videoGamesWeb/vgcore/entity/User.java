@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "User")
+@Table(name = "user")
 @Getter @Setter
 public class User extends GenericEntity {
 

@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name = "Comment")
+@Table(name = "comment")
 @Getter @Setter
 public class Comment extends GenericEntity {
 
