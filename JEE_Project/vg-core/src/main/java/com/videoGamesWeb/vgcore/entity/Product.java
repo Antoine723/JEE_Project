@@ -33,6 +33,9 @@ public abstract class Product extends GenericEntity {
     private Date releaseYear;
 
     @ManyToMany //TODO à lier avec panier plutôt ?
+    @JoinTable(name="orders_products",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name="order_id"))
     List<Order> orders;
 
 }

@@ -20,6 +20,9 @@ public class Order extends GenericEntity {
     private String address;
 
     @ManyToMany //TODO A bouger dans "Panier" ?
+    @JoinTable(name="orders_products",
+            joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name="product_id"))
     private List<Product> products = new ArrayList<>();
 
     @ManyToOne

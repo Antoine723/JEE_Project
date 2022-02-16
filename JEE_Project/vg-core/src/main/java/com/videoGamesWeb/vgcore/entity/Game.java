@@ -19,7 +19,9 @@ public class Game extends Product {
     @Column(name="online_players_number")
     private int onlinePlayersNumber;
 
-    @OneToMany
-    @JoinColumn(name = "game_id")
+    @ManyToMany
+    @JoinTable(name="games_on_consoles",
+            joinColumns = @JoinColumn(name = "game_id"),
+            inverseJoinColumns = @JoinColumn(name="console_id"))
     private List<Console> consoles = new ArrayList<>();
 }
