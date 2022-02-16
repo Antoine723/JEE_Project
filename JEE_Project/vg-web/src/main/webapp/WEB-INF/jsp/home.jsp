@@ -3,9 +3,9 @@
 <html lang="en">
 <head>
     <title>Home</title>
+    <jsp:include page="head.jsp"></jsp:include>
 </head>
 <body>
-<a href="/products">Liste des produits</a>
 
 </body>
 </html>
