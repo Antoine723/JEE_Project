@@ -140,11 +140,18 @@ public class UserViewController {
             return "redirect:/user/connect";
         }
 
+        model.addAttribute("user", this.userService.getById(userId));
         return UPDATE_PAGE;
     }
 
     @PostMapping("/update")
-    public String postUpdate(Model model, HttpServletRequest request) {
+    public String postUpdate(Model model,
+                             @RequestParam String name,
+                             @RequestParam(required=false) String password,
+                             @RequestParam(required=false) String confirm_password,
+                             @RequestParam(required=false) String mail,
+                             @RequestParam(required=false) String address,
+                             HttpServletRequest request) {
         //String logger_anchor = "VC-/user/update:post";
 
         long userId;
@@ -153,8 +160,37 @@ public class UserViewController {
         } catch (NullPointerException | NumberFormatException ignore) {
             return "redirect:/user/connect";
         }
-        //process post params
-        if (false) return UPDATE_PAGE;
+
+        User user = this.userService.getById(userId);
+
+        if (!Objects.equals(password, confirm_password)) {
+            model.addAttribute("error_msg", "Mots de passes différents");
+            model.addAttribute("user", user);
+            return UPDATE_PAGE;
+        }
+
+        boolean update = false;
+        if (!name.isEmpty() && !Objects.equals(user.getName(), name)) {
+            user.setName(name);
+            update = true;
+        }
+        if (!password.isEmpty() && !this.bCryptPasswordEncoder.matches(password, user.getPassword())) {
+            user.setPassword(this.bCryptPasswordEncoder.encode(password));
+            update = true;
+        }
+        if (!mail.isEmpty()) {
+            user.setMail(mail);
+            update = true;
+        }
+        if (!address.isEmpty()) {
+            user.setAddress(address);
+            update = true;
+        }
+
+        if (update) {
+            this.userService.save(user);
+        }
+
         return "redirect:/user/profile";
     }
 

@@ -10,7 +10,7 @@
         <form method="POST" action="/user/update">
             <div>
                 <label for="name">Name: </label>
-                <input id="name" type="text" name="name" value="..." required>
+                <input id="name" type="text" name="name" value="${user.name}" required>
             </div>
             <div>
                 <label for="password">Password: </label>
@@ -22,11 +22,11 @@
             </div>
             <div>
                 <label for="mail">Mail: </label>
-                <input id="mail" type="email" name="mail" value="">
+                <input id="mail" type="email" name="mail" value="${user.mail}">
             </div>
             <div>
                 <label for="address">Address: </label>
-                <input id="address" type="text" name="address" value="">
+                <input id="address" type="text" name="address" value="${user.address}">
             </div>
             <input type="submit" value="validate">
         </form>

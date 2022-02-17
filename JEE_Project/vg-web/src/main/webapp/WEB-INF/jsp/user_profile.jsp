@@ -8,9 +8,9 @@
     <section>
         <h1>User profile</h1>
         <div>
-            <p>Name : ...</p>
-            <p>Mail : ...</p>
-            <p>Address : ...</p>
+            <p>Name : ${user.name}</p>
+            <p>Mail : ${user.mail}</p>
+            <p>Address : ${user.address}</p>
         </div>
         <a href="/user/update">update profile</a><br>
         <a href="/user/delete">delete profile</a><br>
