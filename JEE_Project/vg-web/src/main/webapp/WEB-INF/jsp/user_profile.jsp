@@ -12,8 +12,8 @@
             <p>Mail : ...</p>
             <p>Address : ...</p>
         </div>
-        <a href="/user/update/1">update profile</a><br>
-        <a href="/user/delete/1">delete profile</a><br>
+        <a href="/user/update">update profile</a><br>
+        <a href="/user/delete">delete profile</a><br>
     </section>
 </body>
 </html>

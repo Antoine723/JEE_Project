@@ -37,7 +37,7 @@ public class UserViewController {
 
     @GetMapping("/create")
     public String getCreate(){
-        String logger_anchor = "VC-/user/create:get";
+        //String logger_anchor = "VC-/user/create:get";
         return CREATE_PAGE;
     }
 
@@ -78,7 +78,7 @@ public class UserViewController {
 
     @GetMapping("/connect")
     public String getConnect(){
-        String logger_anchor = "VC-/user/connect:get";
+        //String logger_anchor = "VC-/user/connect:get";
 
         return CONNECT_PAGE;
     }
@@ -88,7 +88,7 @@ public class UserViewController {
                               @RequestParam String name,
                               @RequestParam String password,
                               HttpSession session) {
-        String logger_anchor = "VC-/user/connect:post";
+        //String logger_anchor = "VC-/user/connect:post";
 
         if (name.isEmpty() || password.isEmpty()) {
             model.addAttribute("error_msg", "Champ(s) vide(s)");
@@ -107,7 +107,7 @@ public class UserViewController {
 
     @GetMapping("/disconnect")
     public String getDisconnect(HttpServletRequest request){
-        String logger_anchor = "VC-/user/connect:get";
+        //String logger_anchor = "VC-/user/connect:get";
 
         request.getSession().invalidate();
 
@@ -116,9 +116,14 @@ public class UserViewController {
 
     @GetMapping("/profile")
     public String getProfile(Model model, HttpServletRequest request){
-        String logger_anchor = "VC-/user/profile:get";
+        //String logger_anchor = "VC-/user/profile:get";
 
-        long userId = (long) request.getSession().getAttribute(SESSION_USER_ID);
+        long userId;
+        try {
+            userId = (long) request.getSession().getAttribute(SESSION_USER_ID);
+        } catch (NullPointerException | NumberFormatException ignore) {
+            return "redirect:/user/connect";
+        }
 
         model.addAttribute("user", this.userService.getById(userId));
         return PROFILE_PAGE;
@@ -126,28 +131,43 @@ public class UserViewController {
 
     @GetMapping("/update")
     public String getUpdate(Model model, HttpServletRequest request){
-        String logger_anchor = "VC-/user/update:get";
+        //String logger_anchor = "VC-/user/update:get";
 
-        long userId = (long) request.getSession().getAttribute(SESSION_USER_ID);
+        long userId;
+        try {
+            userId = (long) request.getSession().getAttribute(SESSION_USER_ID);
+        } catch (NullPointerException | NumberFormatException ignore) {
+            return "redirect:/user/connect";
+        }
 
         return UPDATE_PAGE;
     }
 
     @PostMapping("/update")
     public String postUpdate(Model model, HttpServletRequest request) {
-        String logger_anchor = "VC-/user/update:post";
+        //String logger_anchor = "VC-/user/update:post";
 
-        long userId = (long) request.getSession().getAttribute(SESSION_USER_ID);
+        long userId;
+        try {
+            userId = (long) request.getSession().getAttribute(SESSION_USER_ID);
+        } catch (NullPointerException | NumberFormatException ignore) {
+            return "redirect:/user/connect";
+        }
         //process post params
         if (false) return UPDATE_PAGE;
-        return "redirect:/user/profile/1";
+        return "redirect:/user/profile";
     }
 
     @GetMapping("/delete")
     public String getDelete(HttpServletRequest request) {
         String logger_anchor = "VC-/user/delete:get";
 
-        long userId = (long) request.getSession().getAttribute(SESSION_USER_ID);
+        long userId;
+        try {
+            userId = (long) request.getSession().getAttribute(SESSION_USER_ID);
+        } catch (NullPointerException | NumberFormatException ignore) {
+            return "redirect:/user/connect";
+        }
         if (this.userService.existById(userId)) {
             logger.info("{} - delete user {}", logger_anchor, userId);
             this.userService.deleteById(userId);
