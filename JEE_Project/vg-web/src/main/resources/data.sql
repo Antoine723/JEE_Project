@@ -13,4 +13,4 @@ INSERT INTO game (id, name, price, quantity, rating, release_year, offline_playe
 VALUES (8, "Légendes Pokémon : Arceus", 50, 4400, 4.5, "2022-01-28", 1, 2);
 
 INSERT INTO games_on_consoles
-VALUES (1,1), (1,2), (1,3), (1,4), (2,1), (2,2), (2,3), (2,4), (3,5);
+VALUES (6,1), (6,2), (6,3), (6,4), (7,1), (7,2), (7,3), (7,4), (8,5);
