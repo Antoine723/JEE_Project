@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="fr">
 <head>
@@ -7,6 +8,7 @@
 <body>
     <section>
         <h1>Account creation page</h1>
+        <div>${error_msg}</div>
         <form method="POST" action="/user/create">
             <div>
                 <label for="name">Name: </label>

@@ -8,8 +8,7 @@
     <section>
         <h1>User profile</h1>
         <div>
-            < % String username = request.getParameter("username"); %>
-            <p>Name : < % out.println(username); %></p>
+            <p>Name : ...</p>
             <p>Mail : ...</p>
             <p>Address : ...</p>
         </div>

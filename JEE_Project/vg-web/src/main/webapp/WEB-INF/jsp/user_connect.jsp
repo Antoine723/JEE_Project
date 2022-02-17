@@ -7,6 +7,7 @@
 <body>
     <section>
         <h1>Account connection page</h1>
+        <div>${error_msg}</div>
         <form method="POST" action="/user/connect">
             <div>
                 <label for="name">Name: </label>
