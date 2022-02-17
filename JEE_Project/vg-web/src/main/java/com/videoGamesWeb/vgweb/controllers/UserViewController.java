@@ -1,9 +1,11 @@
 package com.videoGamesWeb.vgweb.controllers;
 
+import com.videoGamesWeb.vgcore.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -12,6 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserViewController {
 
     private final static Logger logger = LoggerFactory.getLogger(UserViewController.class);
+
+    private final UserService userService;
+
+    public UserViewController(UserService userService){
+        this.userService = userService;
+    }
 
     @GetMapping("/create")
     public String getCreate(){
@@ -67,9 +75,10 @@ public class UserViewController {
         return "redirect:/user/profile";
     }
 
-    @GetMapping("/delete")
-    public String getDelete(){
+    @GetMapping("/delete/{userId}")
+    public String getDelete(@PathVariable long userId){
         logger.info("ViewController /user/delete get");
-        return "redirect:/home"; // redirige vers l'accueil
+        if (this.userService.existById(userId)) this.userService.deleteById(userId);
+        return "redirect:/";
     }
 }

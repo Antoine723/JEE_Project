@@ -2,7 +2,6 @@ package com.videoGamesWeb.vgcore.service;
 
 import com.videoGamesWeb.vgcore.repository.UserRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserService {
@@ -13,4 +12,11 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
+    public boolean existById(long userId) {
+        return this.userRepository.existsById(userId);
+    }
+
+    public void deleteById(long userId) {
+        this.userRepository.deleteById(userId);
+    }
 }

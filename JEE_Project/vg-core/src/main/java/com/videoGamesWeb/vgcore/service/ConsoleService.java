@@ -2,7 +2,6 @@ package com.videoGamesWeb.vgcore.service;
 
 import com.videoGamesWeb.vgcore.repository.ConsoleRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ConsoleService {

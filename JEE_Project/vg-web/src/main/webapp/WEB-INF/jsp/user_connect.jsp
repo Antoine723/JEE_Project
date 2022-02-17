@@ -1,15 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <title>Connect user</title>
+    <jsp:include page="head.jsp"/>
 </head>
 <body>
-    <header>
-        <a href="/home">homepage</a><br>
-        <a href="/user/create">create account</a><br>
-        <hr>
-    </header>
     <section>
         <h1>Account connection page</h1>
         <form method="POST" action="/user/connect">

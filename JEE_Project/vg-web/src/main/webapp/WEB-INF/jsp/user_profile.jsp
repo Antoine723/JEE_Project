@@ -1,15 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <title>User</title>
+    <jsp:include page="head.jsp"/>
 </head>
 <body>
-    <header>
-        <a href="/home">homepage</a><br>
-        <a href="/user/disconnect">disconnect</a><br>
-        <hr>
-    </header>
     <section>
         <h1>User profile</h1>
         <div>

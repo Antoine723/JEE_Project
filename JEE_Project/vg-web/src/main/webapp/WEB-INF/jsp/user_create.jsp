@@ -1,15 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <title>Create user</title>
+    <jsp:include page="head.jsp"/>
 </head>
 <body>
-    <header>
-        <a href="/home">homepage</a><br>
-        <a href="/user/connect">log to account</a><br>
-        <hr>
-    </header>
     <section>
         <h1>Account creation page</h1>
         <form method="POST" action="/user/create">
