@@ -9,7 +9,6 @@ import java.util.List;
 
 @Entity
 @Getter @Setter
-@DiscriminatorValue("2")
 @Table(name="game")
 public class Game extends Product {
 
@@ -23,5 +22,5 @@ public class Game extends Product {
     @JoinTable(name="games_on_consoles",
             joinColumns = @JoinColumn(name = "game_id"),
             inverseJoinColumns = @JoinColumn(name="console_id"))
-    private List<Console> consoles = new ArrayList<>();
+    private List<Console> consoles;
 }

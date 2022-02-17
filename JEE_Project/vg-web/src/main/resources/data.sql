@@ -6,11 +6,11 @@ INSERT INTO console (id, name, price, quantity, rating, release_year) VALUES (5,
 
 
 INSERT INTO game (id, name, price, quantity, rating, release_year, offline_players_number, online_players_number)
-VALUES (1, "Call Of Duty : Vanguard", 70, 1870, 3.9, "2021-11-05", 2, 28);
+VALUES (6, "Call Of Duty : Vanguard", 70, 1870, 3.9, "2021-11-05", 2, 28);
 INSERT INTO game (id, name, price, quantity, rating, release_year, offline_players_number, online_players_number)
-VALUES (2, "Assassin's Creed Valhalla", 35, 2568, 4.1, "2020-11-10", 1, 1);
+VALUES (7, "Assassin's Creed Valhalla", 35, 2568, 4.1, "2020-11-10", 1, 1);
 INSERT INTO game (id, name, price, quantity, rating, release_year, offline_players_number, online_players_number)
-VALUES (3, "Légendes Pokémon : Arceus", 50, 4400, 4.5, "2022-01-28", 1, 2);
+VALUES (8, "Légendes Pokémon : Arceus", 50, 4400, 4.5, "2022-01-28", 1, 2);
 
 INSERT INTO games_on_consoles
 VALUES (1,1), (1,2), (1,3), (1,4), (2,1), (2,2), (2,3), (2,4), (3,5);
