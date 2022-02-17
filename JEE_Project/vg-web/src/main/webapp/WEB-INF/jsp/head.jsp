@@ -9,7 +9,7 @@
     <a href="/products">Produits</a>
     <a href="/user/create">Création compte</a>
     <a href="/user/connect">Connexion compte</a>
-    <a href="/user/profile">Consultation compte</a>
-    <a href="/user/disconnect">Déconnexion compte</a>
+    <a href="/user/profile/1">Consultation compte</a>
+    <a href="/user/disconnect/1">Déconnexion compte</a>
 </header>
 </html>
