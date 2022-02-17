@@ -6,12 +6,12 @@
 </head>
 <header class="topnav">
     <%
-        long userId = -1;
         try {
-            userId = (long) request.getSession().getAttribute("userID");
+            long userId = (long) request.getSession().getAttribute("userID");
+            pageContext.setAttribute("userId", userId);
         } catch (NullPointerException | NumberFormatException ignore) {
+            pageContext.setAttribute("userId", "-1");
         }
-        pageContext.setAttribute("userId", userId);
     %>
 
     <a href="/">Accueil</a>
