@@ -6,8 +6,21 @@
     <jsp:include page="head.jsp"/>
 </head>
 <body>
-<c:forEach items="${products}" var="product">
-    <p>${product.name}</p>
+<h1>Consoles</h1>
+<c:forEach items="${consoles}" var="console">
+    <p>${console.name} <img src="/image/${console.img}" style="max-height: 300px; max-width: 300px;"/></p>
+</c:forEach>
+<h1>Jeux</h1>
+<c:forEach items="${games}" var="game">
+    <p>${game.name} ${game.rating}/5 </p>
+    Dispo sur :
+
+    <ul>
+        <c:forEach items="${game.consoles}" var="console">
+            <li>${console.name} <img src="/image/${game.img}_${console.name}" style="max-height: 300px; max-width: 300px;"/></li>
+        </c:forEach>
+    </ul>
+    ------
 </c:forEach>
 </body>
 </html>

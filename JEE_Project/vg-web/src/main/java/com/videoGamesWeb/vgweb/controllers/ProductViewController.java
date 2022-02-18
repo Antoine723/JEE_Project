@@ -1,5 +1,6 @@
 package com.videoGamesWeb.vgweb.controllers;
 
+import com.videoGamesWeb.vgcore.service.ConsoleService;
 import com.videoGamesWeb.vgcore.service.GameService;
 import com.videoGamesWeb.vgcore.service.ProductService;
 import org.slf4j.Logger;
@@ -14,16 +15,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ProductViewController {
 
-    private final ProductService productService;
+    private final ConsoleService consoleService;
+    private final GameService gameService;
     private final static Logger logger = LoggerFactory.getLogger(ProductViewController.class);
 
-    public ProductViewController(ProductService productService){
-        this.productService = productService;
+    public ProductViewController(ConsoleService consoleService, GameService gameService){
+        this.consoleService = consoleService;
+        this.gameService = gameService;
     }
 
     @GetMapping("/products")
     public String products(Model model){
-        model.addAttribute("products", this.productService.findAll());
+        model.addAttribute("consoles", this.consoleService.findAll());
+        model.addAttribute("games", this.gameService.findAll());
         return "products";
     }
 }
