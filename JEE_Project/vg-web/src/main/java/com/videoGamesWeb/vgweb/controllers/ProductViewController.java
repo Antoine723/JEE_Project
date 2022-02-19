@@ -1,33 +1,35 @@
 package com.videoGamesWeb.vgweb.controllers;
 
-import com.videoGamesWeb.vgcore.service.ConsoleService;
-import com.videoGamesWeb.vgcore.service.GameService;
+import com.videoGamesWeb.vgcore.entity.Game;
+import com.videoGamesWeb.vgcore.entity.Product;
 import com.videoGamesWeb.vgcore.service.ProductService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @Controller
 public class ProductViewController {
 
-    private final ConsoleService consoleService;
-    private final GameService gameService;
-    private final static Logger logger = LoggerFactory.getLogger(ProductViewController.class);
+    private final ProductService productService;
 
-    public ProductViewController(ConsoleService consoleService, GameService gameService){
-        this.consoleService = consoleService;
-        this.gameService = gameService;
+    public ProductViewController(ProductService productService){
+        this.productService = productService;
     }
 
-    @GetMapping("/products")
-    public String products(Model model){
-        model.addAttribute("consoles", this.consoleService.findAll());
-        model.addAttribute("games", this.gameService.findAll());
-        return "products";
+    @GetMapping(value = {"/product/{id}", "/product/{id}/{consoleGameName}"})
+    public String product(@PathVariable long id, @PathVariable(required = false) String consoleGameName, Model model){
+        Optional<Product> productOpt = this.productService.findById(id);
+        if (productOpt.isEmpty()){
+            model.addAttribute("productNotFound", true);
+            return "products";
+        }
+        if (consoleGameName != null){
+            model.addAttribute("consoleGameName", consoleGameName);
+        }
+        Product product = productOpt.get();
+        model.addAttribute("product", product);
+        return "product";
     }
 }

@@ -28,3 +28,4 @@
     </c:choose>
 </header>
 </html>
+<script type="text/javascript" src="webjars/jquery/3.2.0/jquery.min.js"></script>

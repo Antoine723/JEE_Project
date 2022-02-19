@@ -8,7 +8,7 @@
 <body>
 <h1>Consoles</h1>
 <c:forEach items="${consoles}" var="console">
-    <p>${console.name} <img src="/image/${console.img}" style="max-height: 300px; max-width: 300px;"/></p>
+    <a href="/product/${console.id}">${console.name} <img src="/image/${console.img}" style="max-height: 300px; max-width: 300px;"/></a>
 </c:forEach>
 <h1>Jeux</h1>
 <c:forEach items="${games}" var="game">
@@ -17,7 +17,7 @@
 
     <ul>
         <c:forEach items="${game.consoles}" var="console">
-            <li>${console.name} <img src="/image/${game.img}_${console.name}" style="max-height: 300px; max-width: 300px;"/></li>
+            <li><a href="/product/${game.id}/${console.name}">${console.name} <img src="/image/${game.img}_${console.name}" style="max-height: 300px; max-width: 300px;"/></a></li>
         </c:forEach>
     </ul>
     ------
