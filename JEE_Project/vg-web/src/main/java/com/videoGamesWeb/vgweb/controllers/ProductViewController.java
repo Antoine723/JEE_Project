@@ -30,7 +30,6 @@ public class ProductViewController {
         }
         Product product = productOpt.get();
         model.addAttribute("product", product);
-        model.addAttribute("productRating", this.productService.getRatingAverage(product));
         return "product";
     }
 }

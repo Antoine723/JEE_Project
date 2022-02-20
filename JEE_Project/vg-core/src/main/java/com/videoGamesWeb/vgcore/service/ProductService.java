@@ -25,13 +25,15 @@ public class ProductService {
         return this.productRepository.findById(id);
     }
 
-    public float getRatingAverage(Product product){
+    public void computeRatingAverage(Product product){
         List<Comment> comments = product.getComments();
         float sum = 0;
         for (int i =0; i < comments.size(); i++){
             sum += comments.get(i).getRating();
         }
-        return sum/comments.size();
+        float average = sum/comments.size();
+        product.setRating(average);
+        this.productRepository.save(product);
     }
 
 }
