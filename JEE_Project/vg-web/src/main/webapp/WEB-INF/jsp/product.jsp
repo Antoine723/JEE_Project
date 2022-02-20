@@ -52,8 +52,14 @@
                 rating:parseInt(rating),
                 productId:parseInt(${product.id})
             }),
-            dataType:"json",
             contentType : 'application/json; charset=utf-8',
+
+            success: function(resp){
+                location.reload(); //TODO with param to display success message
+            },
+            error: function(resp){
+                //TODO display error message
+            }
 
 
         })
