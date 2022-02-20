@@ -12,7 +12,12 @@ import java.util.List;
 @Getter @Setter
 @DiscriminatorColumn(name="product_type",
 discriminatorType = DiscriminatorType.INTEGER)
-public abstract class Product extends GenericEntity {
+public abstract class Product {
+
+    @Id
+    @GeneratedValue
+    @Column(name = "id", nullable = false)
+    public long id;
 
     @Column(name = "name")
     private String name;
@@ -29,13 +34,15 @@ public abstract class Product extends GenericEntity {
     @Column(name = "img")
     private String img;
 
-    @Column(name = "releaseYear")
-    private Date releaseYear;
+    @Column(name = "release_date")
+    private Date releaseDate;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    private List<Comment> comments;
 
     @ManyToMany //TODO à lier avec panier plutôt ?
     @JoinTable(name="orders_products",
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name="order_id"))
     List<Order> orders;
-
 }

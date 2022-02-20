@@ -17,4 +17,12 @@ public class Console extends Product {
             joinColumns = @JoinColumn(name = "console_id"),
             inverseJoinColumns = @JoinColumn(name="game_id"))
     private List<Game> games;
+
+    public Console(){
+
+    }
+
+    public Console(long id){
+        this.id = id;
+    } //TODO : find how to fix this (autoincrement on both child tables)
 }

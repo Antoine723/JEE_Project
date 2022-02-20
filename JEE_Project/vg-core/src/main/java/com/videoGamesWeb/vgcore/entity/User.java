@@ -7,9 +7,14 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 @Getter @Setter
-public class User extends GenericEntity {
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    public long id;
 
     @Column(name = "name")
     private String name;
@@ -22,9 +27,6 @@ public class User extends GenericEntity {
 
     @Column(name = "address")
     private String address;
-
-    @Column(name = "nbrComments")
-    private int nbrComments;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Order> orders;

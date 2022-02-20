@@ -9,5 +9,9 @@ INSERT INTO game VALUES (6, "cod_vanguard", "Call Of Duty : Vanguard", 70, 1870,
 INSERT INTO game VALUES (7, "assassins_creed_valhalla", "Assassin's Creed Valhalla", 35, 2568, 4.1, "2020-11-10", 1, 1);
 INSERT INTO game VALUES (8, "pokemon_arceus","Légendes Pokémon : Arceus", 50, 4400, 4.5, "2022-01-28", 1, 2);
 
+INSERT INTO users VALUES (1, "4, Rue Colbert Lille", "admin@hotmail.com", "Admin", "12345");
+
+INSERT INTO comment VALUES (1, "Jamais déçus des consoles de sony !", 4.8, 1, 1);
+
 INSERT INTO games_on_consoles
 VALUES (6,1), (6,2), (6,3), (6,4), (7,1), (7,2), (7,3), (7,4), (8,5);

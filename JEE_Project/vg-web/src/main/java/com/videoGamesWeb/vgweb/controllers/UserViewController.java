@@ -69,7 +69,6 @@ public class UserViewController {
         user.setPassword(this.bCryptPasswordEncoder.encode(password));
         user.setMail(mail != null ? mail : "");
         user.setAddress(address != null ? address : "");
-        user.setNbrComments(0);
         this.userService.save(user);
         logger.info("{} - created user", logger_anchor);
 

@@ -10,7 +10,12 @@ import javax.persistence.*;
 @Entity
 @Table(name = "comment")
 @Getter @Setter
-public class Comment extends GenericEntity {
+public class Comment {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    public long id;
 
     @Column(name = "content")
     private String content;
@@ -18,7 +23,7 @@ public class Comment extends GenericEntity {
     @Column(name = "rating")
     private int rating;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
 

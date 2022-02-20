@@ -1,11 +1,11 @@
 package com.videoGamesWeb.vgweb.controllers;
 
-import com.videoGamesWeb.vgcore.entity.Game;
 import com.videoGamesWeb.vgcore.entity.Product;
 import com.videoGamesWeb.vgcore.service.ProductService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Optional;
 
@@ -30,6 +30,7 @@ public class ProductViewController {
         }
         Product product = productOpt.get();
         model.addAttribute("product", product);
+        model.addAttribute("productRating", this.productService.getRatingAverage(product));
         return "product";
     }
 }
