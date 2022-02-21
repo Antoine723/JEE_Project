@@ -3,6 +3,7 @@
 <html lang="fr">
 <head>
     <link href="<c:url value="/css/head.css"/>" rel="stylesheet" type="text/css">
+    <script defer type="text/javascript" src='<c:url value="${pageContext.request.contextPath}/webjars/jquery/3.4.1/jquery.js"/>'></script>
 </head>
 <header class="topnav">
     <%
@@ -28,4 +29,3 @@
     </c:choose>
 </header>
 </html>
-<script type="text/javascript" src='<c:url value="${pageContext.request.contextPath}/webjars/jquery/3.4.1/jquery.js"/>'></script>

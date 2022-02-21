@@ -27,12 +27,9 @@ public class ProductService {
 
     public void computeRatingAverage(Product product){
         List<Comment> comments = product.getComments();
-        float sum = 0;
-        for (int i =0; i < comments.size(); i++){
-            sum += comments.get(i).getRating();
-        }
-        float average = sum/comments.size();
-        product.setRating(average);
+        if (comments.size() == 0) return;
+
+        product.setRating((float) comments.stream().mapToInt(Comment::getRating).sum() / comments.size());
         this.productRepository.save(product);
     }
 
