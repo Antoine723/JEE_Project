@@ -1,14 +1,18 @@
 package com.videoGamesWeb.vgcore.entity;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Getter @Setter
+@NoArgsConstructor
 @Table(name="game")
 public class Game extends Product {
 
@@ -18,15 +22,15 @@ public class Game extends Product {
     @Column(name="online_players_number")
     private int onlinePlayersNumber;
 
-    @JsonIgnore
     @ManyToMany
     @JoinTable(name="games_on_consoles",
             joinColumns = @JoinColumn(name = "game_id"),
             inverseJoinColumns = @JoinColumn(name="console_id"))
     private List<Console> consoles;
 
-    public Game(){
-
+    @JsonGetter("consoles")
+    public List<String> jsonConsoles() {
+        return consoles.stream().map(Console::getName).collect(Collectors.toList());
     }
 
     public Game(long id){

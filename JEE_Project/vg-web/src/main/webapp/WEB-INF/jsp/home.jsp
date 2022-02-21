@@ -38,22 +38,25 @@
 
                 success: function(resp) {
                     const result = JSON.parse(resp);
-                    if (!Array.isArray(result)) {
-                        reset_search();
-                        return;
+                    let html;
+                    if (!Array.isArray(result) || !result.length) {
+                        html = "Pas de résultat pour votre recherche";
                     }
-                    target_elem.empty().append(result.reduce((total, item) => total +=
-                        '<div>'+
-                            '<hr>'+
-                            item["img"]+
+                    else {
+                        html = result.reduce((total, item) => total +=
                             '<div>'+
-                                '<h3>'+item["name"]+'</h3>'+
-                                '<p>note : '+item["rating"]+'/5</p>'+
-                                '<p>'+item["price"]+'€</p>'+
-                            '</div>'+
-                            '<hr>'+
-                        '</div>',
-                    ""));
+                                '<hr>'+
+                                '<img src="/image/'+item["img"]+(item.hasOwnProperty("consoles") ? "_"+item["consoles"][0] : "")+'" style="max-height: 400px; max-width: 400px;" alt="product_img"/>'+
+                                '<div>'+
+                                    '<h3>'+item["name"]+'</h3>'+
+                                    '<p>note : '+item["rating"]+'/5</p>'+
+                                    '<p>'+item["price"]+'€</p>'+
+                                '</div>'+
+                                '<hr>'+
+                            '</div>',
+                        "");
+                    }
+                    target_elem.empty().append(html);
                 },
                 error: function(){
                     console.log("failure");

@@ -4,6 +4,7 @@ package com.videoGamesWeb.vgweb.controllers;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.videoGamesWeb.vgcore.dto.SearchDTO;
+import com.videoGamesWeb.vgcore.entity.Game;
 import com.videoGamesWeb.vgcore.entity.Product;
 import com.videoGamesWeb.vgcore.service.ProductService;
 import org.slf4j.Logger;
@@ -34,10 +35,15 @@ public class ProductsController {
     @PostMapping(value = "/search")
     public ResponseEntity<String> addComment(@RequestBody SearchDTO searchDTO) throws JsonProcessingException {
         logger.info("recieve {}", searchDTO.getInput());
-        List<Product> results = productService.searchWithText(searchDTO.getInput()); /*
+        List<Product> results = productService.searchWithText(searchDTO.getInput());/*
                 .stream()
-                .peek(product -> product.setImg("..."))
-                .collect(Collectors.toList()); */
+                .peek(product -> {
+                    if (product instanceof Game) {
+                        product.setImg(product.getImg()+"_"+((Game) product).getConsoles().get(0).getName());
+                        logger.info("game {} => console {}", product.getName(), ((Game) product).getConsoles().get(0).getName());
+                    }
+                })
+                .collect(Collectors.toList());*/
         //results = results.stream().sorted(Comparator.comparing(Product::getName).reversed()).collect(Collectors.toList());
         return ResponseEntity.ok(mapper.writeValueAsString(results));
     }
