@@ -4,8 +4,6 @@ package com.videoGamesWeb.vgweb.controllers;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.videoGamesWeb.vgcore.dto.SearchDTO;
-import com.videoGamesWeb.vgcore.entity.Console;
-import com.videoGamesWeb.vgcore.entity.Game;
 import com.videoGamesWeb.vgcore.entity.Product;
 import com.videoGamesWeb.vgcore.service.ProductService;
 import org.slf4j.Logger;
@@ -25,6 +23,8 @@ public class ProductsController {
 
     private final static Logger logger = LoggerFactory.getLogger(CommentController.class);
 
+    private final ObjectMapper mapper = new ObjectMapper();
+
     private final ProductService productService;
 
     public ProductsController(ProductService productService) {
@@ -34,27 +34,11 @@ public class ProductsController {
     @PostMapping(value = "/search")
     public ResponseEntity<String> addComment(@RequestBody SearchDTO searchDTO) throws JsonProcessingException {
         logger.info("recieve {}", searchDTO.getInput());
-        List<Product> results = productService.searchWithText(searchDTO.getInput())
+        List<Product> results = productService.searchWithText(searchDTO.getInput()); /*
                 .stream()
-                .peek(product -> {
-                    product.setComments(null);
-                    product.setOrders(null);
-                    //set images ?
-                    switch (product.getClass().getSimpleName()) {
-                        case "Game":
-                            ((Game) product).setConsoles(null);
-                            break;
-                        case "Console":
-                            ((Console) product).setGames(null);
-                            break;
-                    }
-                })
-                //.sorted(Comparator.comparing(Product::getName).reversed())
-                .collect(Collectors.toList());
-        logger.info(String.valueOf(results.size()));
-        ObjectMapper mapper = new ObjectMapper();
-        String jsonString = mapper.writeValueAsString(results);
-        logger.info("result : {}", jsonString);
-        return ResponseEntity.ok(jsonString);
+                .peek(product -> product.setImg("..."))
+                .collect(Collectors.toList()); */
+        //results = results.stream().sorted(Comparator.comparing(Product::getName).reversed()).collect(Collectors.toList());
+        return ResponseEntity.ok(mapper.writeValueAsString(results));
     }
 }

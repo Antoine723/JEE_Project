@@ -1,5 +1,6 @@
 package com.videoGamesWeb.vgcore.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,6 +13,7 @@ import java.util.List;
 @Table(name="console")
 public class Console extends Product {
 
+    @JsonIgnore
     @ManyToMany
     @JoinTable(name="games_on_consoles",
             joinColumns = @JoinColumn(name = "console_id"),

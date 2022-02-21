@@ -1,5 +1,6 @@
 package com.videoGamesWeb.vgcore.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -37,9 +38,11 @@ public abstract class Product {
     @Column(name = "release_date")
     private Date releaseDate;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private List<Comment> comments;
 
+    @JsonIgnore
     @ManyToMany //TODO à lier avec panier plutôt ?
     @JoinTable(name="orders_products",
             joinColumns = @JoinColumn(name = "product_id"),

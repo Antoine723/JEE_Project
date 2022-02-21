@@ -47,7 +47,14 @@
             });
         }
 
-        search_elem.on("input",() => searchProducts(search_elem.val(), result_elem));
+        search_elem.on("input",() => {
+            const input = search_elem.val();
+            if (input === "") {
+                reset_search();
+                return;
+            }
+            searchProducts(input, result_elem);
+        });
     </script>
 </body>
 </html>
