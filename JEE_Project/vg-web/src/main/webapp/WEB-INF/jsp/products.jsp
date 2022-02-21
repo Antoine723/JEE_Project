@@ -8,7 +8,7 @@
 <body>
     <h1>Consoles</h1>
     <div>
-        <c:forEach items="${consoles}" var="console">
+        <c:forEach items="${consoles}" var="console" varStatus="loop">
         <article>
             <a href="/product/${console.id}">
                 <h3>${console.name}</h3>
@@ -26,13 +26,14 @@
                 <img src="/image/${console.img}" style="max-height: 300px; max-width: 300px;" alt="console_img"/>
             </a>
         </article>
-        <hr>
+        <c:if test="${!loop.last}"><hr></c:if>
         </c:forEach>
     </div>
     <hr>
+    <hr>
     <h1>Jeux</h1>
     <div>
-        <c:forEach items="${games}" var="game">
+        <c:forEach items="${games}" var="game" varStatus="loop">
         <article>
             <h3>${game.name}</h3>
             <p>
@@ -59,7 +60,7 @@
                 </c:forEach>
             </ul>
         </article>
-        <hr>
+        <c:if test="${!loop.last}"><hr></c:if>
         </c:forEach>
     </div>
 </body>
