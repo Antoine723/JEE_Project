@@ -21,6 +21,12 @@
         const search_elem = $("#search");
         const result_elem = $("#result");
 
+        function reset_search() {
+            search_elem.val("");
+            result_elem.empty().append("En attente de votre prochaine recherche...");
+        }
+        reset_search();
+
         function searchProducts(search_input, target_elem) {
             $.ajax({
                 url:"/products/search",
@@ -40,12 +46,6 @@
                 }
             });
         }
-
-        function reset_search() {
-            search_elem.val("");
-            result_elem.empty().append("En attente de votre prochaine recherche...");
-        }
-        reset_search();
 
         search_elem.on("input",() => searchProducts(search_elem.val(), result_elem));
     </script>

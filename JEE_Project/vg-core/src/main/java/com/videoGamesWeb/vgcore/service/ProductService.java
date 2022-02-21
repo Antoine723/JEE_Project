@@ -2,19 +2,29 @@ package com.videoGamesWeb.vgcore.service;
 
 import com.videoGamesWeb.vgcore.entity.Comment;
 import com.videoGamesWeb.vgcore.entity.Product;
+import com.videoGamesWeb.vgcore.repository.ConsoleRepository;
+import com.videoGamesWeb.vgcore.repository.GameRepository;
 import com.videoGamesWeb.vgcore.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class ProductService {
 
     private final ProductRepository productRepository;
+    private final ConsoleRepository consoleRepository;
+    private final GameRepository gameRepository;
 
-    public ProductService(ProductRepository productRepository) {
+    public ProductService(ProductRepository productRepository,
+                          ConsoleRepository consoleRepository,
+                          GameRepository gameRepository) {
         this.productRepository = productRepository;
+        this.consoleRepository = consoleRepository;
+        this.gameRepository = gameRepository;
     }
 
     public List<Product> findAll(){
@@ -33,4 +43,12 @@ public class ProductService {
         this.productRepository.save(product);
     }
 
+    public List<Product> searchWithText(String input) {
+        input = input.toLowerCase();
+        return Stream.concat(
+                    this.consoleRepository.searchWithText(input).stream(),
+                    this.gameRepository.searchWithText(input).stream()
+                )
+                .collect(Collectors.toList());
+    }
 }
