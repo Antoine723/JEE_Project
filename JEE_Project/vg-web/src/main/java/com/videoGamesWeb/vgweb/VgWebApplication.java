@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EntityScan(basePackages = {"com.videoGamesWeb.vgcore"})
 @EnableJpaRepositories(basePackages = {"com.videoGamesWeb.vgcore"})
 public class VgWebApplication {
+	public final static String SESSION_USER_ID = "userID";
 
 	public static void main(String[] args) {
 		SpringApplication.run(VgWebApplication.class, args);

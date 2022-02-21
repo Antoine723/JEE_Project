@@ -7,6 +7,14 @@
     <link href="<c:url value="/css/product.css"/>" rel="stylesheet" type="text/css">
 </head>
 <body>
+    <%
+        try {
+            long userId = (long) request.getSession().getAttribute("userID");
+            pageContext.setAttribute("userId", userId);
+        } catch (NullPointerException | NumberFormatException ignore) {
+            pageContext.setAttribute("userId", "-1");
+        }
+    %>
     <div class="card">
         <img src="/image/${product.img}<c:if test="${not empty consoleGameName}">_${consoleGameName}</c:if>" style="max-height: 400px; max-width: 400px;" alt="product_img"/>
         <p>Nom : ${product.name}</p>
@@ -33,17 +41,24 @@
     <hr>
     <div id="comments">
         <h1>Commentaires</h1>
-        <form action="#" method="POST">
-            <label for="newComment">Votre note :</label>
-            <div class="rating">
-                <c:forEach var = "i" begin = "1" end = "5">
-                <input name="stars" id="${6-i}" type="radio" value="${6-i}">
-                <label for="${6-i}">★</label>
-                </c:forEach>
-            </div>
-            <input type="text" id="newComment" placeholder="Ajouter un commentaire"/>
-        </form>
-        <button onclick="submitComment()">Ajouter le commentaire</button>
+        <c:choose>
+            <c:when test="${userId=='-1'}">
+                loggez vous pour commenter !
+            </c:when>
+            <c:otherwise>
+                <form action="#" method="POST">
+                    <label for="newComment">Votre note :</label>
+                    <div class="rating">
+                        <c:forEach var = "i" begin = "1" end = "5">
+                            <input name="stars" id="${6-i}" type="radio" value="${6-i}">
+                            <label for="${6-i}">★</label>
+                        </c:forEach>
+                    </div>
+                    <input type="text" id="newComment" placeholder="Ajouter un commentaire"/>
+                </form>
+                <button onclick="submitComment()">Ajouter le commentaire</button>
+            </c:otherwise>
+        </c:choose>
         <br>
         <h3>Tous les commentaires</h3>
         <c:forEach items="${product.comments}" var="comment">
@@ -72,7 +87,7 @@
                 location.reload(); //TODO with param to display success message
             },
             error: function(resp){
-                //TODO display error message
+                alert(resp.responseText); //TODO smooth display of error message
             }
 
 

@@ -14,6 +14,8 @@ import javax.servlet.http.HttpSession;
 import java.security.SecureRandom;
 import java.util.Objects;
 
+import static com.videoGamesWeb.vgweb.VgWebApplication.SESSION_USER_ID;
+
 @Controller
 @RequestMapping(value = "/user")
 public class UserViewController {
@@ -24,8 +26,6 @@ public class UserViewController {
     private final static String CONNECT_PAGE = "user_connect";
     private final static String PROFILE_PAGE = "user_profile";
     private final static String UPDATE_PAGE = "user_update";
-
-    private final static String SESSION_USER_ID = "userID";
 
     private final UserService userService;
 

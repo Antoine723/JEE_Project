@@ -9,4 +9,5 @@ public class CommentDTO {
     private String comment;
     private int rating;
     private Long productId;
+    private Long userId;
 }
