@@ -66,8 +66,6 @@
             <p>Commentaire : ${comment.content}</p>
         </c:forEach>
     </div>
-</body>
-</html>
 <script>
     function submitComment(){
         const stars_input = $("input[name='stars']:checked");
@@ -95,10 +93,10 @@
     }
 
     $("#quantity").on("change",function(){
-        if ($("#quantity").val() < 1){
-            $("#quantity").val(1);
-        } else if ($("#quantity").val() > ${product.quantity}){
-            $("#quantity").val(${product.quantity});
+        if (this.val() < 1){
+            this.val(1);
+        } else if (this.val() > ${product.quantity}){
+            this.val(${product.quantity});
         }
     })
     
@@ -114,3 +112,5 @@
         }
     }
 </script>
+</body>
+</html>
