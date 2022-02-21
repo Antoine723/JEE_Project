@@ -16,9 +16,22 @@
             </c:otherwise>
         </c:choose>
         <p>Nom : ${product.name}</p>
-        <p>Note : ${product.rating}/5</p>
+        <p>Note : <c:choose>
+            <c:when test="${product.rating == null}">
+                N/A
+            </c:when>
+            <c:otherwise>
+                ${product.rating}/5
+            </c:otherwise>
+        </c:choose>
+        </p>
         <p>Date de sortie : ${product.releaseDate}</p>
         <p>Prix : ${product.price}</p>
+        <p>Quantité :
+            <button id="decreaseQuantity" onclick="decreaseQuantity()">-</button>
+            <input type="number" id="quantity" value="1" min="1" max="${product.quantity}"/>
+            <button id="increaseQuantity" onclick="increaseQuantity()">+</button>
+        </p>
     </div>
     <div id="comments">
         <h1>Commentaires</h1>
@@ -63,5 +76,25 @@
 
 
         })
+    }
+
+    $("#quantity").on("change",function(){
+        if ($("#quantity").val() < 1){
+            $("#quantity").val(1);
+        } else if ($("#quantity").val() > ${product.quantity}){
+            $("#quantity").val(${product.quantity});
+        }
+    })
+    
+    function decreaseQuantity(){
+        if ($("#quantity").val() > 1){
+            $("#quantity").val(parseInt($("#quantity").val()) - 1);
+        }
+    }
+
+    function increaseQuantity(){
+        if ($("#quantity").val() < ${product.quantity}){
+            $("#quantity").val(parseInt($("#quantity").val()) + 1);
+        }
     }
 </script>
