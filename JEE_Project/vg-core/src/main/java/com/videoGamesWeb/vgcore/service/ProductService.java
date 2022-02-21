@@ -25,7 +25,7 @@ public class ProductService {
         return this.productRepository.findById(id);
     }
 
-    public void computeRatingAverage(Product product){
+    public void updateRatingAverage(Product product){
         List<Comment> comments = product.getComments();
         if (comments.size() == 0) return;
 

@@ -33,7 +33,7 @@ public class CommentService {
             Product product = productOpt.get();
             comment.setProduct(product);
             this.commentRepository.save(comment);
-            this.productService.computeRatingAverage(product);
+            this.productService.updateRatingAverage(product);
         }
     }
 
