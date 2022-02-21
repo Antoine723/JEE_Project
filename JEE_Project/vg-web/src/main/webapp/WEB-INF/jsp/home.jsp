@@ -37,8 +37,23 @@
                 contentType : 'application/json; charset=utf-8',
 
                 success: function(resp) {
-                    console.log(resp);
-                    target_elem.empty().append(resp);
+                    const result = JSON.parse(resp);
+                    if (!Array.isArray(result)) {
+                        reset_search();
+                        return;
+                    }
+                    target_elem.empty().append(result.reduce((total, item) => total +=
+                        '<div>'+
+                            '<hr>'+
+                            item["img"]+
+                            '<div>'+
+                                '<h3>'+item["name"]+'</h3>'+
+                                '<p>note : '+item["rating"]+'/5</p>'+
+                                '<p>'+item["price"]+'€</p>'+
+                            '</div>'+
+                            '<hr>'+
+                        '</div>',
+                    ""));
                 },
                 error: function(){
                     console.log("failure");
