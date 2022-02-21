@@ -8,7 +8,15 @@
 <body>
 <h1>Consoles</h1>
 <c:forEach items="${consoles}" var="console">
-    <a href="/product/${console.id}">${console.name} <img src="/image/${console.img}" style="max-height: 300px; max-width: 300px;"/></a>
+    <a href="/product/${console.id}">${console.name}<img src="/image/${console.img}" style="max-height: 300px; max-width: 300px;"/></a>
+    <c:choose>
+        <c:when test="${console.rating == null}">
+            N/A
+        </c:when>
+        <c:otherwise>
+            ${console.rating}/5
+        </c:otherwise>
+    </c:choose>
 </c:forEach>
 <h1>Jeux</h1>
 <c:forEach items="${games}" var="game">

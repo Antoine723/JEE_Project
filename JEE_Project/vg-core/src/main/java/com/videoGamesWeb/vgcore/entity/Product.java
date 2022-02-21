@@ -29,7 +29,7 @@ public abstract class Product {
     private int quantity;
 
     @Column(name = "rating")
-    private float rating;
+    private Float rating;
 
     @Column(name = "img")
     private String img;
