@@ -16,6 +16,10 @@
             <hr>
         </p>
     </c:forEach>
+    <hr>
+    <p>
+        Total : ${totalAmount} €
+    </p>
 
 
 </body>

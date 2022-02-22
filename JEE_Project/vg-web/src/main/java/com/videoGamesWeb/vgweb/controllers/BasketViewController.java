@@ -3,6 +3,7 @@ package com.videoGamesWeb.vgweb.controllers;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.videoGamesWeb.vgcore.entity.Basket;
+import com.videoGamesWeb.vgcore.entity.Product;
 import com.videoGamesWeb.vgcore.service.BasketService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 @Controller
 public class BasketViewController extends GenericController{
@@ -27,7 +29,7 @@ public class BasketViewController extends GenericController{
         Basket basket = this.basketService.getBasketFromSession(session);
         model.addAttribute("basket", basket);
         model.addAttribute("prefix", this.prefix);
+        model.addAttribute("totalAmount", basket.computeTotalAmount());
         return "basket";
-
     }
 }

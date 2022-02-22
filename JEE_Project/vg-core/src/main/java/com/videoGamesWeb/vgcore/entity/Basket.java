@@ -37,4 +37,12 @@ public class Basket {
         }
     }
 
+    public float computeTotalAmount(){
+        float totalAmount = 0;
+        for(Map.Entry<Product, Integer> entry : this.productsAndQuantities.entrySet()){
+            totalAmount += entry.getKey().getPrice() * entry.getValue();
+        }
+        return totalAmount;
+    }
+
 }
