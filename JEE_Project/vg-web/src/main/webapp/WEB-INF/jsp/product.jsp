@@ -36,6 +36,7 @@
             <button id="decreaseQuantity" onclick="decreaseQuantity()">-</button>
             <input type="number" id="quantity" value="1" min="1" max="${product.quantity}"/>
             <button id="increaseQuantity" onclick="increaseQuantity()">+</button>
+            <button onclick="addToBasket()">Ajouter au panier</button>
         </p>
     </div>
     <hr>
@@ -110,6 +111,25 @@
         if ($("#quantity").val() < ${product.quantity}){
             $("#quantity").val(parseInt($("#quantity").val()) + 1);
         }
+    }
+
+    function addToBasket(){
+        let quantity = $("#quantity").val();
+        let productId = ${product.id};
+
+        $.ajax({
+            url:"/addToBasket",
+            type:"POST",
+            data:JSON.stringify({
+                "quantity": quantity,
+                "productId": productId
+            }),
+            contentType : 'application/json; charset=utf-8'
+
+
+        })
+
+
     }
 </script>
 </body>
