@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
 @RestController
@@ -25,21 +26,21 @@ public class BasketController {
     }
 
     @PostMapping("addToBasket")
-    public ResponseEntity<String> addToBasket(@RequestBody BasketDTO basketDTO, HttpServletRequest req) throws JsonProcessingException {
+    public ResponseEntity<String> addToBasket(@RequestBody BasketDTO basketDTO, HttpSession session) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
-        String basketSessionAttribute = (String) req.getSession().getAttribute("basket");
+        String basketSessionAttribute = (String) session.getAttribute("basket");
         Basket basket;
         if (basketSessionAttribute == null){
             basket = new Basket();
         } else {
-            basket = mapper.readValue((String) req.getSession().getAttribute("basket"),Basket.class);
+            basket = mapper.readValue((String) basketSessionAttribute,Basket.class);
         }
         Optional<Product> productOpt = this.productService.findById(basketDTO.getProductId());
         if (productOpt.isPresent()){
             basket.addProduct(productOpt.get(), basketDTO.getQuantity());
         }
         String json = mapper.writeValueAsString(basket);
-        req.getSession().setAttribute("basket", json);
+        session.setAttribute("basket", json);
         logger.info("Well added to basket");
         return ResponseEntity.ok("Well added to basket");
     }
