@@ -19,11 +19,18 @@ public interface ConsoleRepository extends JpaRepository<Console, Long> {
     @Query("SELECT max(c.price) FROM Console c")
     float getPriceMax();
 
-    @Query("SELECT c FROM Console c WHERE lower(c.name) LIKE %:input% AND c.price >= :min_price AND c.price <= :max_price")
-    List<Product> searchWithText(String input, float min_price, float max_price);
+    @Query("SELECT c FROM Console c " +
+            "WHERE lower(c.name) LIKE %:input% " +
+            "AND c.price >= :min_price AND c.price <= :max_price " +
+            "AND (c.rating IS NULL OR c.rating >= :min_score)")
+    List<Product> searchWithText(String input, float min_price, float max_price, float min_score);
 
-    @Query("SELECT c FROM Console c WHERE lower(c.name) LIKE %:input% AND c.name IN :console_names AND c.price > :min_price AND c.price < :max_price")
-    List<Product> searchWithTextAndNames(String input, List<String> console_names, float min_price, float max_price);
+    @Query("SELECT c FROM Console c " +
+            "WHERE lower(c.name) LIKE %:input% " +
+            "AND c.price >= :min_price AND c.price <= :max_price " +
+            "AND (c.rating IS NULL OR c.rating >= :min_score) " +
+            "AND c.name IN :console_names")
+    List<Product> searchWithTextAndNames(String input, float min_price, float max_price, float min_score, List<String> console_names);
 
     @Query("SELECT c.id FROM Console c WHERE c.name IN :console_names")
     List<Long> searchConsoleIds(List<String> console_names);

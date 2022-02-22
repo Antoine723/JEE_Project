@@ -38,13 +38,19 @@ public class ProductsController {
         logger.info("recieve {}, {}", searchDTO.getSort_by(), searchDTO.getSort_asc());
         logger.info("recieve {}", searchDTO.getConsoles());
         logger.info("recieve {}, {}", searchDTO.getMin_price(), searchDTO.getMax_price());
+        logger.info("recieve {}", searchDTO.getMin_score());
 
         List<Product> results;
         if (searchDTO.getConsoles().isEmpty()) {
-            results = productService.searchWithText(searchDTO.getInput(), searchDTO.getMin_price(), searchDTO.getMax_price());
+            results = productService.searchWithText(searchDTO.getInput(),
+                    searchDTO.getMin_price(), searchDTO.getMax_price(),
+                    searchDTO.getMin_score());
         }
         else {
-            results = productService.searchWithTextAndConsoles(searchDTO.getInput(), searchDTO.getConsoles(), searchDTO.getMin_price(), searchDTO.getMax_price());
+            results = productService.searchWithTextAndConsoles(searchDTO.getInput(),
+                    searchDTO.getMin_price(), searchDTO.getMax_price(),
+                    searchDTO.getMin_score(),
+                    searchDTO.getConsoles());
         }
 
         Comparator<Product> comparator = null;

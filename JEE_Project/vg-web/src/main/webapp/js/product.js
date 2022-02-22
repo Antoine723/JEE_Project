@@ -10,16 +10,17 @@ $(() => {
         checkUser();
 
         const stars_input = $("input[name='stars']:checked");
-        const rating = stars_input.length === 0 ? "0" : stars_input.val();
+        const rating = stars_input.length === 0 ? 0 : parseInt(stars_input.val());
         const comment = $("#newComment").val();
+        const productId = parseInt($("#productId").val());
         $.ajax({
             url: "/addComment",
             type: "POST",
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify({
                 comment: comment,
-                rating: parseInt(rating),
-                productId: parseInt($("#productId").val())
+                rating: rating,
+                productId: productId
             }),
             success: function () {
                 location.reload(); //TODO with param to display success message

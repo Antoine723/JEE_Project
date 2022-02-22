@@ -27,10 +27,10 @@
             </div>
             <hr>
             <div>
-                Note des utilisateurs :
+                Moyenne minimale des utilisateurs :
                 <div class="rating">
                     <c:forEach var="i" begin="1" end="5">
-                        <input name="stars" id="${6-i}" type="radio" value="${6-i}">
+                        <input class="search_btn" name="stars" id="${6-i}" type="radio" value="${6-i}">
                         <label for="${6-i}">★</label>
                     </c:forEach>
                 </div>

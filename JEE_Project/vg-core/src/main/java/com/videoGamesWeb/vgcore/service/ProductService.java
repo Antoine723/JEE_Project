@@ -51,22 +51,22 @@ public class ProductService {
         return Math.max(this.consoleRepository.getPriceMax(), this.gameRepository.getPriceMax());
     }
 
-    public List<Product> searchWithText(String input, float min_price, float max_price) {
+    public List<Product> searchWithText(String input, float min_price, float max_price, float min_score) {
         input = input.toLowerCase();
         return Stream.concat(
-                        this.consoleRepository.searchWithText(input, min_price, max_price).stream(),
-                        this.gameRepository.searchWithText(input, min_price, max_price).stream()
+                        this.consoleRepository.searchWithText(input, min_price, max_price, min_score).stream(),
+                        this.gameRepository.searchWithText(input, min_price, max_price, min_score).stream()
                 )
                 .collect(Collectors.toList());
     }
 
-    public List<Product> searchWithTextAndConsoles(String input, List<String> console_names, float min_price, float max_price) {
+    public List<Product> searchWithTextAndConsoles(String input, float min_price, float max_price, float min_score, List<String> console_names) {
         input = input.toLowerCase();
 
-        List<Product> consoles = this.consoleRepository.searchWithTextAndNames(input, console_names, min_price, max_price);
+        List<Product> consoles = this.consoleRepository.searchWithTextAndNames(input, min_price, max_price, min_score, console_names);
 
         List<Long> console_ids = this.consoleRepository.searchConsoleIds(console_names);
-        List<Product> games = this.gameRepository.searchWithTextAndConsoleIds(input, console_ids, min_price, max_price);
+        List<Product> games = this.gameRepository.searchWithTextAndConsoleIds(input, min_price, max_price, min_score, console_ids);
 
         return Stream.concat(consoles.stream(), games.stream()).collect(Collectors.toList());
     }

@@ -15,4 +15,5 @@ public class SearchDTO {
     private List<String> consoles;
     private float min_price;
     private float max_price;
+    private int min_score;
 }

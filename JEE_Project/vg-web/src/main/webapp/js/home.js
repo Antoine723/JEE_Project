@@ -37,6 +37,10 @@ $(() => {
         const min_price = $("#price_min").attr("max")-$("#price_min").val()+parseFloat($("#price_min_abs").val());
         const max_price = $("#price_max").val();
 
+        const stars_input = $("input[name='stars']:checked");
+        const min_score = stars_input.length === 0 ? 0 : parseInt(stars_input.val());
+        console.log(min_score);
+
         $.ajax({
             url:"/products/search",
             type:"POST",
@@ -46,7 +50,8 @@ $(() => {
                 sort_asc:order_by,
                 consoles:selected,
                 min_price:min_price,
-                max_price:max_price
+                max_price:max_price,
+                min_score: min_score,
             }),
             contentType : 'application/json; charset=utf-8',
 

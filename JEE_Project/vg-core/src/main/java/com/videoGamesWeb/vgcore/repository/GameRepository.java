@@ -16,9 +16,16 @@ public interface GameRepository extends JpaRepository<Game, Long> {
     @Query("SELECT max(g.price) FROM Game g")
     float getPriceMax();
 
-    @Query("SELECT g FROM Game g WHERE lower(g.name) LIKE %:input% AND g.price > :min_price AND g.price < :max_price")
-    List<Product> searchWithText(String input, float min_price, float max_price);
+    @Query("SELECT g FROM Game g " +
+            "WHERE lower(g.name) LIKE %:input% " +
+            "AND g.price >= :min_price AND g.price <= :max_price " +
+            "AND (g.rating IS NULL OR g.rating >= :min_score)")
+    List<Product> searchWithText(String input, float min_price, float max_price, float min_score);
 
-    @Query("SELECT DISTINCT g FROM Game g JOIN g.consoles c WHERE lower(g.name) LIKE %:input% AND c.id IN :console_ids AND g.price > :min_price AND g.price < :max_price")
-    List<Product> searchWithTextAndConsoleIds(String input, List<Long> console_ids, float min_price, float max_price);
+    @Query("SELECT DISTINCT g FROM Game g JOIN g.consoles c " +
+            "WHERE lower(g.name) LIKE %:input% " +
+            "AND g.price >= :min_price AND g.price <= :max_price " +
+            "AND (g.rating IS NULL OR g.rating >= :min_score)" +
+            "AND c.id IN :console_ids ")
+    List<Product> searchWithTextAndConsoleIds(String input, float min_price, float max_price, float min_score, List<Long> console_ids);
 }
