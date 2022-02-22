@@ -39,7 +39,6 @@ $(() => {
 
         const stars_input = $("input[name='stars']:checked");
         const min_score = stars_input.length === 0 ? 0 : parseInt(stars_input.val());
-        console.log(min_score);
 
         $.ajax({
             url:"/products/search",

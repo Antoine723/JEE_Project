@@ -53,13 +53,15 @@ public class ProductsController {
                     searchDTO.getConsoles());
         }
 
+        boolean sort_asc = Boolean.parseBoolean(searchDTO.getSort_asc());
         Comparator<Product> comparator = null;
         switch(searchDTO.getSort_by()) {
             case "name":
                 comparator = Comparator.comparing(Product::getName);
                 break;
             case "score":
-                comparator = Comparator.comparing(Product::getRating, Comparator.nullsLast(Comparator.naturalOrder()));
+                comparator = Comparator.comparing(Product::getRating, sort_asc ?
+                        Comparator.nullsLast(Comparator.naturalOrder()) : Comparator.nullsFirst(Comparator.naturalOrder()));
                 break;
             case "price":
                 comparator = Comparator.comparing(Product::getPrice);
@@ -68,7 +70,7 @@ public class ProductsController {
                 logger.error("got unknown sort comparator {}", searchDTO.getSort_by());
         }
         if (comparator != null) {
-            if (!Boolean.parseBoolean(searchDTO.getSort_asc())) {
+            if (!sort_asc) {
                 comparator = comparator.reversed();
             }
             results = results.stream().sorted(comparator).collect(Collectors.toList());
