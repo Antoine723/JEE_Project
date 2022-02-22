@@ -114,20 +114,24 @@
     }
 
     function addToBasket(){
-        let quantity = $("#quantity").val();
-        let productId = ${product.id};
+        if (${userId=='-1'}){
+            window.location = "${prefix}/user/connect";
+        } else {
+            let quantity = $("#quantity").val();
+            let productId = ${product.id};
 
-        $.ajax({
-            url:"/addToBasket",
-            type:"POST",
-            data:JSON.stringify({
-                "quantity": quantity,
-                "productId": productId
-            }),
-            contentType : 'application/json; charset=utf-8'
+            $.ajax({
+                url:"/addToBasket",
+                type:"POST",
+                data:JSON.stringify({
+                    "quantity": quantity,
+                    "productId": productId
+                }),
+                contentType : 'application/json; charset=utf-8'
 
 
-        })
+            })
+        }
 
 
     }
