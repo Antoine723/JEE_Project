@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="fr">
 <head>
-    <link href="<c:url value="/css/head.css"/>" rel="stylesheet" type="text/css">
+    <link href="<c:url value="/css/component/header.css"/>" rel="stylesheet" type="text/css">
     <script type="text/javascript" src='<c:url value="${pageContext.request.contextPath}/webjars/jquery/3.4.1/jquery.js"/>'></script>
     <%
         try {
