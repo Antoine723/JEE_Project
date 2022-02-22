@@ -50,8 +50,7 @@ public class ProductsController {
                 comparator = Comparator.comparing(Product::getName);
                 break;
             case "score":
-                logger.info("sort by score");
-                //comparator = Comparator.nullsLast(Comparator.comparing(Product::getRating));
+                comparator = Comparator.comparing(Product::getRating, Comparator.nullsLast(Comparator.naturalOrder()));
                 break;
             case "price":
                 comparator = Comparator.comparing(Product::getPrice);
