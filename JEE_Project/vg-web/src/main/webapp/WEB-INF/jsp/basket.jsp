@@ -17,10 +17,22 @@
         </p>
     </c:forEach>
     <hr>
-    <p>
-        Total : ${totalAmount} €
-    </p>
+    <c:choose>
+        <c:when test="${totalAmount == -1}">
+            <p>Votre panier est vide</p>
+        </c:when>
+        <c:otherwise>
+            <p>Total : ${totalAmount} €</p>
+            <button onclick="buy()">Acheter</button>
+        </c:otherwise>
+    </c:choose>
 
 
 </body>
 </html>
+
+<script>
+    function buy(){
+       window.location = "${prefix}/payment";
+    }
+</script>

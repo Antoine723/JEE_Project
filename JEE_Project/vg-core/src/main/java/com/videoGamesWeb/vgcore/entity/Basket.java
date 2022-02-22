@@ -39,10 +39,14 @@ public class Basket {
 
     public float computeTotalAmount(){
         float totalAmount = 0;
-        for(Map.Entry<Product, Integer> entry : this.productsAndQuantities.entrySet()){
-            totalAmount += entry.getKey().getPrice() * entry.getValue();
+        if (this.productsAndQuantities != null) {
+            for(Map.Entry<Product, Integer> entry : this.productsAndQuantities.entrySet()){
+                totalAmount += entry.getKey().getPrice() * entry.getValue();
+            }
+            return totalAmount;
+        } else {
+            return -1;
         }
-        return totalAmount;
     }
 
 }
