@@ -1,78 +1,71 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="fr">
 <head>
     <title>Home</title>
     <jsp:include page="head.jsp"/>
+    <link href="<c:url value="/css/component/switch.css"/>" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="<c:url value="/js/home.js"/>"></script>
 </head>
 <body>
     <section>
-        <div id="filters">filtres latéraux</div>
+        <div id="filters">
+            <h3>filtres latéraux</h3>
+            <div>
+                slider prix<br>
+                min : ${price_min}<br>
+                max : ${price_max}
+            </div>
+            <hr>
+            <div>
+                Note des utilisateurs :
+                <div class="rating">
+                    <c:forEach var = "i" begin = "1" end = "5">
+                        <input name="stars" id="${i}" type="radio" value="${i}">
+                        <label for="${i}">★</label>
+                    </c:forEach>
+                </div>
+            </div>
+            <hr>
+            <div>
+                Consoles :
+                <ul>
+                    <c:forEach items="${console_names}" var="name">
+                        <li>${name}</li>
+                    </c:forEach>
+                </ul>
+            </div>
+            <hr>
+            <div>
+                Ordre d'affichage :
+                <div>
+                    descendant
+                    <label for="order_by" class="switch">
+                        <input name="order_by" id="order_by" type="checkbox" checked>
+                        <span class="slider round"></span>
+                    </label>
+                    ascendant
+                </div>
+                <div>
+                    <input name="sort_by" id="name" type="radio" value="name" checked>
+                    <label for="name">nom</label>
+                    <br>
+                    <input name="sort_by" id="score" type="radio" value="score">
+                    <label for="score">note</label>
+                    <br>
+                    <input name="sort_by" id="price" type="radio" value="price">
+                    <label for="price">prix</label>
+                </div>
+            </div>
+        </div>
         <div>
             <div>
                 <label for="search">Votre recherche : </label>
                 <input id="search" type="text" name="search">
-                <button id="reset" onclick="reset_search()">Reset</button>
+                <button id="reset">Reset</button>
             </div>
             <div id="result"></div>
         </div>
     </section>
-
-    <script>
-        const search_elem = $("#search");
-        const result_elem = $("#result");
-
-        function reset_search() {
-            search_elem.val("");
-            result_elem.empty().append("En attente de votre prochaine recherche...");
-        }
-        reset_search();
-
-        function searchProducts(search_input, target_elem) {
-            $.ajax({
-                url:"/products/search",
-                type:"POST",
-                data:JSON.stringify({
-                    input:search_input
-                }),
-                contentType : 'application/json; charset=utf-8',
-
-                success: function(resp) {
-                    const result = JSON.parse(resp);
-                    let html;
-                    if (!Array.isArray(result) || !result.length) {
-                        html = "Pas de résultat pour votre recherche";
-                    }
-                    else {
-                        html = result.reduce((total, item) => total +=
-                            '<div>'+
-                                '<hr>'+
-                                '<img src="/image/'+item["img"]+(item.hasOwnProperty("consoles") ? "_"+item["consoles"][0] : "")+'" style="max-height: 400px; max-width: 400px;" alt="product_img"/>'+
-                                '<div>'+
-                                    '<h3>'+item["name"]+'</h3>'+
-                                    '<p>note : '+item["rating"]+'/5</p>'+
-                                    '<p>'+item["price"]+'€</p>'+
-                                '</div>'+
-                                '<hr>'+
-                            '</div>',
-                        "");
-                    }
-                    target_elem.empty().append(html);
-                },
-                error: function(){
-                    console.log("failure");
-                    target_elem.empty().append("Pas de résultat");
-                }
-            });
-        }
-
-        search_elem.on("input",() => {
-            const input = search_elem.val();
-            if (input === "") {
-                reset_search();
-                return;
-            }
-            searchProducts(input, result_elem);
-        });
-    </script>
 </body>
 </html>

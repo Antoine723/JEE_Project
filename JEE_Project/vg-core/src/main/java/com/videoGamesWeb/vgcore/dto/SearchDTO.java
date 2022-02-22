@@ -8,4 +8,6 @@ import lombok.Setter;
 public class SearchDTO {
 
     private String input;
+    private String sort_by;
+    private String sort_asc;
 }

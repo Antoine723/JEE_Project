@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @RestController
@@ -34,17 +36,31 @@ public class ProductsController {
 
     @PostMapping(value = "/search")
     public ResponseEntity<String> addComment(@RequestBody SearchDTO searchDTO) throws JsonProcessingException {
-        logger.info("recieve {}", searchDTO.getInput());
-        List<Product> results = productService.searchWithText(searchDTO.getInput());/*
-                .stream()
-                .peek(product -> {
-                    if (product instanceof Game) {
-                        product.setImg(product.getImg()+"_"+((Game) product).getConsoles().get(0).getName());
-                        logger.info("game {} => console {}", product.getName(), ((Game) product).getConsoles().get(0).getName());
-                    }
-                })
-                .collect(Collectors.toList());*/
-        //results = results.stream().sorted(Comparator.comparing(Product::getName).reversed()).collect(Collectors.toList());
+        logger.info("recieve {}, {}, {}", searchDTO.getInput(), searchDTO.getSort_by(), searchDTO.getSort_asc());
+        List<Product> results = productService.searchWithText(searchDTO.getInput());
+
+        Comparator<Product> comparator = null;
+        switch(searchDTO.getSort_by()) {
+            case "name":
+                comparator = Comparator.comparing(Product::getName);
+                break;
+            case "score":
+                logger.info("sort by score");
+                //comparator = Comparator.comparing(Product::getRating); //traiter nulls
+                break;
+            case "price":
+                comparator = Comparator.comparing(Product::getPrice);
+                break;
+            default:
+                logger.error("got unknown sort comparator {}", searchDTO.getSort_by());
+        }
+        if (comparator != null) {
+            if (!Boolean.parseBoolean(searchDTO.getSort_asc())) {
+                comparator = comparator.reversed();
+            }
+            results = results.stream().sorted(comparator).collect(Collectors.toList());
+        }
+
         return ResponseEntity.ok(mapper.writeValueAsString(results));
     }
 }

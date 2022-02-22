@@ -51,4 +51,12 @@ public class ProductService {
                 )
                 .collect(Collectors.toList());
     }
+
+    public float getPriceMin() {
+        return Math.min(this.consoleRepository.getPriceMin(), this.gameRepository.getPriceMin());
+    }
+
+    public float getPriceMax() {
+        return Math.max(this.consoleRepository.getPriceMin(), this.gameRepository.getPriceMin());
+    }
 }

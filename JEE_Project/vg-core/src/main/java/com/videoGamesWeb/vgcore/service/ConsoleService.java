@@ -18,4 +18,8 @@ public class ConsoleService {
     public List<Console> findAll(){
         return this.consoleRepository.findAll();
     }
+
+    public List<String> getNames() {
+        return this.consoleRepository.getNames();
+    }
 }
