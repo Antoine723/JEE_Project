@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Panier</title>
-    <jsp:include page="head.jsp"/>
+    <jsp:include page="component/header.jsp"/>
     <link href="<c:url value="/css/basket.css"/>" rel="stylesheet" type="text/css">
 </head>
 <body>

@@ -3,7 +3,7 @@
 <html lang="fr">
 <head>
     <title>Home</title>
-    <jsp:include page="head.jsp"/>
+    <jsp:include page="component/header.jsp"/>
     <link href="<c:url value="/css/home.css"/>" rel="stylesheet" type="text/css">
     <link href="<c:url value="/css/component/rating.css"/>" rel="stylesheet" type="text/css">
     <link href="<c:url value="/css/component/switch.css"/>" rel="stylesheet" type="text/css">
@@ -15,14 +15,14 @@
             <h3>filtres latéraux</h3>
             <div>
                 <label>
-                    Prix
-                    <div>
+                    Prix<br>
+                    <span>
                         <span id="price_min_val"></span>
                         <input type="hidden" id="price_min_abs" value="${price_min-6}">
                         <input class="search_btn" type="range" id="price_min" name="price_min" min="${price_min-6}" max="${price_max}" value="${price_max}" step="10" dir="rtl">
                         <input class="search_btn" type="range" id="price_max" name="price_max" max="${price_max+6}" value="${price_max}" step="10">
                         <span id="price_max_val"></span>
-                    </div>
+                    </span>
                 </label>
             </div>
             <hr>

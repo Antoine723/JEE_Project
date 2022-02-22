@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Validation de la commande</title>
-    <jsp:include page="head.jsp"/>
+    <jsp:include page="component/header.jsp"/>
     <link href="<c:url value="/css/payment.css"/>" rel="stylesheet" type="text/css">
 </head>
 <body>

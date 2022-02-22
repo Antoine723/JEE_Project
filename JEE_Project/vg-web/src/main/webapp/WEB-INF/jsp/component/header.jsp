@@ -4,8 +4,6 @@
 <head>
     <link href="<c:url value="/css/head.css"/>" rel="stylesheet" type="text/css">
     <script type="text/javascript" src='<c:url value="${pageContext.request.contextPath}/webjars/jquery/3.4.1/jquery.js"/>'></script>
-</head>
-<header class="topnav">
     <%
         try {
             long userId = (long) request.getSession().getAttribute("userID");
@@ -14,6 +12,9 @@
             pageContext.setAttribute("userId", "-1");
         }
     %>
+</head>
+<header class="topnav">
+    <input type="hidden" id="gotUser" value="${userId!='-1'}">
 
     <a href="/">Accueil</a>
     <a href="/products">Produits</a>

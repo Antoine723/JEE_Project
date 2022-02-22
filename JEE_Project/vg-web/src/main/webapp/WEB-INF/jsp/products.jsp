@@ -3,7 +3,7 @@
 <html lang="fr">
 <head>
     <title>Products</title>
-    <jsp:include page="head.jsp"/>
+    <jsp:include page="component/header.jsp"/>
 </head>
 <body>
     <h1>Consoles</h1>

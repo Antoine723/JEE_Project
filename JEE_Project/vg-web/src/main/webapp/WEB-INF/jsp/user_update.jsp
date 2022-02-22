@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <title>Update user</title>
-    <jsp:include page="head.jsp"/>
+    <jsp:include page="component/header.jsp"/>
 </head>
 <body>
     <section>
