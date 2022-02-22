@@ -20,7 +20,7 @@ public class PaymentViewController {
         this.userService = userService;
     }
 
-    @GetMapping("payment")
+    @GetMapping("/payment")
     public String payment(Model model, HttpSession session){
         User user = this.userService.getById((long) session.getAttribute("userID"));
         model.addAttribute("user", user);
