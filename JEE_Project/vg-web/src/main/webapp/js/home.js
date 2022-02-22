@@ -56,22 +56,23 @@ $(() => {
 
             success: function(resp) {
                 const result = JSON.parse(resp);
+                console.log(result);
                 let html;
                 if (!Array.isArray(result) || !result.length) {
                     html = "Pas de résultat pour votre recherche";
                 }
                 else {
                     html = result.reduce((total, item) => total +=
-                            '<div>'+
-                            '<hr>'+
-                            '<img src="/image/'+item["img"]+(item.hasOwnProperty("consoles") ? "_"+item["consoles"][0] : "")+'" style="max-height: 400px; max-width: 400px;" alt="product_img"/>'+
-                            '<div>'+
-                            '<h3>'+item["name"]+'</h3>'+
-                            '<p>note : '+item["rating"]+'/5</p>'+
-                            '<p>'+item["price"]+'€</p>'+
-                            '</div>'+
-                            '<hr>'+
-                            '</div>',
+                            '<article>'+
+                                '<a href="/product/'+item["id"]+(item.hasOwnProperty("consoles") ? "/"+item["consoles"][0] : "")+'">'+
+                                    '<hr>'+
+                                    '<img src="/image/'+item["img"]+(item.hasOwnProperty("consoles") ? "_"+item["consoles"][0] : "")+'" style="max-height: 400px; max-width: 400px;" alt="product_img"/>'+
+                                    '<h3>'+item["name"]+'</h3>'+
+                                    '<p>note : '+item["rating"]+'/5</p>'+
+                                    '<p>'+item["price"]+'€</p>'+
+                                    '<hr>'+
+                                '</a>'+
+                            '</article>',
                         "");
                 }
                 result_elem.empty().append(html);
