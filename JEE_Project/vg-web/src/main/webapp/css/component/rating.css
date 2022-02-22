@@ -1,0 +1,22 @@
+.rating {
+    font-size: 25px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: start;
+}
+.rating input {
+    display: none;
+}
+.rating label {
+    color: #aaa;
+    -webkit-transition: color .4s;
+    -moz-transition: color .4s;
+    -o-transition: color .4s;
+    transition: color .4s;
+}
+.rating label:hover,
+.rating label:hover ~ label,
+.rating input:checked ~ label {
+    color: orange;
+    cursor: pointer;
+}

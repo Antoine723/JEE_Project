@@ -5,6 +5,7 @@
     <title>Product</title>
     <jsp:include page="head.jsp"/>
     <link href="<c:url value="/css/product.css"/>" rel="stylesheet" type="text/css">
+    <link href="<c:url value="/css/component/rating.css"/>" rel="stylesheet" type="text/css">
 </head>
 <body>
     <%
@@ -50,7 +51,7 @@
                 <form action="#" method="POST">
                     <label for="newComment">Votre note :</label>
                     <div class="rating">
-                        <c:forEach var = "i" begin = "1" end = "5">
+                        <c:forEach var="i" begin="1" end="5">
                             <input name="stars" id="${6-i}" type="radio" value="${6-i}">
                             <label for="${6-i}">★</label>
                         </c:forEach>

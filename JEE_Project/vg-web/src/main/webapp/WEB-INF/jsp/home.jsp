@@ -4,6 +4,8 @@
 <head>
     <title>Home</title>
     <jsp:include page="head.jsp"/>
+    <link href="<c:url value="/css/home.css"/>" rel="stylesheet" type="text/css">
+    <link href="<c:url value="/css/component/rating.css"/>" rel="stylesheet" type="text/css">
     <link href="<c:url value="/css/component/switch.css"/>" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="<c:url value="/js/home.js"/>"></script>
 </head>
@@ -27,9 +29,9 @@
             <div>
                 Note des utilisateurs :
                 <div class="rating">
-                    <c:forEach var = "i" begin = "1" end = "5">
-                        <input name="stars" id="${i}" type="radio" value="${i}">
-                        <label for="${i}">★</label>
+                    <c:forEach var="i" begin="1" end="5">
+                        <input name="stars" id="${6-i}" type="radio" value="${6-i}">
+                        <label for="${6-i}">★</label>
                     </c:forEach>
                 </div>
             </div>
