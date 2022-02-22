@@ -5,7 +5,7 @@
     <title>Panier</title>
     <jsp:include page="component/header.jsp"/>
     <link href="<c:url value="/css/basket.css"/>" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="<c:url value="/js/product.js"/>"></script>
+    <script type="text/javascript" src="<c:url value="/js/basket.js"/>"></script>
 </head>
 <body>
     <section>
