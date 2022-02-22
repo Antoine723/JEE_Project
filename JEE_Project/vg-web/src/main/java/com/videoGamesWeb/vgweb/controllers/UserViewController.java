@@ -18,7 +18,7 @@ import static com.videoGamesWeb.vgweb.VgWebApplication.SESSION_USER_ID;
 
 @Controller
 @RequestMapping(value = "/user")
-public class UserViewController {
+public class UserViewController extends GenericController{
 
     private final static Logger logger = LoggerFactory.getLogger(UserViewController.class);
 
@@ -49,7 +49,7 @@ public class UserViewController {
                              @RequestParam(required=false) String mail,
                              @RequestParam(required=false) String address){
         String logger_anchor = "VC-/user/create:post";
-
+        model.addAttribute("prefix", this.prefix);
         if (name.isEmpty() || password.isEmpty() || confirm_password.isEmpty()) {
             model.addAttribute("error_msg", "Champ(s) vide(s)");
             return CREATE_PAGE;

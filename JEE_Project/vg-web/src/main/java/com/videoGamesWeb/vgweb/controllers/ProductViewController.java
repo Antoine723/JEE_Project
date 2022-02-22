@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.util.Optional;
 
 @Controller
-public class ProductViewController {
+public class ProductViewController extends GenericController{
 
     private final ProductService productService;
 
@@ -30,6 +30,7 @@ public class ProductViewController {
         }
         Product product = productOpt.get();
         model.addAttribute("product", product);
+        model.addAttribute("prefix", this.prefix);
         return "product";
     }
 }

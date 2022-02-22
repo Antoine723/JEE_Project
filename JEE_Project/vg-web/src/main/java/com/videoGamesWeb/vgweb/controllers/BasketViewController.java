@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import javax.servlet.http.HttpSession;
 
 @Controller
-public class BasketViewController {
+public class BasketViewController extends GenericController{
 
     private final BasketService basketService;
     private final static Logger logger = LoggerFactory.getLogger(BasketViewController.class);
@@ -26,6 +26,7 @@ public class BasketViewController {
     public String basket(Model model, HttpSession session) throws JsonProcessingException {
         Basket basket = this.basketService.getBasketFromSession(session);
         model.addAttribute("basket", basket);
+        model.addAttribute("prefix", this.prefix);
         return "basket";
 
     }
