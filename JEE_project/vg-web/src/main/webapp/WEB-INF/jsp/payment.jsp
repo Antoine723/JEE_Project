@@ -10,9 +10,40 @@
     <p>
     <h1>Informations de livraison :</h1>
     <form>
-        <label id="labelName">Nom</label>
+        <label id="labelName">Nom : ${user.name}</label>
+        </br>
+        <c:choose>
+            <c:when test="${not empty user.address}">
+                <label id="labelAddress">Adresse : ${user.address}</label>
+                <input id="inputAddress" placeholder="${user.address}" class="d-none"/>
+                <button id="editAddress" onclick="editAddress()">Editer</button>
+                <button id="saveAddress" onclick="saveAddress()" class="d-none">Sauvegarder</button>
+            </c:when>
+            <c:otherwise>
+                <label id="labelAddress">Adresse : N/A</label>
+                <input id="inputAddress" placeholder="N°, Rue, Ville" class="d-none"/>
+                <button id="editAddress" onclick="editAddress()">Editer</button>
+                <button id="saveAddress" onclick="saveAddress()" class="d-none">Sauvegarder</button>
+            </c:otherwise>
+        </c:choose>
     </form>
     </p>
 
 </body>
 </html>
+
+<script>
+    function editAddress(){
+        $("#labelAddress").addClass("d-none");
+        $("#inputAddress").removeClass("d-none");
+        $("#editAddress").addClass("d-none");
+        $("#saveAddress").removeClass("d-none");
+    }
+
+    function saveAddress(){
+        $("#labelAddress").removeClass("d-none");
+        $("#inputAddress").addClass("d-none");
+        $("#editAddress").removeClass("d-none");
+        $("#saveAddress").addClass("d-none");
+    }
+</script>
