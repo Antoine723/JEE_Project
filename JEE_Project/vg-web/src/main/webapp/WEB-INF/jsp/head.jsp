@@ -27,6 +27,6 @@
             <a href="/user/disconnect">Déconnexion compte</a>
         </c:otherwise>
     </c:choose>
-    <a href="/basket"><img src="image/trolley" height="40px" width="40px" style="filter:invert(1);"/></a>
+    <a href="/basket"><img src="${prefix}/image/trolley" height="40px" width="40px" style="filter:invert(1);"/></a>
 </header>
 </html>

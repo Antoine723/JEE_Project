@@ -9,7 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class ProductsViewController {
+public class ProductsViewController extends GenericController{
 
     private final ConsoleService consoleService;
     private final GameService gameService;
@@ -24,6 +24,7 @@ public class ProductsViewController {
     public String products(Model model){
         model.addAttribute("consoles", this.consoleService.findAll());
         model.addAttribute("games", this.gameService.findAll());
+        model.addAttribute("prefix", this.prefix);
         return "products";
     }
 }

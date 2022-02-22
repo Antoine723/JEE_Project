@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.Arrays;
 
 @Controller
-public class HomeViewController {
+public class HomeViewController extends GenericController{
 
     private static final Logger logger = LoggerFactory.getLogger(HomeViewController.class);
 
@@ -29,6 +29,7 @@ public class HomeViewController {
         model.addAttribute("price_min", productService.getPriceMin());
         model.addAttribute("price_max", productService.getPriceMax());
         model.addAttribute("console_names", consoleService.getNames());
+        model.addAttribute("prefix", this.prefix);
         return "home";
     }
 }
