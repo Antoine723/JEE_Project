@@ -19,11 +19,11 @@ public interface ConsoleRepository extends JpaRepository<Console, Long> {
     @Query("SELECT max(c.price) FROM Console c")
     float getPriceMax();
 
-    @Query("SELECT c FROM Console c WHERE lower(c.name) LIKE %:input%")
-    List<Product> searchWithText(String input);
+    @Query("SELECT c FROM Console c WHERE lower(c.name) LIKE %:input%")// AND c.price > :min_price AND c.price < :max_price")
+    List<Product> searchWithText(String input);//, int min_price, int max_price);
 
-    @Query("SELECT c FROM Console c WHERE lower(c.name) LIKE %:input% AND c.name IN :console_names")
-    List<Product> searchWithTextAndNames(String input, List<String> console_names);
+    @Query("SELECT c FROM Console c WHERE lower(c.name) LIKE %:input% AND c.name IN :console_names")// AND c.price > :min_price AND c.price < :max_price")
+    List<Product> searchWithTextAndNames(String input, List<String> console_names);//, int min_price, int max_price);
 
     @Query("SELECT c.id FROM Console c WHERE c.name IN :console_names")
     List<Long> searchConsoleIds(List<String> console_names);
