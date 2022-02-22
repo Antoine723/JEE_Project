@@ -29,11 +29,14 @@
             <hr>
             <div>
                 Consoles :
-                <ul>
-                    <c:forEach items="${console_names}" var="name">
-                        <li>${name}</li>
-                    </c:forEach>
-                </ul>
+                <br>
+                <c:forEach items="${console_names}" var="name">
+                    <label>
+                        <input type="checkbox" name="console_choice" value="${name}">
+                        ${name}
+                    </label>
+                    <br>
+                </c:forEach>
             </div>
             <hr>
             <div>

@@ -43,7 +43,7 @@ public class ProductService {
         this.productRepository.save(product);
     }
 
-    public List<Product> searchWithText(String input) {
+    public List<Product> searchWithTextAndFilters(String input, List<String> consoles) {
         input = input.toLowerCase();
         return Stream.concat(
                     this.consoleRepository.searchWithText(input).stream(),

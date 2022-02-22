@@ -36,8 +36,8 @@ public class ProductsController {
 
     @PostMapping(value = "/search")
     public ResponseEntity<String> addComment(@RequestBody SearchDTO searchDTO) throws JsonProcessingException {
-        logger.info("recieve {}, {}, {}", searchDTO.getInput(), searchDTO.getSort_by(), searchDTO.getSort_asc());
-        List<Product> results = productService.searchWithText(searchDTO.getInput());
+        logger.info("recieve {}, {}, {}, {}", searchDTO.getInput(), searchDTO.getSort_by(), searchDTO.getSort_asc(), searchDTO.getConsoles());
+        List<Product> results = productService.searchWithTextAndFilters(searchDTO.getInput(), searchDTO.getConsoles());
 
         Comparator<Product> comparator = null;
         switch(searchDTO.getSort_by()) {
@@ -46,7 +46,7 @@ public class ProductsController {
                 break;
             case "score":
                 logger.info("sort by score");
-                //comparator = Comparator.comparing(Product::getRating); //traiter nulls
+                //comparator = Comparator.nullsLast(Comparator.comparing(Product::getRating));
                 break;
             case "price":
                 comparator = Comparator.comparing(Product::getPrice);

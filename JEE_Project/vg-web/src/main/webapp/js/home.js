@@ -21,8 +21,12 @@ $(() => {
             reset_search();
             return;
         }
+
         const sort_by = $("input[name='sort_by']:checked").val();
         const order_by = order_by_input.is(":checked");
+
+        const selected = [];
+        $("input[name='console_choice']:checked").each(function() { selected.push($(this).val()); });
 
         $.ajax({
             url:"/products/search",
@@ -30,7 +34,8 @@ $(() => {
             data:JSON.stringify({
                 input:search,
                 sort_by:sort_by,
-                sort_asc:order_by
+                sort_asc:order_by,
+                consoles:selected
             }),
             contentType : 'application/json; charset=utf-8',
 
