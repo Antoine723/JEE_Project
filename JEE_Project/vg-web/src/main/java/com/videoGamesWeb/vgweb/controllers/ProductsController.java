@@ -46,7 +46,7 @@ public class ProductsController {
                 break;
             case "score":
                 logger.info("sort by score");
-                //comparator = Comparator.comparing(Product::getRating); //traiter nulls
+                //comparator = Comparator.nullsLast(Comparator.comparing(Product::getRating));
                 break;
             case "price":
                 comparator = Comparator.comparing(Product::getPrice);
