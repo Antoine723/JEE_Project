@@ -34,10 +34,8 @@ $(() => {
         const selected = [];
         $("input[name='console_choice']:checked").each(function() { selected.push($(this).val()); });
 
-        const min_val = $("#price_min").attr("max")-$("#price_min").val()+parseFloat($("#price_min_abs").val());
-        const max_val = $("#price_max").val();
-        console.log(min_val);
-        console.log(max_val);
+        const min_price = $("#price_min").attr("max")-$("#price_min").val()+parseFloat($("#price_min_abs").val());
+        const max_price = $("#price_max").val();
 
         $.ajax({
             url:"/products/search",
@@ -46,7 +44,9 @@ $(() => {
                 input:search,
                 sort_by:sort_by,
                 sort_asc:order_by,
-                consoles:selected
+                consoles:selected,
+                min_price:min_price,
+                max_price:max_price
             }),
             contentType : 'application/json; charset=utf-8',
 
