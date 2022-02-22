@@ -12,9 +12,16 @@
         <div id="filters">
             <h3>filtres latéraux</h3>
             <div>
-                slider prix<br>
-                min : ${price_min}<br>
-                max : ${price_max}
+                <label>
+                    Prix
+                    <div>
+                        <span id="price_min_val"></span>
+                        <input type="hidden" id="price_min_abs" value="${price_min-6}">
+                        <input class="search_btn" type="range" id="price_min" name="price_min" min="${price_min-6}" max="${price_max}" value="${price_max}" step="10" dir="rtl">
+                        <input class="search_btn" type="range" id="price_max" name="price_max" max="${price_max+6}" value="${price_max}" step="10">
+                        <span id="price_max_val"></span>
+                    </div>
+                </label>
             </div>
             <hr>
             <div>
@@ -50,14 +57,14 @@
                     ascendant
                 </div>
                 <div>
-                    <input class="search_btn" name="sort_by" id="name" type="radio" value="name" checked>
-                    <label for="name">nom</label>
+                    <input class="search_btn" name="sort_by" id="sort_name" type="radio" value="name" checked>
+                    <label for="sort_name">nom</label>
                     <br>
-                    <input class="search_btn" name="sort_by" id="score" type="radio" value="score">
-                    <label for="score">note</label>
+                    <input class="search_btn" name="sort_by" id="sort_score" type="radio" value="score">
+                    <label for="sort_score">note</label>
                     <br>
-                    <input class="search_btn" name="sort_by" id="price" type="radio" value="price">
-                    <label for="price">prix</label>
+                    <input class="search_btn" name="sort_by" id="sort_price" type="radio" value="price">
+                    <label for="sort_price">prix</label>
                 </div>
             </div>
         </div>
