@@ -13,6 +13,6 @@ public class SearchDTO {
     private String sort_by;
     private String sort_asc;
     private List<String> consoles;
-    private int min_price;
-    private int max_price;
+    private float min_price;
+    private float max_price;
 }
