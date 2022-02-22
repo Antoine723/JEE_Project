@@ -1,33 +1,39 @@
 package com.videoGamesWeb.vgcore.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.videoGamesWeb.vgcore.service.ProductService;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
-import org.springframework.stereotype.Component;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 @Getter @Setter
 public class Basket {
 
-    private Map<Long, Integer> productsAndQuantities;
+    private Map<Long, Integer> productsIdAndQuantities;
     private int userId;
 
+    @JsonIgnore
+    private Map<Product, Integer> productsAndQuantities;
+
+    private final static Logger logger = LoggerFactory.getLogger(Basket.class);
 
     public Basket(){
-        this.productsAndQuantities = new HashMap<>();
+        this.productsIdAndQuantities = new HashMap<>();
     }
 
     public void addProduct(Product product, int quantity){
         long key = product.getId();
         int value = quantity;
-        if (this.productsAndQuantities.containsKey(key)){ //Si l'article est déjà dans le panier, on augmente la quantité
-            this.productsAndQuantities.put(key, this.productsAndQuantities.get(key) + value);
+        if (this.productsIdAndQuantities.containsKey(key)){ //Si l'article est déjà dans le panier, on augmente la quantité
+            this.productsIdAndQuantities.put(key, this.productsIdAndQuantities.get(key) + value);
         } else{ //Sinon on l'ajoute juste dedans
-            this.productsAndQuantities.put(key, value);
+            this.productsIdAndQuantities.put(key, value);
         }
     }
 

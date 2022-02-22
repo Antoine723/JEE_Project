@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.videoGamesWeb.vgcore.dto.BasketDTO;
 import com.videoGamesWeb.vgcore.entity.Basket;
 import com.videoGamesWeb.vgcore.entity.Product;
+import com.videoGamesWeb.vgcore.service.BasketService;
 import com.videoGamesWeb.vgcore.service.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,27 +21,21 @@ public class BasketController {
 
     private final static Logger logger = LoggerFactory.getLogger(BasketController.class);
     private final ProductService productService;
+    private final BasketService basketService;
 
-    public BasketController(ProductService productService){
+    public BasketController(ProductService productService, BasketService basketService){
         this.productService = productService;
+        this.basketService = basketService;
     }
 
     @PostMapping("addToBasket")
     public ResponseEntity<String> addToBasket(@RequestBody BasketDTO basketDTO, HttpSession session) throws JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
-        String basketSessionAttribute = (String) session.getAttribute("basket");
-        Basket basket;
-        if (basketSessionAttribute == null){
-            basket = new Basket();
-        } else {
-            basket = mapper.readValue((String) basketSessionAttribute,Basket.class);
-        }
+        Basket basket = this.basketService.getBasketFromSession(session);
         Optional<Product> productOpt = this.productService.findById(basketDTO.getProductId());
         if (productOpt.isPresent()){
             basket.addProduct(productOpt.get(), basketDTO.getQuantity());
         }
-        String json = mapper.writeValueAsString(basket);
-        session.setAttribute("basket", json);
+        this.basketService.writeBasketInSession(session, basket);
         logger.info("Well added to basket");
         return ResponseEntity.ok("Well added to basket");
     }
