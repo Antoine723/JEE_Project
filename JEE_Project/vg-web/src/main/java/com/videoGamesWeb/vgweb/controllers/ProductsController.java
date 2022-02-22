@@ -4,7 +4,6 @@ package com.videoGamesWeb.vgweb.controllers;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.videoGamesWeb.vgcore.dto.SearchDTO;
-import com.videoGamesWeb.vgcore.entity.Game;
 import com.videoGamesWeb.vgcore.entity.Product;
 import com.videoGamesWeb.vgcore.service.ProductService;
 import org.slf4j.Logger;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @RestController
@@ -37,7 +35,14 @@ public class ProductsController {
     @PostMapping(value = "/search")
     public ResponseEntity<String> addComment(@RequestBody SearchDTO searchDTO) throws JsonProcessingException {
         logger.info("recieve {}, {}, {}, {}", searchDTO.getInput(), searchDTO.getSort_by(), searchDTO.getSort_asc(), searchDTO.getConsoles());
-        List<Product> results = productService.searchWithTextAndFilters(searchDTO.getInput(), searchDTO.getConsoles());
+
+        List<Product> results;
+        if (searchDTO.getConsoles().isEmpty()) {
+            results = productService.searchWithText(searchDTO.getInput());
+        }
+        else {
+            results = productService.searchWithTextAndConsoles(searchDTO.getInput(), searchDTO.getConsoles());
+        }
 
         Comparator<Product> comparator = null;
         switch(searchDTO.getSort_by()) {

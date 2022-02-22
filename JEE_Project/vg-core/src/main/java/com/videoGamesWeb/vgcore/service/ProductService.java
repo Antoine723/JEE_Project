@@ -43,20 +43,31 @@ public class ProductService {
         this.productRepository.save(product);
     }
 
-    public List<Product> searchWithTextAndFilters(String input, List<String> consoles) {
-        input = input.toLowerCase();
-        return Stream.concat(
-                    this.consoleRepository.searchWithText(input).stream(),
-                    this.gameRepository.searchWithText(input).stream()
-                )
-                .collect(Collectors.toList());
-    }
-
     public float getPriceMin() {
         return Math.min(this.consoleRepository.getPriceMin(), this.gameRepository.getPriceMin());
     }
 
     public float getPriceMax() {
-        return Math.max(this.consoleRepository.getPriceMin(), this.gameRepository.getPriceMin());
+        return Math.max(this.consoleRepository.getPriceMax(), this.gameRepository.getPriceMax());
+    }
+
+    public List<Product> searchWithText(String input) {
+        input = input.toLowerCase();
+        return Stream.concat(
+                        this.consoleRepository.searchWithText(input).stream(),
+                        this.gameRepository.searchWithText(input).stream()
+                )
+                .collect(Collectors.toList());
+    }
+
+    public List<Product> searchWithTextAndConsoles(String input, List<String> console_names) {
+        input = input.toLowerCase();
+
+        List<Product> consoles = this.consoleRepository.searchWithTextAndNames(input, console_names);
+
+        List<Long> console_ids = this.consoleRepository.searchConsoleIds(console_names);
+        List<Product> games = this.gameRepository.searchWithTextAndConsoleIds(input, console_ids);
+
+        return Stream.concat(consoles.stream(), games.stream()).collect(Collectors.toList());
     }
 }

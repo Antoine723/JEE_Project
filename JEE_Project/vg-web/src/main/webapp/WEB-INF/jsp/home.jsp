@@ -32,7 +32,7 @@
                 <br>
                 <c:forEach items="${console_names}" var="name">
                     <label>
-                        <input type="checkbox" name="console_choice" value="${name}">
+                        <input class="search_btn" type="checkbox" name="console_choice" value="${name}">
                         ${name}
                     </label>
                     <br>
@@ -44,19 +44,19 @@
                 <div>
                     descendant
                     <label for="order_by" class="switch">
-                        <input name="order_by" id="order_by" type="checkbox" checked>
+                        <input class="search_btn" name="order_by" id="order_by" type="checkbox" checked>
                         <span class="slider round"></span>
                     </label>
                     ascendant
                 </div>
                 <div>
-                    <input name="sort_by" id="name" type="radio" value="name" checked>
+                    <input class="search_btn" name="sort_by" id="name" type="radio" value="name" checked>
                     <label for="name">nom</label>
                     <br>
-                    <input name="sort_by" id="score" type="radio" value="score">
+                    <input class="search_btn" name="sort_by" id="score" type="radio" value="score">
                     <label for="score">note</label>
                     <br>
-                    <input name="sort_by" id="price" type="radio" value="price">
+                    <input class="search_btn" name="sort_by" id="price" type="radio" value="price">
                     <label for="price">prix</label>
                 </div>
             </div>

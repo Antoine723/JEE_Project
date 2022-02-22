@@ -1,29 +1,20 @@
 $(() => {
     const search_input = $("input[name='search']");
-    const order_by_input = $("input[name='order_by']");
-    const sort_by_input = $("input[name='sort_by']");
     const result_elem = $("#result");
 
-    function reset_search() {
+    $("#reset").on("click", () => {
         search_input.val("");
-        result_elem.empty().append("En attente de votre prochaine recherche...");
-    }
-    $("#reset").on("click", () => reset_search());
-    reset_search();
+        searchProducts();
+    }).click();
 
     search_input.on("input",() => searchProducts());
-    order_by_input.on("click",() => searchProducts());
-    sort_by_input.on("click",() => searchProducts());
+    $(".search_btn").on("click",() => searchProducts());
 
     function searchProducts() {
         const search = search_input.val();
-        if (search === "") {
-            reset_search();
-            return;
-        }
 
         const sort_by = $("input[name='sort_by']:checked").val();
-        const order_by = order_by_input.is(":checked");
+        const order_by = $("input[name='order_by']").is(":checked");
 
         const selected = [];
         $("input[name='console_choice']:checked").each(function() { selected.push($(this).val()); });
