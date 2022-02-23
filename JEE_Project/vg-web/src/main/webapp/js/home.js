@@ -64,14 +64,22 @@ $(() => {
                 else {
                     html = result.reduce((total, item) => total +=
                             '<article>'+
-                                '<a href="/product/'+item["id"]+(item.hasOwnProperty("consoles") ? "/"+item["consoles"][0] : "")+'">'+
-                                    '<hr>'+
-                                    '<img src="/image/'+item["img"]+(item.hasOwnProperty("consoles") ? "_"+item["consoles"][0] : "")+'" style="max-height: 400px; max-width: 400px;" alt="product_img"/>'+
-                                    '<h3>'+item["name"]+'</h3>'+
-                                    '<p>note : '+item["rating"]+'/5</p>'+
-                                    '<p>'+item["price"]+'€</p>'+
-                                    '<hr>'+
-                                '</a>'+
+                                '<hr>'+
+                                (item.hasOwnProperty("consoles") ?
+                                    item["consoles"].reduce((subtotal, subitem) => subtotal +=
+                                        '<a href="/product/'+item["id"]+"/"+subitem+'">'+
+                                            '<img src="/image/'+item["img"]+"_"+subitem+'" alt="product_'+subitem+'_img"/>'+
+                                        '</a>'
+                                    , "")
+                                    :
+                                    '<a href="/product/'+item["id"]+(item.hasOwnProperty("consoles") ? "/"+item["consoles"][0] : "")+'">'+
+                                        '<img src="/image/'+item["img"]+(item.hasOwnProperty("consoles") ? "_"+item["consoles"][0] : "")+'" alt="product_img"/>'+
+                                    '</a>'
+                                )+
+                                '<h3>'+item["name"]+'</h3>'+
+                                '<p>note : '+item["rating"]+'/5</p>'+
+                                '<p>'+item["price"]+'€</p>'+
+                                '<hr>'+
                             '</article>',
                         "");
                 }
