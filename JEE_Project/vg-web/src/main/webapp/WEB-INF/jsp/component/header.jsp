@@ -16,6 +16,8 @@
 <header class="topnav">
     <input type="hidden" id="gotUser" value="${userId!='-1'}">
 
+    <div>logo ?</div>
+
     <a href="/">Accueil</a>
     <a href="/products">Produits</a>
     <c:choose>
@@ -28,7 +30,8 @@
             <a href="/user/disconnect">Déconnexion compte</a>
         </c:otherwise>
     </c:choose>
-    <a href="#" onclick="toBasket()"><img src="${prefix}/image/trolley" height="40px" width="40px" style="filter:invert(1);"/></a>
+
+    <a href="#" onclick="toBasket()"><img src="${prefix}/image/trolley"/></a>
 </header>
 </html>
 <script>

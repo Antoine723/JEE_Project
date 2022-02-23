@@ -1,16 +1,27 @@
 .topnav {
     background-color: #333;
     overflow: hidden;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 /* Style the links inside the navigation bar */
 .topnav a {
-    float: left;
     color: #f2f2f2;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
+}
+
+.topnav a:last-of-type {
+    padding: 8px 16px;
+}
+
+.topnav a:last-of-type img {
+    width: 40px;
+    filter:invert(1);
 }
 
 /* Change the color of links on hover */
@@ -19,8 +30,22 @@
     color: black;
 }
 
+.topnav a:last-of-type:hover img {
+    width: 40px;
+    filter:invert(0);
+}
+
 /* Add a color to the active/current link */
 .topnav a.active {
     background-color: #04AA6D;
     color: white;
+}
+
+body {
+    background: linear-gradient(130deg, rgb(162,162,162) 0%, rgb(223,223,223) 35%, rgb(255,255,255) 100%);
+}
+
+section, header, footer {
+    width: 80%;
+    margin: auto;
 }
