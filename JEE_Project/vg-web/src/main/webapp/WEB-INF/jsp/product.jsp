@@ -6,6 +6,7 @@
     <jsp:include page="component/header.jsp"/>
     <link href="<c:url value="/css/product.css"/>" rel="stylesheet" type="text/css">
     <link href="<c:url value="/css/component/rating.css"/>" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="<c:url value="/js/component/check_user.js"/>"></script>
     <script type="text/javascript" src="<c:url value="/js/product.js"/>"></script>
     <%
         try {
