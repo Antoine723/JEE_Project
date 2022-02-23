@@ -24,27 +24,29 @@
         <input type="hidden" id="productQuantity" value="${product.quantity}">
         <div class="card">
             <img src="/image/${product.img}<c:if test="${not empty consoleGameName}">_${consoleGameName}</c:if>" alt="product_img"/>
-            <p>Nom : ${product.name}</p>
-            <p>
-                Note :
-                <c:choose>
-                    <c:when test="${product.rating == null}">
-                        N/A
-                    </c:when>
-                    <c:otherwise>
-                        ${product.rating}/5
-                    </c:otherwise>
-                </c:choose>
-            </p>
-            <p>Date de sortie : ${product.releaseDate}</p>
-            <p>Prix : ${product.price}</p>
-            <p>
-                <label for="quantity">Quantité :</label>
-                <button id="decreaseQuantity">-</button>
-                <input type="number" id="quantity" value="1" min="1" max="${product.quantity}"/>
-                <button id="increaseQuantity">+</button>
-                <button id="addToBasket">Ajouter au panier</button>
-            </p>
+            <div>
+                <p><span class="subtitle">Nom :</span> ${product.name}</p>
+                <p><span class="subtitle">Date de sortie :</span> ${dateFormat.format(product.releaseDate)}</p>
+                <p>
+                    <span class="subtitle">Note des utilisateurs :</span>
+                    <c:choose>
+                        <c:when test="${product.rating == null}">
+                            N/A
+                        </c:when>
+                        <c:otherwise>
+                            ${product.rating}/5
+                        </c:otherwise>
+                    </c:choose>
+                </p>
+                <p><span class="subtitle">Prix :</span> ${product.price}€</p>
+                <p>
+                    <label for="quantity">Quantité :</label>
+                    <button id="decreaseQuantity">-</button>
+                    <input type="number" id="quantity" value="1" min="1" max="${product.quantity}"/>
+                    <button id="increaseQuantity">+</button>
+                    <button id="addToBasket">Ajouter au panier</button>
+                </p>
+            </div>
         </div>
         <hr>
         <div id="comments">

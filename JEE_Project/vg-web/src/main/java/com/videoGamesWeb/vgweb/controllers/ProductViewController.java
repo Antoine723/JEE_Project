@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.text.SimpleDateFormat;
 import java.util.Optional;
 
 @Controller
@@ -30,6 +31,7 @@ public class ProductViewController extends GenericController{
         }
         Product product = productOpt.get();
         model.addAttribute("product", product);
+        model.addAttribute("dateFormat", new SimpleDateFormat("dd MMM yyyy"));
         model.addAttribute("prefix", this.prefix);
         return "product";
     }

@@ -2,3 +2,21 @@ section img {
     max-height: 400px;
     max-width: 400px;
 }
+
+.card {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.card > div {
+    text-align: center;
+    vertical-align: middle;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card .subtitle {
+    font-weight: bold;
+    color: peru;
+}
