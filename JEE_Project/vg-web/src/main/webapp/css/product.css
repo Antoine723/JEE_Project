@@ -1,6 +1,7 @@
 section img {
     max-height: 400px;
     max-width: 400px;
+    border-radius: 5px;
 }
 
 .card {
@@ -18,10 +19,19 @@ section img {
 
 .card .subtitle {
     font-weight: bold;
-    color: peru;
 }
 
 .card input {
     width: 4em;
     text-align: center;
+}
+
+#comments {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+}
+
+#comments h3 {
+    margin-top: 0;
 }

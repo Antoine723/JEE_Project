@@ -22,6 +22,7 @@
         <input type="hidden" id="urlPrefix" value="${prefix}">
         <input type="hidden" id="productId" value="${product.id}">
         <input type="hidden" id="productQuantity" value="${product.quantity}">
+        <h1 class="center">Fiche produit</h1>
         <div class="card">
             <img src="/image/${product.img}<c:if test="${not empty consoleGameName}">_${consoleGameName}</c:if>" alt="product_img"/>
             <div>
@@ -38,6 +39,7 @@
                         </c:otherwise>
                     </c:choose>
                 </p>
+                <p><span class="subtitle">Nombre de commentaires :</span> ${product.comments.size()}</p>
                 <p><span class="subtitle">Prix :</span> ${product.price} €</p>
                 <p>
                     <label class="subtitle" for="quantity">Quantité :</label>
@@ -50,32 +52,35 @@
         </div>
         <br>
         <hr>
+        <h1 class="center">Commentaires</h1>
         <div id="comments">
-            <h1>Commentaires</h1>
-            <c:choose>
-                <c:when test="${userId=='-1'}">
-                    loggez vous pour commenter !
-                </c:when>
-                <c:otherwise>
-                    <form action="#" method="POST">
-                        <label for="newComment">Votre note :</label>
-                        <div class="rating">
-                            <c:forEach var="i" begin="1" end="5">
-                                <input name="stars" id="${6-i}" type="radio" value="${6-i}">
-                                <label for="${6-i}">★</label>
-                            </c:forEach>
-                        </div>
-                        <input type="text" id="newComment" placeholder="Ajouter un commentaire"/>
-                    </form>
-                    <button id="submitComment">Ajouter le commentaire</button>
-                </c:otherwise>
-            </c:choose>
-            <br>
-            <h3>Tous les commentaires</h3>
-            <c:forEach items="${product.comments}" var="comment">
-                <p>Note : ${comment.rating}/5</p>
-                <p>Commentaire : ${comment.content}</p>
-            </c:forEach>
+            <div>
+                <c:choose>
+                    <c:when test="${userId=='-1'}">
+                        loggez vous pour commenter !
+                    </c:when>
+                    <c:otherwise>
+                        <form action="#" method="POST">
+                            <label for="newComment">Votre note :</label>
+                            <div class="rating">
+                                <c:forEach var="i" begin="1" end="5">
+                                    <input name="stars" id="${6-i}" type="radio" value="${6-i}">
+                                    <label for="${6-i}">★</label>
+                                </c:forEach>
+                            </div>
+                            <input type="text" id="newComment" placeholder="Ajouter un commentaire"/>
+                        </form>
+                        <button id="submitComment">Ajouter le commentaire</button>
+                    </c:otherwise>
+                </c:choose>
+            </div>
+            <div>
+                <h3>Tous les commentaires</h3>
+                <c:forEach items="${product.comments}" var="comment">
+                    <p>Note : ${comment.rating}/5</p>
+                    <p>Commentaire : ${comment.content}</p>
+                </c:forEach>
+            </div>
         </div>
     </section>
 </body>

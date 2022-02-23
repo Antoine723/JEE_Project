@@ -1,6 +1,7 @@
 .carrousel img {
     height: 250px;
     width: 200px;
+    border-radius: 4px;
 }
 
 .carrousel {

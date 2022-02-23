@@ -20,10 +20,6 @@ section {
     cursor: pointer;
 }
 
-#side .center {
-    text-align: center;
-}
-
 #side .subtitle {
     margin-bottom: 5px;
     text-decoration: underline;
@@ -96,6 +92,7 @@ section {
 #result article img {
     height: 250px;
     width: 200px;
+    border-radius: 4px;
 }
 
 #result article h3,

@@ -57,3 +57,7 @@ button {
     border-color: whitesmoke;
     color: white;
 }
+
+.center {
+    text-align: center;
+}
