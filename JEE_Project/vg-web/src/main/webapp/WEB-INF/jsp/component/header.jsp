@@ -4,6 +4,7 @@
 <head>
     <link href="<c:url value="/css/component/header.css"/>" rel="stylesheet" type="text/css">
     <script type="text/javascript" src='<c:url value="${pageContext.request.contextPath}/webjars/jquery/3.4.1/jquery.js"/>'></script>
+    <script type="text/javascript" src="<c:url value="/js/component/check_user.js"/>"></script>
     <%
         try {
             long userId = (long) request.getSession().getAttribute("userID");

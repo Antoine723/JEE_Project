@@ -14,7 +14,7 @@ VALUES (8, "pokemon_arceus","Légendes Pokémon : Arceus", 50, 4400, "2022-01-28
 
 INSERT INTO users VALUES (1, "4, Rue Colbert Lille", "admin@hotmail.com", "Admin", "12345");
 
-INSERT INTO comment VALUES (1, "Jamais déçus des consoles de sony !", 5, 1, 1);
+INSERT INTO comment VALUES (1, "Jamais déçu des consoles de sony !", 5, 1, 1);
 
 INSERT INTO games_on_consoles
 VALUES (6,1), (6,2), (6,3), (6,4), (7,1), (7,2), (7,3), (7,4), (8,5);

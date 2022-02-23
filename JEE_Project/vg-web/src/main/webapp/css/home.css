@@ -78,11 +78,11 @@ section {
 
 #result article {
     width: 14em;
-    border-radius: 10px;
+    text-align: center;
     margin: 5px;
     padding: 10px 5px;
-    text-align: center;
     border: 1px solid #666;
+    border-radius: 10px;
     background-color: whitesmoke;
     display: flex;
     flex-direction: column;

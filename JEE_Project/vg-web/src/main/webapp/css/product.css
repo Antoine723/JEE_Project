@@ -17,10 +17,6 @@ section img {
     justify-content: center;
 }
 
-.card .subtitle {
-    font-weight: bold;
-}
-
 .card input {
     width: 4em;
     text-align: center;
@@ -34,4 +30,38 @@ section img {
 
 #comments h3 {
     margin-top: 0;
+}
+
+#comments > div:nth-of-type(1) {
+    width: 20%;
+}
+
+#comments > div:nth-of-type(2) {
+    width: 40%;
+}
+
+#commentList {
+    display: flex;
+    flex-direction: column;
+}
+
+#commentList article {
+    margin: 5px;
+    padding: 10px 5px;
+    border: 1px solid #666;
+    border-radius: 10px;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#commentList article div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+#commentList article p {
+    margin: 0;
 }

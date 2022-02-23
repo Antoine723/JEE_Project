@@ -26,10 +26,10 @@
         <div class="card">
             <img src="/image/${product.img}<c:if test="${not empty consoleGameName}">_${consoleGameName}</c:if>" alt="product_img"/>
             <div>
-                <p><span class="subtitle">Nom :</span> ${product.name}</p>
-                <p><span class="subtitle">Date de sortie :</span> ${dateFormat.format(product.releaseDate)}</p>
+                <p><span class="bold">Nom :</span> ${product.name}</p>
+                <p><span class="bold">Date de sortie :</span> ${dateFormat.format(product.releaseDate)}</p>
                 <p>
-                    <span class="subtitle">Note des utilisateurs :</span>
+                    <span class="bold">Note des utilisateurs :</span>
                     <c:choose>
                         <c:when test="${product.rating == null}">
                             N/A
@@ -39,10 +39,10 @@
                         </c:otherwise>
                     </c:choose>
                 </p>
-                <p><span class="subtitle">Nombre de commentaires :</span> ${product.comments.size()}</p>
-                <p><span class="subtitle">Prix :</span> ${product.price} €</p>
+                <p><span class="bold">Nombre de commentaires :</span> ${product.comments.size()}</p>
+                <p><span class="bold">Prix :</span> ${product.price} €</p>
                 <p>
-                    <label class="subtitle" for="quantity">Quantité :</label>
+                    <label class="bold" for="quantity">Quantité :</label>
                     <button id="decreaseQuantity">-</button>
                     <input type="number" id="quantity" value="1" min="1" max="${product.quantity}"/>
                     <button id="increaseQuantity">+</button>
@@ -55,6 +55,7 @@
         <h1 class="center">Commentaires</h1>
         <div id="comments">
             <div>
+                <h3 class="center">Votre commentaire</h3>
                 <c:choose>
                     <c:when test="${userId=='-1'}">
                         loggez vous pour commenter !
@@ -75,11 +76,18 @@
                 </c:choose>
             </div>
             <div>
-                <h3>Tous les commentaires</h3>
-                <c:forEach items="${product.comments}" var="comment">
-                    <p>Note : ${comment.rating}/5</p>
-                    <p>Commentaire : ${comment.content}</p>
+                <h3 class="center">Tous les commentaires</h3>
+                <div id="commentList">
+                    <c:forEach items="${product.comments}" var="comment">
+                        <article>
+                            <div>
+                                <p><span class="bold">Auteur :</span> ${comment.user.name}</p>
+                                <p>${comment.rating}/5</p>
+                            </div>
+                            <p>${comment.content}</p>
+                        </article>
                 </c:forEach>
+                </div>
             </div>
         </div>
     </section>
