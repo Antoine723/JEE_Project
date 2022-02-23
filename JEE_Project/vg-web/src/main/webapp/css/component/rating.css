@@ -16,6 +16,6 @@
 .rating label:hover,
 .rating label:hover ~ label,
 .rating input:checked ~ label {
-    color: yellow;
+    color: peru;
     cursor: pointer;
 }

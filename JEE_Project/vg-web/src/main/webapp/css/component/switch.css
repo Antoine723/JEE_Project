@@ -2,7 +2,7 @@
 .switch {
     position: relative;
     display: inline-block;
-    width: 30px;
+    width: 50px;
     height: 17px;
 }
 
@@ -19,10 +19,10 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #2196F3;
+    background-color: peru;
     -webkit-transition: .2s;
     transition: .2s;
-    box-shadow: 0 0 1px #2196F3;
+    box-shadow: 0 0 1px peru;
 }
 
 .slider:before {
@@ -38,9 +38,9 @@
 }
 
 input:checked + .slider:before {
-    -webkit-transform: translateX(13px);
-    -ms-transform: translateX(13px);
-    transform: translateX(13px);
+    -webkit-transform: translateX(33px);
+    -ms-transform: translateX(33px);
+    transform: translateX(33px);
 }
 
 /* Rounded sliders */
