@@ -27,10 +27,13 @@
     margin: auto;
 }
 
-.carrousel .button-holder > span {
-    display: inline-block;
-    height: 10px;
-    width: 10px;
+.carrousel .button-holder > div {
+    border: 1px solid #333;
     border-radius: 5px;
-    background-color: #666;
+    font-size: 10px;
+    padding: 1px 4px;
+    cursor: pointer;
+    /*height: 10px;
+    width: 10px;*/
+    /*background-color: #666;*/
 }

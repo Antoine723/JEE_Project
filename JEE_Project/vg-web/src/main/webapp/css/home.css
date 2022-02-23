@@ -5,6 +5,7 @@ section {
 #filters {
     width: 20%;
     min-width: 12em;
+    max-width: 12em;
     padding-right: 10px;
     margin-right: 10px;
     border-right: 2px solid #666;

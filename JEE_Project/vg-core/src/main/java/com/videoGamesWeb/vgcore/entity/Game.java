@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,7 +30,7 @@ public class Game extends Product {
 
     @JsonGetter("consoles")
     public List<String> jsonConsoles() {
-        return consoles.stream().map(Console::getName).collect(Collectors.toList());
+        return consoles.stream().map(Console::getName).sorted().collect(Collectors.toList());
     }
 
     public Game(long id){

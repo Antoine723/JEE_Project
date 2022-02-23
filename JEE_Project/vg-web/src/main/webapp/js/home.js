@@ -72,9 +72,9 @@ $(() => {
                                 '</a>'
                             , "")+
                         '</div>'+
-                        '<div class="button-holder" style="width: '+consoles.length+'em;">'+
+                        '<div class="button-holder" style="width: '+3*consoles.length+'em;">'+
                             consoles.reduce((subtotal, subitem, i) => subtotal +=
-                                '<span id="carousel-btn'+item["id"]+'_'+i+'"></span>'
+                                '<div id="carousel-btn'+item["id"]+'_'+i+'">'+subitem+'</div>'
                             , "")+
                         '</div>'
                     );
