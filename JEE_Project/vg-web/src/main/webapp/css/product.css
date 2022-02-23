@@ -59,9 +59,18 @@ section img {
 #commentList article div {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 5px;
 }
 
 #commentList article p {
     margin: 0;
+}
+
+#commentList .rated {
+    font-size: 20px;
+}
+
+#commentList .rated .colored {
+    color: peru;
 }

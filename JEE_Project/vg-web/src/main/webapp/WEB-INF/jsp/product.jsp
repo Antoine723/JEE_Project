@@ -58,18 +58,17 @@
                 <h3 class="center">Votre commentaire</h3>
                 <c:choose>
                     <c:when test="${userId=='-1'}">
-                        loggez vous pour commenter !
+                        Connectez-vous pour commenter !
                     </c:when>
                     <c:otherwise>
                         <form action="#" method="POST">
-                            <label for="newComment">Votre note :</label>
                             <div class="rating">
                                 <c:forEach var="i" begin="1" end="5">
                                     <input name="stars" id="${6-i}" type="radio" value="${6-i}">
                                     <label for="${6-i}">★</label>
                                 </c:forEach>
                             </div>
-                            <input type="text" id="newComment" placeholder="Ajouter un commentaire"/>
+                            <input type="textarea" id="newComment" placeholder="Ajouter un commentaire"/>
                         </form>
                         <button id="submitComment">Ajouter le commentaire</button>
                     </c:otherwise>
@@ -81,8 +80,12 @@
                     <c:forEach items="${product.comments}" var="comment">
                         <article>
                             <div>
-                                <p><span class="bold">Auteur :</span> ${comment.user.name}</p>
-                                <p>${comment.rating}/5</p>
+                                <div><span class="bold">Auteur :</span> ${comment.user.name}</div>
+                                <div class="rated">
+                                    <c:forEach var="i" begin="1" end="5">
+                                        <span <c:if test="${i <= comment.rating}">class="colored"</c:if>>★</span>
+                                    </c:forEach>
+                                </div>
                             </div>
                             <p>${comment.content}</p>
                         </article>
