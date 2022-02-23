@@ -24,7 +24,7 @@ $(() => {
 
         const stars_input = $("input[name='stars']:checked");
         const min_score = stars_input.length === 0 ? 0 : parseInt(stars_input.val());
-
+        console.log("reset");
         $.ajax({
             url:"/products/search",
             type:"POST",
@@ -47,27 +47,13 @@ $(() => {
                 }
                 else {
                     html = result.reduce((total, item) => total +=
-                            '<article>'+
+                            '<article id="'+item["id"]+'">'+
                                 (item.hasOwnProperty("consoles") ?
-                                    '<div class="slider-holder">'+
-                                        '<div class="image-holder">'+
-                                            item["consoles"].filter(function (elem) {
-                                                return selected.length === 0 ? true : $.inArray(elem, selected) !== -1;
-                                            }).reduce((subtotal, subitem) => subtotal +=
-                                                '<a href="/product/'+item["id"]+"/"+subitem+'">'+
-                                                    '<img src="/image/'+item["img"]+"_"+subitem+'" alt="product_'+subitem+'_img"/>'+
-                                                '</a>'
-                                            , "")+
-                                        '</div>'+
-                                        '<div class="button-holder">'+
-                                            '<span class="carousel-btn"></span>'+
-                                            //'<span id="carousel-btn2"></span>'+
-                                            //'<span id="carousel-btn3"></span>'+
-                                        '</div>'+
+                                    '<div class="carrousel">'+
                                     '</div>'
                                     :
-                                    '<a href="/product/'+item["id"]+(item.hasOwnProperty("consoles") ? "/"+item["consoles"][0] : "")+'">'+
-                                        '<img src="/image/'+item["img"]+(item.hasOwnProperty("consoles") ? "_"+item["consoles"][0] : "")+'" alt="product_img"/>'+
+                                    '<a href="/product/'+item["id"]+'">'+
+                                        '<img src="/image/'+item["img"]+'" alt="product_img"/>'+
                                     '</a>'
                                 )+
                                 '<h3>'+item["name"]+'</h3>'+
@@ -77,6 +63,33 @@ $(() => {
                         "");
                 }
                 result_elem.empty().append(html);
+                $.each(result, function(index, item) {
+                    if (!item.hasOwnProperty("consoles")) {
+                        return;
+                    }
+                    const consoles = item["consoles"].filter(function (elem) {
+                        return selected.length === 0 ? true : $.inArray(elem, selected) !== -1;
+                    });
+                    console.log(index);
+                    console.log(item["name"]);
+                    console.log(consoles);
+                    console.log(consoles.length);
+                    console.log("____");
+                    $(`#result article#${item["id"]} .carrousel`).append(
+                        '<div class="image-holder" style="width: '+200*consoles.length+'px;">'+
+                            consoles.reduce((subtotal, subitem) => subtotal +=
+                                '<a href="/product/'+item["id"]+"/"+subitem+'">'+
+                                    '<img src="/image/'+item["img"]+"_"+subitem+'" alt="product_'+subitem+'_img"/>'+
+                                '</a>'
+                            , "")+
+                        '</div>'+
+                        '<div class="button-holder" style="width: '+consoles.length+'em;">'+
+                            consoles.reduce((subtotal, subitem, index) => subtotal +=
+                                '<span class="carousel-btn'+item["id"]+index+'"></span>'
+                            , "")+
+                        '</div>'
+                    );
+                });
             },
             error: function(){
                 console.log("failure");

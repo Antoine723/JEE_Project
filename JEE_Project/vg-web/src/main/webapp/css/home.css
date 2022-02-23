@@ -55,14 +55,14 @@ section {
 }*/
 
 
-.slider-holder {
+.carrousel {
     width: 200px;
     margin: auto;
     overflow: hidden;
 }
 
 .image-holder {
-    width: 800px;
+    /*width: 800px; => 200px * nb of imgs */
     height: 250px;
     position: relative;
     transition: left 2s;
@@ -73,10 +73,16 @@ section {
     float: left;
 }
 
+.button-holder {
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+}
+
 .button-holder > span {
     display: inline-block;
     height: 10px;
     width: 10px;
     border-radius: 5px;
-    background-color: #666;
+    background-color: #333;
 }
