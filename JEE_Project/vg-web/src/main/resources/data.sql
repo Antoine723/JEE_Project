@@ -2,7 +2,7 @@ INSERT INTO console VALUES (1, "ps5", "PS5", 499, 12, 5, "2020-11-19");
 INSERT INTO console (id, img, name, price, quantity, release_date) VALUES (2, "xbox_series_x", "Xbox Series X", 499, 85, "2020-11-10");
 INSERT INTO console (id, img, name, price, quantity, release_date) VALUES (3, "ps4", "PS4", 199, 545, "2013-11-15");
 INSERT INTO console (id, img, name, price, quantity, release_date) VALUES (4, "xbox_one", "Xbox One", 199, 660, "2013-11-22");
-INSERT INTO console (id, img, name, price, quantity, release_date) VALUES (5, "nintendo_switch", "Nintendo Switch", 269, 1980, "2017-03-03");
+INSERT INTO console (id, img, name, price, quantity, release_date) VALUES (5, "nintendo_switch", "Switch", 269, 1980, "2017-03-03");
 
 
 INSERT INTO game (id, img, name, price, quantity, release_date, offline_players_number, online_players_number)
