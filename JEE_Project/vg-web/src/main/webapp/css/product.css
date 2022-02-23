@@ -20,3 +20,8 @@ section img {
     font-weight: bold;
     color: peru;
 }
+
+.card input {
+    width: 4em;
+    text-align: center;
+}

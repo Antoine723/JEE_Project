@@ -51,8 +51,8 @@ $(() => {
                                 (item.hasOwnProperty("consoles") ? '<div class="carrousel"></div>'
                                 : '<a href="/product/'+item["id"]+'"><img src="/image/'+item["img"]+'" alt="product_img"/></a>')+
                                 '<h3>'+item["name"]+'</h3>'+
-                                '<p>Note utilisateurs : '+(item["rating"] === null ? 'N.A.' : item["rating"]+'/5')+'</p>'+
-                                '<p>Prix : '+item["price"]+'€</p>'+
+                                '<p>Note utilisateurs : '+(item["rating"] === null ? 'N/A' : item["rating"]+'/5')+'</p>'+
+                                '<p>Prix : '+item["price"]+' €</p>'+
                             '</article>',
                         "");
                 }

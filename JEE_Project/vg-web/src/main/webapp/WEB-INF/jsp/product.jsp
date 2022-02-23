@@ -38,16 +38,17 @@
                         </c:otherwise>
                     </c:choose>
                 </p>
-                <p><span class="subtitle">Prix :</span> ${product.price}€</p>
+                <p><span class="subtitle">Prix :</span> ${product.price} €</p>
                 <p>
-                    <label for="quantity">Quantité :</label>
+                    <label class="subtitle" for="quantity">Quantité :</label>
                     <button id="decreaseQuantity">-</button>
                     <input type="number" id="quantity" value="1" min="1" max="${product.quantity}"/>
                     <button id="increaseQuantity">+</button>
-                    <button id="addToBasket">Ajouter au panier</button>
                 </p>
+                <p><button id="addToBasket">Ajouter au panier</button></p>
             </div>
         </div>
+        <br>
         <hr>
         <div id="comments">
             <h1>Commentaires</h1>

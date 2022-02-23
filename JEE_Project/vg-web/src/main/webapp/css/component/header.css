@@ -51,3 +51,9 @@ header a.active {
     background-color: #04AA6D;
     color: white;
 }
+
+button {
+    background-color: peru;
+    border-color: whitesmoke;
+    color: white;
+}
