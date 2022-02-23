@@ -2,3 +2,30 @@ section img {
     height: 250px;
     width: 200px;
 }
+
+section {
+    display: flex;
+}
+
+#filters {
+    width: 20%;
+    padding-right: 10px;
+    margin-right: 10px;
+    border-right: 2px solid #666;
+}
+
+#filters #price_min,
+#filters #price_max {
+    width: 30%;
+}
+
+#filters #price_min_val,
+#filters #price_max_val {
+    display: inline-block;
+    width: 2em;
+    text-align: center;
+}
+
+/*
+#filters + div {
+}*/

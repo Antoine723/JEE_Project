@@ -14,6 +14,29 @@
     <section>
         <div id="filters">
             <h3>filtres latéraux</h3>
+            <hr>
+            <div>
+                Ordre d'affichage :
+                <div>
+                    descendant
+                    <label for="order_by" class="switch">
+                        <input class="search_btn" name="order_by" id="order_by" type="checkbox" checked>
+                        <span class="slider round"></span>
+                    </label>
+                    ascendant
+                </div>
+                <div>
+                    <input class="search_btn" name="sort_by" id="sort_name" type="radio" value="name" checked>
+                    <label for="sort_name">Alphabétique</label>
+                    <br>
+                    <input class="search_btn" name="sort_by" id="sort_price" type="radio" value="price">
+                    <label for="sort_price">Prix</label>
+                    <br>
+                    <input class="search_btn" name="sort_by" id="sort_score" type="radio" value="score">
+                    <label for="sort_score">Popularité</label>
+                </div>
+            </div>
+            <hr>
             <div>
                 <label>
                     Prix<br>
@@ -49,27 +72,6 @@
                 </c:forEach>
             </div>
             <hr>
-            <div>
-                Ordre d'affichage :
-                <div>
-                    descendant
-                    <label for="order_by" class="switch">
-                        <input class="search_btn" name="order_by" id="order_by" type="checkbox" checked>
-                        <span class="slider round"></span>
-                    </label>
-                    ascendant
-                </div>
-                <div>
-                    <input class="search_btn" name="sort_by" id="sort_name" type="radio" value="name" checked>
-                    <label for="sort_name">nom</label>
-                    <br>
-                    <input class="search_btn" name="sort_by" id="sort_score" type="radio" value="score">
-                    <label for="sort_score">note</label>
-                    <br>
-                    <input class="search_btn" name="sort_by" id="sort_price" type="radio" value="price">
-                    <label for="sort_price">prix</label>
-                </div>
-            </div>
         </div>
         <div>
             <div>
