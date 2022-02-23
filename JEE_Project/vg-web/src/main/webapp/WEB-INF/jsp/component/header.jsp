@@ -19,7 +19,6 @@
     <div>logo ?</div>
 
     <a href="/">Accueil</a>
-    <a href="/products">Produits</a>
     <c:choose>
         <c:when test="${userId=='-1'}">
             <a href="/user/create">Création compte</a>
