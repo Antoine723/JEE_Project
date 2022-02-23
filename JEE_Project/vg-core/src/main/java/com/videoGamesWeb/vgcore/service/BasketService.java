@@ -46,9 +46,7 @@ public class BasketService {
         Map<Product, Integer> map = new HashMap<>();
         for (Map.Entry<Long, Integer> entry : basket.getProductsIdAndQuantities().entrySet()){
             Optional<Product> productOpt = this.productService.findById(entry.getKey());
-            if (productOpt.isPresent()){
-                map.put(productOpt.get(), entry.getValue());
-            }
+            productOpt.ifPresent(product -> map.put(product, entry.getValue()));
         }
         return map;
     }

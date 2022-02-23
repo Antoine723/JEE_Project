@@ -23,7 +23,7 @@ public class ProductViewController extends GenericController{
         Optional<Product> productOpt = this.productService.findById(id);
         if (productOpt.isEmpty()){
             model.addAttribute("productNotFound", true);
-            return "products";
+            return "product";
         }
         if (consoleGameName != null){
             model.addAttribute("consoleGameName", consoleGameName);

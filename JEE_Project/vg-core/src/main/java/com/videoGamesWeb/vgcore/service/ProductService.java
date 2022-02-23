@@ -27,10 +27,6 @@ public class ProductService {
         this.gameRepository = gameRepository;
     }
 
-    public List<Product> findAll(){
-        return this.productRepository.findAll();
-    }
-
     public Optional<Product> findById(long id){
         return this.productRepository.findById(id);
     }
