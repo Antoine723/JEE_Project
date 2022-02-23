@@ -40,6 +40,11 @@ section {
     justify-content: center;
 }
 
+#result article img {
+    height: 250px;
+    width: 200px;
+}
+
 #result article h3,
 #result article p {
     margin: 0;

@@ -24,7 +24,7 @@ $(() => {
 
         const stars_input = $("input[name='stars']:checked");
         const min_score = stars_input.length === 0 ? 0 : parseInt(stars_input.val());
-        console.log("reset");
+
         $.ajax({
             url:"/products/search",
             type:"POST",
@@ -48,14 +48,8 @@ $(() => {
                 else {
                     html = result.reduce((total, item) => total +=
                             '<article id="'+item["id"]+'">'+
-                                (item.hasOwnProperty("consoles") ?
-                                    '<div class="carrousel">'+
-                                    '</div>'
-                                    :
-                                    '<a href="/product/'+item["id"]+'">'+
-                                        '<img src="/image/'+item["img"]+'" alt="product_img"/>'+
-                                    '</a>'
-                                )+
+                                (item.hasOwnProperty("consoles") ? '<div class="carrousel"></div>'
+                                : '<a href="/product/'+item["id"]+'"><img src="/image/'+item["img"]+'" alt="product_img"/></a>')+
                                 '<h3>'+item["name"]+'</h3>'+
                                 '<p>Note utilisateurs : '+(item["rating"] === null ? 'N.A.' : item["rating"]+'/5')+'</p>'+
                                 '<p>Prix : '+item["price"]+'€</p>'+
@@ -70,11 +64,6 @@ $(() => {
                     const consoles = item["consoles"].filter(function (elem) {
                         return selected.length === 0 ? true : $.inArray(elem, selected) !== -1;
                     });
-                    console.log(index);
-                    console.log(item["name"]);
-                    console.log(consoles);
-                    console.log(consoles.length);
-                    console.log("____");
                     $(`#result article#${item["id"]} .carrousel`).append(
                         '<div class="image-holder" style="width: '+200*consoles.length+'px;">'+
                             consoles.reduce((subtotal, subitem) => subtotal +=
@@ -84,11 +73,17 @@ $(() => {
                             , "")+
                         '</div>'+
                         '<div class="button-holder" style="width: '+consoles.length+'em;">'+
-                            consoles.reduce((subtotal, subitem, index) => subtotal +=
-                                '<span class="carousel-btn'+item["id"]+index+'"></span>'
+                            consoles.reduce((subtotal, subitem, i) => subtotal +=
+                                '<span id="carousel-btn'+item["id"]+'_'+i+'"></span>'
                             , "")+
                         '</div>'
                     );
+
+                    for(let i = 0; i < consoles.length; ++i) {
+                        $(`.carrousel #carousel-btn${item["id"]}_${i}`).on("click", () => {
+                            $(`article#${item["id"]} .image-holder`).css({"left": -200*i+"px"});
+                        });
+                    }
                 });
             },
             error: function(){

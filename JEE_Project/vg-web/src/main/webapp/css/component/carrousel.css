@@ -14,6 +14,7 @@
     position: relative;
     transition: left 2s;
     margin-bottom: 5px;
+    left: 0;
 }
 
 .carrousel .image-holder > img {
