@@ -56,7 +56,6 @@ $(() => {
 
             success: function(resp) {
                 const result = JSON.parse(resp);
-                console.log(result);
                 let html;
                 if (!Array.isArray(result) || !result.length) {
                     html = "Pas de résultat pour votre recherche";
@@ -66,7 +65,9 @@ $(() => {
                             '<article>'+
                                 '<hr>'+
                                 (item.hasOwnProperty("consoles") ?
-                                    item["consoles"].reduce((subtotal, subitem) => subtotal +=
+                                    item["consoles"].filter(function (elem) {
+                                        return selected.length === 0 ? true : $.inArray(elem, selected) !== -1;
+                                    }).reduce((subtotal, subitem) => subtotal +=
                                         '<a href="/product/'+item["id"]+"/"+subitem+'">'+
                                             '<img src="/image/'+item["img"]+"_"+subitem+'" alt="product_'+subitem+'_img"/>'+
                                         '</a>'
