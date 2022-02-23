@@ -79,6 +79,7 @@
                 <input id="search" type="text" name="search">
                 <button id="reset">Reset</button>
             </div>
+            <hr>
             <div id="result"></div>
         </div>
     </section>

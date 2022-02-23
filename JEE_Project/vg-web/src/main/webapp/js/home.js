@@ -48,24 +48,31 @@ $(() => {
                 else {
                     html = result.reduce((total, item) => total +=
                             '<article>'+
-                                '<hr>'+
                                 (item.hasOwnProperty("consoles") ?
-                                    item["consoles"].filter(function (elem) {
-                                        return selected.length === 0 ? true : $.inArray(elem, selected) !== -1;
-                                    }).reduce((subtotal, subitem) => subtotal +=
-                                        '<a href="/product/'+item["id"]+"/"+subitem+'">'+
-                                            '<img src="/image/'+item["img"]+"_"+subitem+'" alt="product_'+subitem+'_img"/>'+
-                                        '</a>'
-                                    , "")
+                                    '<div class="slider-holder">'+
+                                        '<div class="image-holder">'+
+                                            item["consoles"].filter(function (elem) {
+                                                return selected.length === 0 ? true : $.inArray(elem, selected) !== -1;
+                                            }).reduce((subtotal, subitem) => subtotal +=
+                                                '<a href="/product/'+item["id"]+"/"+subitem+'">'+
+                                                    '<img src="/image/'+item["img"]+"_"+subitem+'" alt="product_'+subitem+'_img"/>'+
+                                                '</a>'
+                                            , "")+
+                                        '</div>'+
+                                        '<div class="button-holder">'+
+                                            '<span class="carousel-btn"></span>'+
+                                            //'<span id="carousel-btn2"></span>'+
+                                            //'<span id="carousel-btn3"></span>'+
+                                        '</div>'+
+                                    '</div>'
                                     :
                                     '<a href="/product/'+item["id"]+(item.hasOwnProperty("consoles") ? "/"+item["consoles"][0] : "")+'">'+
                                         '<img src="/image/'+item["img"]+(item.hasOwnProperty("consoles") ? "_"+item["consoles"][0] : "")+'" alt="product_img"/>'+
                                     '</a>'
                                 )+
                                 '<h3>'+item["name"]+'</h3>'+
-                                '<p>note : '+item["rating"]+'/5</p>'+
-                                '<p>'+item["price"]+'€</p>'+
-                                '<hr>'+
+                                '<p>Note utilisateurs : '+(item["rating"] === null ? 'N.A.' : item["rating"]+'/5')+'</p>'+
+                                '<p>Prix : '+item["price"]+'€</p>'+
                             '</article>',
                         "");
                 }

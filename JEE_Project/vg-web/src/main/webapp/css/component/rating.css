@@ -8,7 +8,6 @@
     display: none;
 }
 .rating label {
-    color: #aaa;
     -webkit-transition: color .4s;
     -moz-transition: color .4s;
     -o-transition: color .4s;
@@ -17,6 +16,6 @@
 .rating label:hover,
 .rating label:hover ~ label,
 .rating input:checked ~ label {
-    color: orange;
+    color: yellow;
     cursor: pointer;
 }

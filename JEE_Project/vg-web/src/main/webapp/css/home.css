@@ -9,6 +9,7 @@ section {
 
 #filters {
     width: 20%;
+    min-width: 12em;
     padding-right: 10px;
     margin-right: 10px;
     border-right: 2px solid #666;
@@ -16,7 +17,7 @@ section {
 
 #filters #price_min,
 #filters #price_max {
-    width: 30%;
+    width: 28%;
 }
 
 #filters #price_min_val,
@@ -26,6 +27,56 @@ section {
     text-align: center;
 }
 
+#result {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#result article {
+    width: 14em;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 10px 5px;
+    text-align: center;
+    border: 1px solid #666;
+    background-color: burlywood; /* peru */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#result article h3,
+#result article p {
+    margin: 0;
+}
+
 /*
 #filters + div {
 }*/
+
+
+.slider-holder {
+    width: 200px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.image-holder {
+    width: 800px;
+    height: 250px;
+    position: relative;
+    transition: left 2s;
+    margin-bottom: 5px;
+}
+
+.image-holder > img {
+    float: left;
+}
+
+.button-holder > span {
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+    border-radius: 5px;
+    background-color: #666;
+}
