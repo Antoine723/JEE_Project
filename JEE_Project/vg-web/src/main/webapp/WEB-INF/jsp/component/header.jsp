@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html lang="fr">
 <head>
     <link href="<c:url value="/css/component/header.css"/>" rel="stylesheet" type="text/css">
@@ -31,15 +31,6 @@
         </c:otherwise>
     </c:choose>
 
-    <a href="#" onclick="toBasket()"><img src="${prefix}/image/trolley"/></a>
+    <a href="/basket"><img src="${prefix}/image/trolley" alt="panier_img"/></a>
 </header>
 </html>
-<script>
-    function toBasket(){
-        if (${userId!='-1'}){
-            window.location = "${prefix}/basket";
-        } else{
-            window.location = "${prefix}/user/connect";
-        }
-    }
-</script>

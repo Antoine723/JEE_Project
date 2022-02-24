@@ -8,7 +8,6 @@
 </head>
 <body>
     <section>
-        <input type="hidden" id="urlPrefix" value="${prefix}">
         <c:forEach items="${basket.productsAndQuantities}" var="mapValue" varStatus="loop">
             <div>
                 <h3>${mapValue.key.name}</h3>
