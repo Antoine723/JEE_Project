@@ -4,8 +4,10 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.videoGamesWeb.vgcore.entity.Basket;
+import com.videoGamesWeb.vgcore.entity.Order;
 import com.videoGamesWeb.vgcore.entity.Product;
 import com.videoGamesWeb.vgcore.entity.User;
+import com.videoGamesWeb.vgcore.service.OrderService;
 import com.videoGamesWeb.vgcore.service.ProductService;
 import com.videoGamesWeb.vgcore.service.UserService;
 import org.slf4j.Logger;
@@ -35,10 +37,12 @@ public class BasketViewController extends GenericController{
     private final ObjectMapper objectMapper = new ObjectMapper();
     private final UserService userService;
     private final ProductService productService;
+    private final OrderService orderService;
 
-    public BasketViewController(UserService userService, ProductService productService) {
+    public BasketViewController(UserService userService, ProductService productService, OrderService orderService) {
         this.userService = userService;
         this.productService = productService;
+        this.orderService = orderService;
     }
 
     @GetMapping("")
@@ -159,14 +163,15 @@ public class BasketViewController extends GenericController{
         if (userOpt.isEmpty()) {
             return "redirect:/user/disconnect";
         }
+        User user = userOpt.get();
 
         JsonNode json_basket = (JsonNode) session.getAttribute(SESSION_BASKET);
         if (json_basket == null) return "redirect:/user/disconnect";
 
         Basket basket = objectMapper.treeToValue(json_basket, Basket.class);
 
-        String name = "current".equals(selectedName) ? userOpt.get().getName() : otherName;
-        String address = "current".equals(selectedAddress) ? userOpt.get().getAddress() : otherAddress;
+        String name = "current".equals(selectedName) ? user.getName() : otherName;
+        String address = "current".equals(selectedAddress) ? user.getAddress() : otherAddress;
 
         if ("".equals(name) || "".equals(address)) {
             model.addAttribute(ERROR_MSG, "Informations incomplètes");
@@ -174,9 +179,8 @@ public class BasketViewController extends GenericController{
         }
 
         logger.info("use '{}' '{}'", name, address);
-        // convert basket to order
 
-        //save order
+        this.orderService.addOrder(user, address, basket);
 
         session.setAttribute(SESSION_BASKET, null);
 

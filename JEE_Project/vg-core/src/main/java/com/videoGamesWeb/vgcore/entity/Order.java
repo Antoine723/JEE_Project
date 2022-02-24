@@ -12,6 +12,10 @@ import java.util.*;
 @Getter @Setter
 public class Order {
 
+    public Order(){
+        this.orderNumber = UUID.randomUUID();
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)

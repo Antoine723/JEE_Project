@@ -7,6 +7,7 @@ import com.videoGamesWeb.vgcore.repository.GameRepository;
 import com.videoGamesWeb.vgcore.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
+import javax.sound.sampled.Port;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -25,6 +26,10 @@ public class ProductService {
         this.productRepository = productRepository;
         this.consoleRepository = consoleRepository;
         this.gameRepository = gameRepository;
+    }
+
+    public List<Product> findAllById(List<Long> ids){
+        return this.productRepository.findAllById(ids);
     }
 
     public Optional<Product> findById(long id){
