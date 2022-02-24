@@ -17,7 +17,7 @@ section img {
     justify-content: center;
 }
 
-.card input {
+.card input:not(.btn) {
     width: 4em;
     text-align: center;
 }
