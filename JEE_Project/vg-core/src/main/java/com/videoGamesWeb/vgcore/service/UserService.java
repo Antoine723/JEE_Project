@@ -4,6 +4,8 @@ import com.videoGamesWeb.vgcore.entity.User;
 import com.videoGamesWeb.vgcore.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
 
@@ -29,11 +31,12 @@ public class UserService {
         return this.userRepository.getByName(name);
     }
 
-    public User getById(long userId) {
-        return this.userRepository.getById(userId);
+    public Optional<User> findById(long userId) {
+        return this.userRepository.findById(userId);
     }
 
     public void deleteById(long userId) {
         this.userRepository.deleteById(userId);
     }
+
 }

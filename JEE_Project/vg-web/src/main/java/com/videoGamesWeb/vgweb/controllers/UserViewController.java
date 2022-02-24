@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.security.SecureRandom;
 import java.util.Objects;
+import java.util.Optional;
 
 import static com.videoGamesWeb.vgweb.VgWebApplication.SESSION_USER_ID;
 
@@ -105,41 +106,51 @@ public class UserViewController extends GenericController{
     }
 
     @GetMapping("/disconnect")
-    public String getDisconnect(HttpServletRequest request){
+    public String getDisconnect(HttpSession session){
         //String logger_anchor = "VC-/user/connect:get";
 
-        request.getSession().invalidate();
+        session.invalidate();
 
         return "redirect:/user/connect";
     }
 
     @GetMapping("/profile")
-    public String getProfile(Model model, HttpServletRequest request){
+    public String getProfile(Model model, HttpSession session){
         //String logger_anchor = "VC-/user/profile:get";
 
         long userId;
         try {
-            userId = (long) request.getSession().getAttribute(SESSION_USER_ID);
+            userId = (long) session.getAttribute(SESSION_USER_ID);
         } catch (NullPointerException | NumberFormatException ignore) {
             return "redirect:/user/connect";
         }
 
-        model.addAttribute("user", this.userService.getById(userId));
+        Optional<User> userOpt = userService.findById(userId);
+        if (userOpt.isEmpty()) {
+            return "redirect:/user/disconnect";
+        }
+
+        model.addAttribute("user", userOpt.get());
         return PROFILE_PAGE;
     }
 
     @GetMapping("/update")
-    public String getUpdate(Model model, HttpServletRequest request){
+    public String getUpdate(Model model, HttpSession session){
         //String logger_anchor = "VC-/user/update:get";
 
         long userId;
         try {
-            userId = (long) request.getSession().getAttribute(SESSION_USER_ID);
+            userId = (long) session.getAttribute(SESSION_USER_ID);
         } catch (NullPointerException | NumberFormatException ignore) {
             return "redirect:/user/connect";
         }
 
-        model.addAttribute("user", this.userService.getById(userId));
+        Optional<User> userOpt = userService.findById(userId);
+        if (userOpt.isEmpty()) {
+            return "redirect:/user/disconnect";
+        }
+
+        model.addAttribute("user", userOpt.get());
         return UPDATE_PAGE;
     }
 
@@ -150,17 +161,22 @@ public class UserViewController extends GenericController{
                              @RequestParam(required=false) String confirm_password,
                              @RequestParam(required=false) String mail,
                              @RequestParam(required=false) String address,
-                             HttpServletRequest request) {
+                             HttpSession session) {
         //String logger_anchor = "VC-/user/update:post";
 
         long userId;
         try {
-            userId = (long) request.getSession().getAttribute(SESSION_USER_ID);
+            userId = (long) session.getAttribute(SESSION_USER_ID);
         } catch (NullPointerException | NumberFormatException ignore) {
             return "redirect:/user/connect";
         }
 
-        User user = this.userService.getById(userId);
+        Optional<User> userOpt = userService.findById(userId);
+        if (userOpt.isEmpty()) {
+            return "redirect:/user/disconnect";
+        }
+
+        User user = userOpt.get();
 
         if (!Objects.equals(password, confirm_password)) {
             model.addAttribute("error_msg", "Mots de passes différents");
@@ -194,12 +210,12 @@ public class UserViewController extends GenericController{
     }
 
     @GetMapping("/delete")
-    public String getDelete(HttpServletRequest request) {
+    public String getDelete(HttpSession session) {
         String logger_anchor = "VC-/user/delete:get";
 
         long userId;
         try {
-            userId = (long) request.getSession().getAttribute(SESSION_USER_ID);
+            userId = (long) session.getAttribute(SESSION_USER_ID);
         } catch (NullPointerException | NumberFormatException ignore) {
             return "redirect:/user/connect";
         }

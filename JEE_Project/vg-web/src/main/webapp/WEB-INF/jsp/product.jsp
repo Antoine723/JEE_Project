@@ -10,7 +10,7 @@
     <script type="text/javascript" src="<c:url value="/js/product.js"/>"></script>
     <%
         try {
-            long userId = (long) request.getSession().getAttribute("userID");
+            long userId = (long) session.getAttribute("userID");
             pageContext.setAttribute("userId", userId);
         } catch (NullPointerException | NumberFormatException ignore) {
             pageContext.setAttribute("userId", "-1");
@@ -61,16 +61,17 @@
                         Connectez-vous pour commenter !
                     </c:when>
                     <c:otherwise>
-                        <form action="#" method="POST">
+                        <form action="/product/${product.id}/comment" method="POST">
+                            <input type="hidden" name="consoleUrl" value="${consoleGameName}">
                             <div class="rating">
                                 <c:forEach var="i" begin="1" end="5">
-                                    <input name="stars" id="${6-i}" type="radio" value="${6-i}">
+                                    <input name="rating" id="${6-i}" type="radio" value="${6-i}" required>
                                     <label for="${6-i}">★</label>
                                 </c:forEach>
                             </div>
-                            <input type="textarea" id="newComment" placeholder="Ajouter un commentaire"/>
+                            <input type="text" name="newComment" placeholder="Ajouter un commentaire" required/>
+                            <input type="submit" value="Ajouter le commentaire">
                         </form>
-                        <button id="submitComment">Ajouter le commentaire</button>
                     </c:otherwise>
                 </c:choose>
             </div>

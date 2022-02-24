@@ -7,7 +7,7 @@
     <script type="text/javascript" src="<c:url value="/js/component/check_user.js"/>"></script>
     <%
         try {
-            long userId = (long) request.getSession().getAttribute("userID");
+            long userId = (long) session.getAttribute("userID");
             pageContext.setAttribute("userId", userId);
         } catch (NullPointerException | NumberFormatException ignore) {
             pageContext.setAttribute("userId", "-1");

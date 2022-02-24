@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import java.util.Optional;
 
@@ -37,16 +38,16 @@ public class CommentController {
 
 
     @PostMapping(value = "addComment")
-    public ResponseEntity<String> addComment(@RequestBody CommentDTO commentDTO, HttpServletRequest request){
+    public ResponseEntity<String> addComment(@RequestBody CommentDTO commentDTO, HttpSession session){
         long userId;
         try {
-            userId = (long) request.getSession().getAttribute(SESSION_USER_ID);
+            userId = (long) session.getAttribute(SESSION_USER_ID);
         } catch (NullPointerException | NumberFormatException ignore) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body("No logged user!");
         }
 
-        User user = userService.getById(userId);
-        if (user == null) {
+        Optional<User> userOpt = userService.findById(userId);
+        if (userOpt.isEmpty()) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body("No logged user!");
         }
 
@@ -56,7 +57,7 @@ public class CommentController {
         }
 
         Comment comment = new Comment();
-        comment.setUser(user);
+        comment.setUser(userOpt.get());
         comment.setProduct(productOpt.get());
         comment.setRating(commentDTO.getRating());
         comment.setContent(commentDTO.getComment());
