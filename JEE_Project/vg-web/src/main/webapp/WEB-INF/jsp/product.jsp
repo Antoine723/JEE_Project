@@ -54,13 +54,13 @@
         <h1 class="center">Commentaires</h1>
         <div id="comments">
             <div>
-                <h3 class="center">Votre commentaire</h3>
+                <h3 class="center"><label for="comment">Votre commentaire</label></h3>
                 <c:choose>
                     <c:when test="${userId=='-1'}">
                         Connectez-vous pour commenter !
                     </c:when>
                     <c:otherwise>
-                        <form action="/product/${product.id}/comment" method="POST">
+                        <form class="center" action="/product/${product.id}/comment" method="POST">
                             <input type="hidden" name="consoleUrl" value="${consoleGameName}">
                             <div class="rating">
                                 <c:forEach var="i" begin="1" end="5">
@@ -68,8 +68,9 @@
                                     <label for="${6-i}">★</label>
                                 </c:forEach>
                             </div>
-                            <input type="text" name="newComment" placeholder="Ajouter un commentaire" required/>
-                            <input type="submit" value="Ajouter le commentaire">
+                            <input id="comment" type="text" name="newComment" placeholder="Ajouter un commentaire" required/>
+                            <br><br>
+                            <input class="btn" type="submit" value="Ajouter">
                         </form>
                     </c:otherwise>
                 </c:choose>
@@ -77,19 +78,26 @@
             <div>
                 <h3 class="center">Tous les commentaires</h3>
                 <div id="commentList">
-                    <c:forEach items="${product.comments}" var="comment">
-                        <article>
-                            <div>
-                                <div><span class="bold">Auteur :</span> ${comment.user.name}</div>
-                                <div class="rated">
-                                    <c:forEach var="i" begin="1" end="5">
-                                        <span <c:if test="${i <= comment.rating}">class="colored"</c:if>>★</span>
-                                    </c:forEach>
-                                </div>
-                            </div>
-                            <p>${comment.content}</p>
-                        </article>
-                </c:forEach>
+                    <c:choose>
+                        <c:when test="${product.comments.size() == 0}">
+                            <p class="center">Pas de commentaire!</p>
+                        </c:when>
+                        <c:otherwise>
+                            <c:forEach items="${product.comments}" var="comment">
+                                <article>
+                                    <div>
+                                        <div><span class="bold">Auteur :</span> ${comment.user.name}</div>
+                                        <div class="rated">
+                                            <c:forEach var="i" begin="1" end="5">
+                                                <span <c:if test="${i <= comment.rating}">class="colored"</c:if>>★</span>
+                                            </c:forEach>
+                                        </div>
+                                    </div>
+                                    <p>${comment.content}</p>
+                                </article>
+                            </c:forEach>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
         </div>

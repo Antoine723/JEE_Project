@@ -2,7 +2,7 @@
     font-size: 25px;
     display: flex;
     flex-direction: row-reverse;
-    justify-content: start;
+    justify-content: center;
 }
 .rating input {
     display: none;

@@ -30,7 +30,7 @@
                 <label for="address">Address: </label>
                 <input id="address" type="text" name="address">
             </div>
-            <input type="submit" value="validate">
+            <input class="btn" type="submit" value="validate">
         </form>
     </section>
 </body>

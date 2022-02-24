@@ -40,6 +40,10 @@ section img {
     width: 40%;
 }
 
+#comments #comment {
+    width: 100%;
+}
+
 #commentList {
     display: flex;
     flex-direction: column;

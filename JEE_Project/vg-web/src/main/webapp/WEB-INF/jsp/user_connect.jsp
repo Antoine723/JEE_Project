@@ -17,7 +17,7 @@
                 <label for="password">Password: </label>
                 <input id="password" type="password" name="password" required>
             </div>
-            <input type="submit" value="validate">
+            <input class="btn" type="submit" value="validate">
         </form>
     </section>
 </body>
