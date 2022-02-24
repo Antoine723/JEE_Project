@@ -5,29 +5,53 @@
     <title>Validation de la commande</title>
     <jsp:include page="component/header.jsp"/>
     <link href="<c:url value="/css/payment.css"/>" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="<c:url value="/js/payment.js"/>"></script>
 </head>
 <body>
-    <section>
+    <section class="center">
         <h1>Informations de livraison :</h1>
         <form>
-            <label id="labelName">Nom : ${user.name}</label>
+            <table>
+                <tr><th>Choisissez le nom du destinataire</th></tr>
+                <tr>
+                    <td>
+                        <input type="radio" name="selectedName" id="currentName" value="current" checked>
+                        <label for="currentName">${user.name}</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="radio" name="selectedName" id="otherName" value="other">
+                        <label for="otherName">Autre : <input type="text" name="otherName"></label>
+                    </td>
+                </tr>
+                <tr><td><br><br></td></tr>
+                <tr><th>Choisissez l'adresse de livraison</th></tr>
+                <tr>
+                    <c:choose>
+                        <c:when test="${not empty user.address}">
+                            <td>
+                                <input type="radio" name="selectedAddress" id="currentAddress" value="current" checked>
+                                <label for="currentAddress">${user.address}</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="selectedAddress" id="otherAddress" value="other">
+                                <label for="otherAddress">Autre : <input type="text" name="otherAddress"></label>
+                            </td>
+                        </c:when>
+                        <c:otherwise>
+                            <td>
+                                <label>Adresse : <input name="otherAddress" placeholder="N°, Rue, Ville"/></label>
+                            </td>
+                        </c:otherwise>
+                    </c:choose>
+                </tr>
+            </table>
             <br>
-            <c:choose>
-                <c:when test="${not empty user.address}">
-                    <label id="labelAddress" for="inputAddress">Adresse : ${user.address}</label>
-                    <input id="inputAddress" placeholder="${user.address}" class="d-none"/>
-                    <button id="editAddress">Editer</button>
-                    <button id="saveAddress" class="d-none">Sauvegarder</button>
-                </c:when>
-                <c:otherwise>
-                    <label id="labelAddress" for="inputAddress">Adresse : N/A</label>
-                    <input id="inputAddress" placeholder="N°, Rue, Ville" class="d-none"/>
-                    <button id="editAddress">Editer</button>
-                    <button id="saveAddress" class="d-none">Sauvegarder</button>
-                </c:otherwise>
-            </c:choose>
+            <input type="submit" class="btn big" value="Confirmer">
         </form>
+        <a href="/basket"><button class="big">Retour</button></a>
     </section>
 </body>
 </html>

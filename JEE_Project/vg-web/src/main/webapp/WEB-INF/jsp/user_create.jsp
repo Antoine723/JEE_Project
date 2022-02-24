@@ -35,7 +35,7 @@
                 <tr><td colspan="2"><br></td></tr>
                 <tr>
                     <th><label for="address">Adresse</label></th>
-                    <td><input id="address" type="text" name="address"></td>
+                    <td><input id="address" type="text" name="address" placeholder="N°, Rue, Ville"></td>
                 </tr>
             </table>
             <br>

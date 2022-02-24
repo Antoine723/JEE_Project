@@ -44,7 +44,7 @@
                         <c:if test="${!loop.last}"><hr></c:if>
                     </c:forEach>
                 </table>
-                <hr>
+                <br>
                 <p><span class="bold">Total :</span> ${totalAmount} €</p>
                 <a href="/payment"><button class="big">Acheter</button></a>
             </c:otherwise>

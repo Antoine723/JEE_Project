@@ -15,20 +15,24 @@
                 <th>Nom utilisateur</th>
                 <td>${user.name}</td>
             </tr>
-            <tr><td colspan="2"><br></td></tr>
-            <tr>
-                <th>Mail</th>
-                <td>${user.mail}</td>
-            </tr>
-            <tr><td colspan="2"><br></td></tr>
-            <tr>
-                <th>Adresse</th>
-                <td>${user.address}</td>
-            </tr>
+            <c:if test="${not empty user.mail}">
+                <tr><td colspan="2"><br></td></tr>
+                <tr>
+                    <th>Mail</th>
+                    <td>${user.mail}</td>
+                </tr>
+            </c:if>
+            <c:if test="${not empty user.address}">
+                <tr><td colspan="2"><br></td></tr>
+                <tr>
+                    <th>Adresse</th>
+                    <td>${user.address}</td>
+                </tr>
+            </c:if>
         </table>
         <br>
-        <a href="/user/update"><button class="big">Modifier</button></a>
         <a href="/user/delete"><button class="big">Supprimer</button></a>
+        <a href="/user/update"><button class="big">Modifier</button></a>
     </section>
 </body>
 </html>

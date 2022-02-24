@@ -14,10 +14,10 @@
         }
     %>
 </head>
-<header>
+<header class="bold">
     <input type="hidden" id="gotUser" value="${userId!='-1'}">
 
-    <div>logo ?</div>
+    <div>LOGO</div>
 
     <a href="/">Accueil</a>
     <c:choose>
