@@ -34,4 +34,7 @@ public interface ConsoleRepository extends JpaRepository<Console, Long> {
 
     @Query("SELECT c.id FROM Console c WHERE c.name IN :console_names")
     List<Long> searchConsoleIds(List<String> console_names);
+
+    @Query("SELECT c.id FROM Console c WHERE c.name = :console_name")
+    long findIdByName(String console_name);
 }

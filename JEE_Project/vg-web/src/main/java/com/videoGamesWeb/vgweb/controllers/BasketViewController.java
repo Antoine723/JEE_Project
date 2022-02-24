@@ -3,10 +3,8 @@ package com.videoGamesWeb.vgweb.controllers;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.videoGamesWeb.vgcore.entity.Basket;
-import com.videoGamesWeb.vgcore.entity.Order;
-import com.videoGamesWeb.vgcore.entity.Product;
-import com.videoGamesWeb.vgcore.entity.User;
+import com.videoGamesWeb.vgcore.entity.*;
+import com.videoGamesWeb.vgcore.service.ConsoleService;
 import com.videoGamesWeb.vgcore.service.OrderService;
 import com.videoGamesWeb.vgcore.service.ProductService;
 import com.videoGamesWeb.vgcore.service.UserService;
@@ -17,10 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static com.videoGamesWeb.vgweb.VgWebApplication.*;
@@ -37,11 +32,16 @@ public class BasketViewController extends GenericController{
     private final ObjectMapper objectMapper = new ObjectMapper();
     private final UserService userService;
     private final ProductService productService;
+    private final ConsoleService consoleService;
     private final OrderService orderService;
 
-    public BasketViewController(UserService userService, ProductService productService, OrderService orderService) {
+    public BasketViewController(UserService userService,
+                                ProductService productService,
+                                ConsoleService consoleService,
+                                OrderService orderService) {
         this.userService = userService;
         this.productService = productService;
+        this.consoleService = consoleService;
         this.orderService = orderService;
     }
 
@@ -71,27 +71,36 @@ public class BasketViewController extends GenericController{
                 .collect(Collectors.toList());
 
         float total = 0;
-        Map<Product, Integer> qtyByProduct = new HashMap<>();
-        for (Map.Entry<Long, Integer> entry : basket.getQtyByProduct().entrySet()) {
-            Optional<Product> productOpt = products.stream().filter(product -> product.getId() == entry.getKey()).findFirst();
+        List<Console> consoles = this.consoleService.findAll();
+        Map<Product, Map<Product, Integer>> qtyByConsoleByProduct = new HashMap<>();
+        for (Map.Entry<Long, Map<Long, Integer>> entry : basket.getQtyByProduct().entrySet()) {
+            Optional<Product> productOpt = products.stream().filter(p -> p.getId() == entry.getKey()).findFirst();
             if (productOpt.isEmpty()) continue;
 
-            int qty = entry.getValue();
             Product product = productOpt.get();
-            total += product.getPrice() * qty;
-            qtyByProduct.put(product, qty);
+            qtyByConsoleByProduct.put(product, new HashMap<>());
+            for (Map.Entry<Long, Integer> subEntry : entry.getValue().entrySet()) {
+                Optional<Console> consoleOpt = consoles.stream().filter(p -> p.getId() == subEntry.getKey()).findFirst();
+                if (consoleOpt.isEmpty()) continue;
+
+                int qty = subEntry.getValue();
+                Console console = consoleOpt.get();
+                total += product.getPrice() * qty;
+                qtyByConsoleByProduct.get(product).put(console, qty);
+            }
         }
 
-        model.addAttribute("qtyByProduct", qtyByProduct);
+        model.addAttribute("qtyByConsoleByProduct", qtyByConsoleByProduct);
         model.addAttribute("totalAmount", total);
         model.addAttribute("prefix", this.prefix);
         return BASKET_PAGE;
     }
 
-    @PostMapping("/update/{productId}")
+    @PostMapping("/update/{productId}/{consoleId}")
     public String postUpdateProduct(@PathVariable long productId,
-                                    @RequestParam String redirect,
+                                    @PathVariable long consoleId,
                                     @RequestParam int quantity,
+                                    @RequestParam String redirect,
                                     HttpSession session) throws JsonProcessingException {
         if (!UserViewController.userInSession(session)) return "redirect:/user/profile";
 
@@ -101,7 +110,7 @@ public class BasketViewController extends GenericController{
         JsonNode json_basket = (JsonNode) session.getAttribute(SESSION_BASKET);
         Basket basket = json_basket == null ? new Basket() : objectMapper.treeToValue(json_basket, Basket.class);
 
-        basket.updateProductQty(productId, quantity, productOpt.get().getQuantity());
+        basket.updateProductQty(productId, consoleId, quantity, productOpt.get().getQuantity());
 
         session.setAttribute(SESSION_BASKET, objectMapper.valueToTree(basket));
 
@@ -109,8 +118,8 @@ public class BasketViewController extends GenericController{
         return "redirect:"+redirect;
     }
 
-    @GetMapping("/remove/{productId}")
-    public String getRemoveProduct(@PathVariable long productId, HttpSession session) throws JsonProcessingException {
+    @GetMapping("/remove/{productId}/{consoleId}")
+    public String getRemoveProduct(@PathVariable long productId, @PathVariable long consoleId, HttpSession session) throws JsonProcessingException {
         if (!UserViewController.userInSession(session)) return "redirect:/user/profile";
 
         Optional<Product> productOpt = this.productService.findById(productId);
@@ -119,7 +128,7 @@ public class BasketViewController extends GenericController{
         JsonNode json_basket = (JsonNode) session.getAttribute(SESSION_BASKET);
         Basket basket = json_basket == null ? new Basket() : objectMapper.treeToValue(json_basket, Basket.class);
 
-        basket.removeProduct(productId);
+        basket.removeProduct(productId, consoleId);
 
         session.setAttribute(SESSION_BASKET, objectMapper.valueToTree(basket));
 
@@ -177,8 +186,6 @@ public class BasketViewController extends GenericController{
             model.addAttribute(ERROR_MSG, "Informations incomplètes");
             return "payment";
         }
-
-        logger.info("use '{}' '{}'", name, address);
 
         this.orderService.addOrder(user, address, basket);
 

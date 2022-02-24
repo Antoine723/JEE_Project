@@ -4,6 +4,7 @@ import com.videoGamesWeb.vgcore.entity.Comment;
 import com.videoGamesWeb.vgcore.entity.Product;
 import com.videoGamesWeb.vgcore.entity.User;
 import com.videoGamesWeb.vgcore.service.CommentService;
+import com.videoGamesWeb.vgcore.service.ConsoleService;
 import com.videoGamesWeb.vgcore.service.ProductService;
 import com.videoGamesWeb.vgcore.service.UserService;
 import org.slf4j.Logger;
@@ -26,11 +27,16 @@ public class ProductViewController extends GenericController{
 
     private final static String PRODUCT_PAGE = "product";
 
+    private final ConsoleService consoleService;
     private final ProductService productService;
     private final CommentService commentService;
     private final UserService userService;
 
-    public ProductViewController(ProductService productService, CommentService commentService, UserService userService){
+    public ProductViewController(ConsoleService consoleService,
+                                 ProductService productService,
+                                 CommentService commentService,
+                                 UserService userService){
+        this.consoleService = consoleService;
         this.productService = productService;
         this.commentService = commentService;
         this.userService = userService;
@@ -41,11 +47,14 @@ public class ProductViewController extends GenericController{
         Optional<Product> productOpt = this.productService.findById(id);
         if (productOpt.isEmpty()) return "redirect:/";
 
+        long consoleId = productOpt.get().getId();
         if (consoleGameName != null) {
             model.addAttribute("consoleGameName", consoleGameName);
+            consoleId = this.consoleService.findIdByName(consoleGameName);
         }
 
         model.addAttribute("product", productOpt.get());
+        model.addAttribute("consoleId", consoleId);
         model.addAttribute("dateFormat", new SimpleDateFormat("dd MMM yyyy"));
         return PRODUCT_PAGE;
     }

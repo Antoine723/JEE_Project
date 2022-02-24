@@ -22,4 +22,8 @@ public class ConsoleService {
     public List<String> getNames() {
         return this.consoleRepository.getNames();
     }
+
+    public long findIdByName(String consoleName) {
+        return this.consoleRepository.findIdByName(consoleName);
+    }
 }

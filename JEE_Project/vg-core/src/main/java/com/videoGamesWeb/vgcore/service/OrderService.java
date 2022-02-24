@@ -6,21 +6,23 @@ import com.videoGamesWeb.vgcore.entity.User;
 import com.videoGamesWeb.vgcore.repository.OrderRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+
 @Service
 public class OrderService {
 
     private final OrderRepository orderRepository;
-    private final BasketService basketService;
+    private final ProductService productService;
 
-    public OrderService(final OrderRepository orderRepository, BasketService basketService) {
+    public OrderService(final OrderRepository orderRepository, ProductService productService) {
         this.orderRepository = orderRepository;
-        this.basketService = basketService;
+        this.productService = productService;
     }
 
     public void addOrder(User user, String address, Basket basket){
         Order order = new Order();
         order.setAddress(address);
-        order.setProducts(basketService.getProductsList(basket));
+        order.setProducts(this.productService.findAllById(new ArrayList<>(basket.getQtyByProduct().keySet())));
         order.setUser(user);
         this.orderRepository.save(order);
     }
