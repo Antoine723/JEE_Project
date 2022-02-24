@@ -2,11 +2,10 @@ package com.videoGamesWeb.vgcore.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.util.Pair;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Table(name = "orders")
@@ -28,13 +27,9 @@ public class Order {
     @JoinTable(name="orders_products",
             joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name="product_id"))
-    private List<Product> products;
+    private List<Product> products = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-
-    public Order(){
-        this.products = new ArrayList<>();
-    }
 }

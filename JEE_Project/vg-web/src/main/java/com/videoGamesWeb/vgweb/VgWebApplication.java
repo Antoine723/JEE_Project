@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories(basePackages = {"com.videoGamesWeb.vgcore"})
 public class VgWebApplication {
 	public final static String SESSION_USER_ID = "userID";
+	public final static String SESSION_BASKET = "basket";
 
 	public static void main(String[] args) {
 		SpringApplication.run(VgWebApplication.class, args);

@@ -8,21 +8,21 @@
 </head>
 <body>
     <section>
-        <c:forEach items="${basket.productsAndQuantities}" var="mapValue" varStatus="loop">
-            <div>
-                <h3>${mapValue.key.name}</h3>
-                <img src="image/${mapValue.key.img}" alt="product_img"/>
-                <p>Prix unitaire : ${mapValue.key.price}€</p>
-                <p>Quantité : ${mapValue.value}</p>
-            </div>
-            <c:if test="${!loop.last}"><hr></c:if>
-        </c:forEach>
-        <hr>
         <c:choose>
-            <c:when test="${totalAmount == -1}">
+            <c:when test="${qtyByProduct.isEmpty()}">
                 <p>Votre panier est vide</p>
             </c:when>
             <c:otherwise>
+                <c:forEach items="${qtyByProduct}" var="mapValue" varStatus="loop">
+                    <div>
+                        <h3>${mapValue.key.name}</h3>
+                        <img src="image/${mapValue.key.img}" alt="product_img"/>
+                        <p>Prix unitaire : ${mapValue.key.price}€</p>
+                        <p>Quantité : ${mapValue.value}</p>
+                    </div>
+                    <c:if test="${!loop.last}"><hr></c:if>
+                </c:forEach>
+                <hr>
                 <p>Total : ${totalAmount} €</p>
                 <a href="/payment"><button>Acheter</button></a>
             </c:otherwise>

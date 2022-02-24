@@ -31,6 +31,10 @@ public class UserViewController extends GenericController{
 
     BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(10, new SecureRandom());
 
+    public static boolean userInSession(HttpSession session) {
+        return session.getAttribute(SESSION_USER_ID) instanceof Long;
+    }
+
     public UserViewController(UserService userService){
         this.userService = userService;
     }
@@ -39,11 +43,7 @@ public class UserViewController extends GenericController{
     public String getCreate(HttpSession session) {
         //String logger_anchor = "VC-/user/create:get";
 
-        try {
-            long userId = (long) session.getAttribute(SESSION_USER_ID);
-            return "redirect:/user/profile";
-        } catch (NullPointerException | NumberFormatException ignore) {
-        }
+        if (UserViewController.userInSession(session)) return "redirect:/user/profile";
 
         return CREATE_PAGE;
     }
@@ -58,11 +58,7 @@ public class UserViewController extends GenericController{
                              HttpSession session) {
         String logger_anchor = "VC-/user/create:post";
 
-        try {
-            long userId = (long) session.getAttribute(SESSION_USER_ID);
-            return "redirect:/user/profile";
-        } catch (NullPointerException | NumberFormatException ignore) {
-        }
+        if (UserViewController.userInSession(session)) return "redirect:/user/profile";
 
         model.addAttribute("prefix", this.prefix);
         if (name.isEmpty() || password.isEmpty() || confirm_password.isEmpty()) {
@@ -94,11 +90,7 @@ public class UserViewController extends GenericController{
     public String getConnect(HttpSession session){
         //String logger_anchor = "VC-/user/connect:get";
 
-        try {
-            long userId = (long) session.getAttribute(SESSION_USER_ID);
-            return "redirect:/user/profile";
-        } catch (NullPointerException | NumberFormatException ignore) {
-        }
+        if (UserViewController.userInSession(session)) return "redirect:/user/profile";
 
         return CONNECT_PAGE;
     }
@@ -110,11 +102,7 @@ public class UserViewController extends GenericController{
                               HttpSession session) {
         //String logger_anchor = "VC-/user/connect:post";
 
-        try {
-            long userId = (long) session.getAttribute(SESSION_USER_ID);
-            return "redirect:/user/profile";
-        } catch (NullPointerException | NumberFormatException ignore) {
-        }
+        if (UserViewController.userInSession(session)) return "redirect:/user/profile";
 
         if (name.isEmpty() || password.isEmpty()) {
             model.addAttribute("error_msg", "Champ(s) vide(s)");

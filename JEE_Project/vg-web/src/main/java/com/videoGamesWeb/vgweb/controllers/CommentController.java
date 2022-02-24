@@ -15,11 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpSession;
-
 import java.util.Optional;
 
-import static com.videoGamesWeb.vgweb.VgWebApplication.SESSION_USER_ID;
 
 @RestController
 public class CommentController {
@@ -37,17 +34,10 @@ public class CommentController {
 
 
     @PostMapping(value = "addComment")
-    public ResponseEntity<String> addComment(@RequestBody CommentDTO commentDTO, HttpSession session){
-        long userId;
-        try {
-            userId = (long) session.getAttribute(SESSION_USER_ID);
-        } catch (NullPointerException | NumberFormatException ignore) {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("No logged user!");
-        }
-
-        Optional<User> userOpt = userService.findById(userId);
+    public ResponseEntity<String> addComment(@RequestBody CommentDTO commentDTO){
+        Optional<User> userOpt = userService.findById(commentDTO.getUserId());
         if (userOpt.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("No logged user!");
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("User invalid!");
         }
 
         Optional<Product> productOpt = productService.findById(commentDTO.getProductId());

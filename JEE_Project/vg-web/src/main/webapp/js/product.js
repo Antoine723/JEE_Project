@@ -22,27 +22,4 @@ $(() => {
             $("#quantity").val(val + 1);
         }
     });
-
-    $("#addToBasket").on("click", () => {
-        checkUser();
-
-        const quantity = $("#quantity").val();
-        const productId = parseInt($("#productId").val());
-
-        $.ajax({
-            url: "/addToBasket",
-            type: "POST",
-            contentType: 'application/json; charset=utf-8',
-            data: JSON.stringify({
-                "quantity": quantity,
-                "productId": productId
-            }),
-            success: function () {
-                //TODO
-            },
-            error: function () {
-                //TODO
-            }
-        });
-    });
 });

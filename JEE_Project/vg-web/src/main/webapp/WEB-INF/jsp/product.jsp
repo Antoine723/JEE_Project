@@ -40,13 +40,16 @@
                 </p>
                 <p><span class="bold">Nombre de commentaires :</span> ${product.comments.size()}</p>
                 <p><span class="bold">Prix :</span> ${product.price} €</p>
-                <p>
-                    <label class="bold" for="quantity">Quantité :</label>
-                    <button id="decreaseQuantity">-</button>
-                    <input type="number" id="quantity" value="1" min="1" max="${product.quantity}"/>
-                    <button id="increaseQuantity">+</button>
-                </p>
-                <p><button id="addToBasket">Ajouter au panier</button></p>
+                <form method="POST" action="/product/${product.id}/basket">
+                    <input type="hidden" name="consoleUrl" value="${consoleGameName}">
+                    <p>
+                        <label class="bold" for="quantity">Quantité :</label>
+                        <button type="button" id="decreaseQuantity">-</button>
+                        <input type="number" id="quantity" name="quantity" value="1" min="1" max="${product.quantity}"/>
+                        <button type="button" id="increaseQuantity">+</button>
+                    </p>
+                    <p><input type="submit" class="btn" value="Ajouter au panier"></p>
+                </form>
             </div>
         </div>
         <br>
@@ -60,7 +63,7 @@
                         Connectez-vous pour commenter !
                     </c:when>
                     <c:otherwise>
-                        <form class="center" action="/product/${product.id}/comment" method="POST">
+                        <form class="center" method="POST" action="/product/${product.id}/comment">
                             <input type="hidden" name="consoleUrl" value="${consoleGameName}">
                             <div class="rating">
                                 <c:forEach var="i" begin="1" end="5">
