@@ -4,10 +4,10 @@
 <head>
     <title>Home</title>
     <jsp:include page="component/header.jsp"/>
-    <link href="<c:url value="/css/home.css"/>" rel="stylesheet" type="text/css">
     <link href="<c:url value="/css/component/rating.css"/>" rel="stylesheet" type="text/css">
     <link href="<c:url value="/css/component/switch.css"/>" rel="stylesheet" type="text/css">
     <link href="<c:url value="/css/component/carrousel.css"/>" rel="stylesheet" type="text/css">
+    <link href="<c:url value="/css/home.css"/>" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="<c:url value="/js/component/double_range.js"/>"></script>
     <script type="text/javascript" src="<c:url value="/js/home.js"/>"></script>
 </head>

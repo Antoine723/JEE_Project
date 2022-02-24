@@ -1,34 +1,44 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html lang="fr">
 <head>
     <title>Update user</title>
     <jsp:include page="component/header.jsp"/>
+    <link href="<c:url value="/css/user.css"/>" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <section>
-        <h1>Update profile</h1>
+    <section class="center">
+        <h1>Modifier les informations de compte</h1>
+        <br>
         <form method="POST" action="/user/update">
-            <div>
-                <label for="name">Name: </label>
-                <input id="name" type="text" name="name" value="${user.name}" required>
-            </div>
-            <div>
-                <label for="password">Password: </label>
-                <input id="password" type="password" name="password">
-            </div>
-            <div>
-                <label for="confirm_password">Password confirmation: </label>
-                <input id="confirm_password" type="password" name="confirm_password">
-            </div>
-            <div>
-                <label for="mail">Mail: </label>
-                <input id="mail" type="email" name="mail" value="${user.mail}">
-            </div>
-            <div>
-                <label for="address">Address: </label>
-                <input id="address" type="text" name="address" value="${user.address}">
-            </div>
-            <input class="btn" type="submit" value="validate">
+            <table>
+                <tr>
+                    <th><label for="name">Nom utilisateur</label></th>
+                    <td><input id="name" type="text" name="name" value="${user.name}" required></td>
+                </tr>
+                <tr><td colspan="2"><br></td></tr>
+                <tr>
+                    <th><label for="password">Mot de passe</label></th>
+                    <td><input id="password" type="password" name="password"></td>
+                </tr>
+                <tr><td colspan="2"><br></td></tr>
+                <tr>
+                    <th><label for="confirm_password">Confirmation</label></th>
+                    <td><input id="confirm_password" type="password" name="confirm_password"></td>
+                </tr>
+                <tr><td colspan="2"><br></td></tr>
+                <tr>
+                    <th><label for="mail">Mail</label></th>
+                    <td><input id="mail" type="email" name="mail" value="${user.mail}"></td>
+                </tr>
+                <tr><td colspan="2"><br></td></tr>
+                <tr>
+                    <th><label for="address">Adresse</label></th>
+                    <td><input id="address" type="text" name="address" value="${user.address}"></td>
+                </tr>
+            </table>
+            <br>
+            <input class="btn" type="submit" value="Valider">
         </form>
     </section>
 </body>
