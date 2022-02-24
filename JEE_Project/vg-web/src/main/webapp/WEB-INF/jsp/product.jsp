@@ -40,7 +40,7 @@
                 </p>
                 <p><span class="bold">Nombre de commentaires :</span> ${product.comments.size()}</p>
                 <p><span class="bold">Prix :</span> ${product.price} €</p>
-                <form method="POST" action="/basket/qty/add/${product.id}">
+                <form method="POST" action="/basket/add/${product.id}">
                     <input type="hidden" name="redirect" value="/product/${product.id}/${consoleGameName}">
                     <p>
                         <label class="bold" for="quantity">Quantité :</label>

@@ -81,8 +81,8 @@ public class BasketViewController extends GenericController{
         return "basket";
     }
 
-    @PostMapping("/qty/add/{productId}")
-    public String postQtyAddProduct(@PathVariable long productId,
+    @PostMapping("/add/{productId}")
+    public String postAddProduct(@PathVariable long productId,
                                     @RequestParam String redirect,
                                     @RequestParam int quantity,
                                     HttpSession session) throws JsonProcessingException {
@@ -102,11 +102,10 @@ public class BasketViewController extends GenericController{
         return "redirect:"+redirect;
     }
 
-    @PostMapping("/qty/remove/{productId}")
-    public String postQtyRemoveProduct(@PathVariable long productId,
-                                      @RequestParam String redirect,
-                                      @RequestParam int quantity,
-                                      HttpSession session) throws JsonProcessingException {
+    @PostMapping("/reduce/{productId}")
+    public String postReduceProduct(@PathVariable long productId,
+                                       @RequestParam int quantity,
+                                       HttpSession session) throws JsonProcessingException {
         if (!UserViewController.userInSession(session)) return "redirect:/user/profile";
 
         Optional<Product> productOpt = this.productService.findById(productId);
@@ -115,18 +114,16 @@ public class BasketViewController extends GenericController{
         JsonNode json_basket = (JsonNode) session.getAttribute(SESSION_BASKET);
         Basket basket = json_basket == null ? new Basket() : objectMapper.treeToValue(json_basket, Basket.class);
 
-        basket.removeProductQty(productId, quantity);
+        basket.reduceProductQty(productId, quantity);
 
         session.setAttribute(SESSION_BASKET, objectMapper.valueToTree(basket));
 
-        logger.info("Well added to basket");
-        return "redirect:"+redirect;
+        logger.info("Well reduced from basket");
+        return "redirect:/basket";
     }
 
-    @PostMapping("/remove/{productId}")
-    public String postRemoveProduct(@PathVariable long productId,
-                                      @RequestParam String redirect,
-                                      HttpSession session) throws JsonProcessingException {
+    @GetMapping("/remove/{productId}")
+    public String getRemoveProduct(@PathVariable long productId, HttpSession session) throws JsonProcessingException {
         if (!UserViewController.userInSession(session)) return "redirect:/user/profile";
 
         Optional<Product> productOpt = this.productService.findById(productId);
@@ -139,7 +136,7 @@ public class BasketViewController extends GenericController{
 
         session.setAttribute(SESSION_BASKET, objectMapper.valueToTree(basket));
 
-        logger.info("Well added to basket");
-        return "redirect:"+redirect;
+        logger.info("Well removed from basket");
+        return "redirect:/basket";
     }
 }

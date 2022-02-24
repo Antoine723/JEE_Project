@@ -19,18 +19,21 @@
                         <th>Prix unitaire</th>
                         <th>Quantité</th>
                         <th>Sous-total</th>
-                        <th></th>
+                        <th>Retirer</th>
                     </tr>
                     <c:forEach items="${qtyByProduct}" var="mapValue" varStatus="loop">
                         <tr>
                             <td><a href="/product/${mapValue.key.id}">${mapValue.key.name}</a></td>
                             <td>${mapValue.key.price}€</td>
-                            <td>${mapValue.value}</td>
-                            <td>${mapValue.key.price*mapValue.value}€</td>
                             <td>
                                 <button>▼</button>
+                                ${mapValue.value}
                                 <button>▲</button>
-                                <button>🗙</button>
+                                <button>🗘</button>
+                            </td>
+                            <td>${mapValue.key.price*mapValue.value}€</td>
+                            <td>
+                                <a href="/basket/remove/${mapValue.key.id}"><button>🗙</button></a>
                             </td>
                         </tr>
                         <c:if test="${!loop.last}"><hr></c:if>

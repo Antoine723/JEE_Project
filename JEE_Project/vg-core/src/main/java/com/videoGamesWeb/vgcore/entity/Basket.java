@@ -15,7 +15,7 @@ public class Basket {
         this.qtyByProduct.put(productId, (this.qtyByProduct.getOrDefault(productId, 0)) + quantity);
     }
 
-    public void removeProductQty(long productId, int quantity) {
+    public void reduceProductQty(long productId, int quantity) {
         this.qtyByProduct.put(productId, Math.max(1, (this.qtyByProduct.getOrDefault(productId, 0)) - quantity));
     }
 
