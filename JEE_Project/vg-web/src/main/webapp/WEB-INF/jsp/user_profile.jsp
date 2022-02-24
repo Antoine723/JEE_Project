@@ -27,8 +27,8 @@
             </tr>
         </table>
         <br>
-        <a href="/user/update"><button>Modifier</button></a>
-        <a href="/user/delete"><button>Supprimer</button></a>
+        <a href="/user/update"><button class="big">Modifier</button></a>
+        <a href="/user/delete"><button class="big">Supprimer</button></a>
     </section>
 </body>
 </html>

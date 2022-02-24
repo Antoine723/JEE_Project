@@ -38,7 +38,7 @@
                 </tr>
             </table>
             <br>
-            <input class="btn" type="submit" value="Valider">
+            <input class="btn big" type="submit" value="Valider">
         </form>
     </section>
 </body>

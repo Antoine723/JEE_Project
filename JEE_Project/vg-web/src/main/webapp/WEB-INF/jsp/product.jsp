@@ -40,7 +40,7 @@
                 </p>
                 <p><span class="bold">Nombre de commentaires :</span> ${product.comments.size()}</p>
                 <p><span class="bold">Prix :</span> ${product.price} €</p>
-                <form method="POST" action="/basket/add/${product.id}">
+                <form method="POST" action="/basket/update/${product.id}">
                     <input type="hidden" name="redirect" value="/product/${product.id}/${consoleGameName}">
                     <p>
                         <label class="bold" for="quantity">Quantité :</label>
@@ -48,7 +48,7 @@
                         <input type="number" id="quantity" name="quantity" value="1" min="1" max="${product.quantity}"/>
                         <button type="button" id="increaseQuantity">▲</button>
                     </p>
-                    <p><input type="submit" class="btn" value="Ajouter au panier"></p>
+                    <p><input type="submit" class="btn big" value="Ajouter au panier"></p>
                 </form>
             </div>
         </div>
@@ -73,7 +73,7 @@
                             </div>
                             <textarea id="comment" name="newComment" rows="5" placeholder="Ajouter un commentaire" required></textarea>
                             <br><br>
-                            <input class="btn" type="submit" value="Ajouter">
+                            <input class="btn big" type="submit" value="Ajouter">
                         </form>
                     </c:otherwise>
                 </c:choose>

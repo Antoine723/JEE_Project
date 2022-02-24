@@ -2,10 +2,19 @@ section table {
     margin: auto;
     text-align: center;
     border-collapse: collapse;
+    background-color: whitesmoke;
 }
 
 section table th,
 section table td {
     border: 1px solid #333;
     padding: 2px 10px;
+}
+
+section table form {
+    margin: 0;
+}
+
+section table form label input {
+    width: 4em;
 }

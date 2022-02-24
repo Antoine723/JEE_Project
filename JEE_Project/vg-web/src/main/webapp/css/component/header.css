@@ -58,10 +58,19 @@ button, .btn {
     color: white;
 }
 
+.big {
+    padding: 2px 8px;
+    font-size: 1em;
+}
+
 .center {
     text-align: center;
 }
 
 .bold {
     font-weight: bold;
+}
+
+.bolder {
+    font-weight: bolder;
 }

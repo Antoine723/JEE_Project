@@ -10,7 +10,7 @@
     <section class="center">
         <c:choose>
             <c:when test="${qtyByProduct.isEmpty()}">
-                <p>Votre panier est vide</p>
+                <h3>Votre panier est vide</h3>
             </c:when>
             <c:otherwise>
                 <table>
@@ -19,6 +19,7 @@
                         <th>Prix unitaire</th>
                         <th>Quantité</th>
                         <th>Sous-total</th>
+                        <th>Ajuster</th>
                         <th>Retirer</th>
                     </tr>
                     <c:forEach items="${qtyByProduct}" var="mapValue" varStatus="loop">
@@ -26,12 +27,16 @@
                             <td><a href="/product/${mapValue.key.id}">${mapValue.key.name}</a></td>
                             <td>${mapValue.key.price}€</td>
                             <td>
-                                <button>▼</button>
                                 ${mapValue.value}
-                                <button>▲</button>
-                                <button>🗘</button>
                             </td>
                             <td>${mapValue.key.price*mapValue.value}€</td>
+                            <td>
+                                <form method="POST" action="/basket/update/${mapValue.key.id}">
+                                    <input type="hidden" name="redirect" value="/basket">
+                                    <label><input type="number" name="quantity" min="-${mapValue.value-1}" max="${mapValue.key.quantity}" value="0"/></label>
+                                    <input type="submit" class="btn bolder" value="✓">
+                                </form>
+                            </td>
                             <td>
                                 <a href="/basket/remove/${mapValue.key.id}"><button>🗙</button></a>
                             </td>
@@ -41,7 +46,7 @@
                 </table>
                 <hr>
                 <p><span class="bold">Total :</span> ${totalAmount} €</p>
-                <a href="/payment"><button>Acheter</button></a>
+                <a href="/payment"><button class="big">Acheter</button></a>
             </c:otherwise>
         </c:choose>
     </section>

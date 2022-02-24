@@ -11,12 +11,8 @@ public class Basket {
 
     private Map<Long, Integer> qtyByProduct = new HashMap<>();
 
-    public void addProductQty(Long productId, int quantity){
-        this.qtyByProduct.put(productId, (this.qtyByProduct.getOrDefault(productId, 0)) + quantity);
-    }
-
-    public void reduceProductQty(long productId, int quantity) {
-        this.qtyByProduct.put(productId, Math.max(1, (this.qtyByProduct.getOrDefault(productId, 0)) - quantity));
+    public void updateProductQty(Long productId, int quantity, int max){
+        this.qtyByProduct.put(productId, Math.min(max, Math.max(1, (this.qtyByProduct.getOrDefault(productId, 0)) + quantity)));
     }
 
     public void removeProduct(long productId) {

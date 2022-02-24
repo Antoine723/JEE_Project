@@ -81,8 +81,8 @@ public class BasketViewController extends GenericController{
         return "basket";
     }
 
-    @PostMapping("/add/{productId}")
-    public String postAddProduct(@PathVariable long productId,
+    @PostMapping("/update/{productId}")
+    public String postUpdateProduct(@PathVariable long productId,
                                     @RequestParam String redirect,
                                     @RequestParam int quantity,
                                     HttpSession session) throws JsonProcessingException {
@@ -94,32 +94,12 @@ public class BasketViewController extends GenericController{
         JsonNode json_basket = (JsonNode) session.getAttribute(SESSION_BASKET);
         Basket basket = json_basket == null ? new Basket() : objectMapper.treeToValue(json_basket, Basket.class);
 
-        basket.addProductQty(productId, quantity);
+        basket.updateProductQty(productId, quantity, productOpt.get().getQuantity());
 
         session.setAttribute(SESSION_BASKET, objectMapper.valueToTree(basket));
 
         logger.info("Well added to basket");
         return "redirect:"+redirect;
-    }
-
-    @PostMapping("/reduce/{productId}")
-    public String postReduceProduct(@PathVariable long productId,
-                                       @RequestParam int quantity,
-                                       HttpSession session) throws JsonProcessingException {
-        if (!UserViewController.userInSession(session)) return "redirect:/user/profile";
-
-        Optional<Product> productOpt = this.productService.findById(productId);
-        if (productOpt.isEmpty()) return "redirect:/home";
-
-        JsonNode json_basket = (JsonNode) session.getAttribute(SESSION_BASKET);
-        Basket basket = json_basket == null ? new Basket() : objectMapper.treeToValue(json_basket, Basket.class);
-
-        basket.reduceProductQty(productId, quantity);
-
-        session.setAttribute(SESSION_BASKET, objectMapper.valueToTree(basket));
-
-        logger.info("Well reduced from basket");
-        return "redirect:/basket";
     }
 
     @GetMapping("/remove/{productId}")
