@@ -28,9 +28,9 @@
                             <td>${mapValue.value}</td>
                             <td>${mapValue.key.price*mapValue.value}€</td>
                             <td>
-                                <button>-</button>
-                                <button>+</button>
-                                <button>x</button>
+                                <button>▼</button>
+                                <button>▲</button>
+                                <button>🗙</button>
                             </td>
                         </tr>
                         <c:if test="${!loop.last}"><hr></c:if>

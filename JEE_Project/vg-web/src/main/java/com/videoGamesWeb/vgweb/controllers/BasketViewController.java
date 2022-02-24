@@ -83,9 +83,9 @@ public class BasketViewController extends GenericController{
 
     @PostMapping("/qty/add/{productId}")
     public String postQtyAddProduct(@PathVariable long productId,
-                                 @RequestParam String redirect,
-                                 @RequestParam int quantity,
-                                 HttpSession session) throws JsonProcessingException {
+                                    @RequestParam String redirect,
+                                    @RequestParam int quantity,
+                                    HttpSession session) throws JsonProcessingException {
         if (!UserViewController.userInSession(session)) return "redirect:/user/profile";
 
         Optional<Product> productOpt = this.productService.findById(productId);
@@ -115,7 +115,7 @@ public class BasketViewController extends GenericController{
         JsonNode json_basket = (JsonNode) session.getAttribute(SESSION_BASKET);
         Basket basket = json_basket == null ? new Basket() : objectMapper.treeToValue(json_basket, Basket.class);
 
-        //basket.removeProductQty(productId, quantity);
+        basket.removeProductQty(productId, quantity);
 
         session.setAttribute(SESSION_BASKET, objectMapper.valueToTree(basket));
 
@@ -135,7 +135,7 @@ public class BasketViewController extends GenericController{
         JsonNode json_basket = (JsonNode) session.getAttribute(SESSION_BASKET);
         Basket basket = json_basket == null ? new Basket() : objectMapper.treeToValue(json_basket, Basket.class);
 
-        //basket.removeProduct(productId);
+        basket.removeProduct(productId);
 
         session.setAttribute(SESSION_BASKET, objectMapper.valueToTree(basket));
 

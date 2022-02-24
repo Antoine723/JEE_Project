@@ -80,7 +80,7 @@
             <div>
                 <h2><label for="search">Votre recherche : </label></h2>
                 <input id="search" type="text" name="search">
-                <button id="reset">X</button>
+                <button id="reset">🗙</button>
             </div>
             <hr>
             <div id="result"></div>

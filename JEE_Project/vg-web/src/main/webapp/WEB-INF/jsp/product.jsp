@@ -44,9 +44,9 @@
                     <input type="hidden" name="redirect" value="/product/${product.id}/${consoleGameName}">
                     <p>
                         <label class="bold" for="quantity">Quantité :</label>
-                        <button type="button" id="decreaseQuantity">-</button>
+                        <button type="button" id="decreaseQuantity">▼</button>
                         <input type="number" id="quantity" name="quantity" value="1" min="1" max="${product.quantity}"/>
-                        <button type="button" id="increaseQuantity">+</button>
+                        <button type="button" id="increaseQuantity">▲</button>
                     </p>
                     <p><input type="submit" class="btn" value="Ajouter au panier"></p>
                 </form>
