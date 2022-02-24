@@ -9,6 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.Optional;
+
+import static com.videoGamesWeb.vgweb.VgWebApplication.SESSION_USER_ID;
 
 @Controller
 public class PaymentViewController {
@@ -22,8 +25,19 @@ public class PaymentViewController {
 
     @GetMapping("/payment")
     public String payment(Model model, HttpSession session){
-        User user = this.userService.getById((long) session.getAttribute("userID"));
-        model.addAttribute("user", user);
+        long userId;
+        try {
+            userId = (long) session.getAttribute(SESSION_USER_ID);
+        } catch (NullPointerException | NumberFormatException ignore) {
+            return "redirect:/user/connect";
+        }
+
+        Optional<User> userOpt = userService.findById(userId);
+        if (userOpt.isEmpty()) {
+            return "redirect:/user/disconnect";
+        }
+
+        model.addAttribute("user", userOpt.get());
         return "payment";
     }
 }
