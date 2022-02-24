@@ -1,6 +1,7 @@
 package com.videoGamesWeb.vgweb.controllers;
 
 import com.videoGamesWeb.vgcore.entity.User;
+import com.videoGamesWeb.vgcore.service.OrderService;
 import com.videoGamesWeb.vgcore.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,6 +30,7 @@ public class UserViewController extends GenericController{
     private final static String UPDATE_PAGE = "user_update";
 
     private final UserService userService;
+    private final OrderService orderService;
 
     BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(10, new SecureRandom());
 
@@ -36,8 +38,9 @@ public class UserViewController extends GenericController{
         return session.getAttribute(SESSION_USER_ID) instanceof Long;
     }
 
-    public UserViewController(UserService userService){
+    public UserViewController(UserService userService, OrderService orderService){
         this.userService = userService;
+        this.orderService = orderService;
     }
 
     @GetMapping("/create")
@@ -146,6 +149,7 @@ public class UserViewController extends GenericController{
         }
 
         model.addAttribute("user", userOpt.get());
+        model.addAttribute("orders", orderService.findAllByUserId(userOpt.get().getId()));
         return PROFILE_PAGE;
     }
 

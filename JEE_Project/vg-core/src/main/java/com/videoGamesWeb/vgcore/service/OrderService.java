@@ -7,6 +7,7 @@ import com.videoGamesWeb.vgcore.repository.OrderRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class OrderService {
@@ -27,4 +28,7 @@ public class OrderService {
         this.orderRepository.save(order);
     }
 
+    public List<Order> findAllByUserId(long userId) {
+        return this.orderRepository.findAllByUserId(userId);
+    }
 }

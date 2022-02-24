@@ -1,0 +1,29 @@
+section > div {
+    display: flex;
+}
+
+#side {
+    width: 60%;
+    padding-right: 10px;
+    margin-right: 10px;
+    border-right: 2px solid #666;
+}
+
+#orders {
+    flex-grow: 2;
+    display: flex;
+    flex-direction: column;
+    padding: 0 1em;
+}
+
+#orders article {
+    margin: 5px;
+    padding: 10px 5px;
+    border: 1px solid #666;
+    border-radius: 10px;
+    background-color: whitesmoke;
+}
+
+#orders article h3 {
+    margin-top: 0;
+}
