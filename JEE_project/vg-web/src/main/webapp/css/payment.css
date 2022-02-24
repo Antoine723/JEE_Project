@@ -1,4 +1,4 @@
-section input:not(.btn) {
+.gray {
     filter: grayscale(1);
     cursor: pointer;
 }

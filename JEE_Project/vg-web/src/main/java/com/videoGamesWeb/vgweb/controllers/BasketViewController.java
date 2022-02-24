@@ -119,4 +119,42 @@ public class BasketViewController extends GenericController{
         logger.info("Well removed from basket");
         return "redirect:/basket";
     }
+
+    @PostMapping("/confirm")
+    public String postConfirm(@RequestParam String selectedName,
+                              @RequestParam(required = false) String otherName,
+                              @RequestParam(required = false) String selectedAddress,
+                              @RequestParam(required = false) String otherAddress,
+                              HttpSession session) throws JsonProcessingException {
+        long userId;
+        try {
+            userId = (long) session.getAttribute(SESSION_USER_ID);
+        } catch (NullPointerException | NumberFormatException ignore) {
+            return "redirect:/user/connect";
+        }
+
+        Optional<User> userOpt = userService.findById(userId);
+        if (userOpt.isEmpty()) {
+            return "redirect:/user/disconnect";
+        }
+
+        JsonNode json_basket = (JsonNode) session.getAttribute(SESSION_BASKET);
+        if (json_basket == null) return "redirect:/user/disconnect";
+
+        Basket basket = objectMapper.treeToValue(json_basket, Basket.class);
+
+        String name = "current".equals(selectedName) ? userOpt.get().getName() : otherName;
+        String address = "current".equals(selectedAddress) ? userOpt.get().getAddress() : otherAddress;
+
+        if ("".equals(name) || "".equals(address)) return "redirect:/payment";
+
+        logger.info("use '{}' '{}'", name, address);
+        // convert basket to order
+
+        //save order
+
+        session.setAttribute(SESSION_BASKET, null);
+
+        return "redirect:/user/profile"; //see order list
+    }
 }
