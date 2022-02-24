@@ -13,12 +13,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
 
 
 @RestController
+@RequestMapping("/comment")
 public class CommentController {
     private final static Logger logger = LoggerFactory.getLogger(CommentController.class);
 
@@ -33,8 +35,8 @@ public class CommentController {
     }
 
 
-    @PostMapping(value = "addComment")
-    public ResponseEntity<String> addComment(@RequestBody CommentDTO commentDTO){
+    @PostMapping( "/add")
+    public ResponseEntity<String> postAdd(@RequestBody CommentDTO commentDTO){
         Optional<User> userOpt = userService.findById(commentDTO.getUserId());
         if (userOpt.isEmpty()) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body("User invalid!");

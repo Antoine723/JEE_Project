@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping(value = "/products")
+@RequestMapping("/products")
 public class ProductsController {
 
     private final static Logger logger = LoggerFactory.getLogger(CommentController.class);
@@ -32,8 +32,8 @@ public class ProductsController {
         this.productService = productService;
     }
 
-    @PostMapping(value = "/search")
-    public ResponseEntity<String> addComment(@RequestBody SearchDTO searchDTO) throws JsonProcessingException {
+    @PostMapping("/search")
+    public ResponseEntity<String> postSearch(@RequestBody SearchDTO searchDTO) throws JsonProcessingException {
         List<Product> results;
         if (searchDTO.getConsoles().isEmpty()) {
             results = productService.searchWithText(searchDTO.getInput(),

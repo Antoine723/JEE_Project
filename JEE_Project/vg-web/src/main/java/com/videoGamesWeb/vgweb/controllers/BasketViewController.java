@@ -12,7 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
@@ -25,9 +25,11 @@ import static com.videoGamesWeb.vgweb.VgWebApplication.SESSION_BASKET;
 import static com.videoGamesWeb.vgweb.VgWebApplication.SESSION_USER_ID;
 
 @Controller
+@RequestMapping("/basket")
 public class BasketViewController extends GenericController{
 
     private final static Logger logger = LoggerFactory.getLogger(BasketViewController.class);
+    private final ObjectMapper objectMapper = new ObjectMapper();
     private final UserService userService;
     private final ProductService productService;
 
@@ -36,8 +38,8 @@ public class BasketViewController extends GenericController{
         this.productService = productService;
     }
 
-    @GetMapping("basket")
-    public String basket(Model model, HttpSession session) throws JsonProcessingException {
+    @GetMapping("")
+    public String getPage(Model model, HttpSession session) throws JsonProcessingException {
         long userId;
         try {
             userId = (long) session.getAttribute(SESSION_USER_ID);
@@ -77,5 +79,67 @@ public class BasketViewController extends GenericController{
         model.addAttribute("totalAmount", total);
         model.addAttribute("prefix", this.prefix);
         return "basket";
+    }
+
+    @PostMapping("/qty/add/{productId}")
+    public String postQtyAddProduct(@PathVariable long productId,
+                                 @RequestParam String redirect,
+                                 @RequestParam int quantity,
+                                 HttpSession session) throws JsonProcessingException {
+        if (!UserViewController.userInSession(session)) return "redirect:/user/profile";
+
+        Optional<Product> productOpt = this.productService.findById(productId);
+        if (productOpt.isEmpty()) return "redirect:/home";
+
+        JsonNode json_basket = (JsonNode) session.getAttribute(SESSION_BASKET);
+        Basket basket = json_basket == null ? new Basket() : objectMapper.treeToValue(json_basket, Basket.class);
+
+        basket.addProductQty(productId, quantity);
+
+        session.setAttribute(SESSION_BASKET, objectMapper.valueToTree(basket));
+
+        logger.info("Well added to basket");
+        return "redirect:"+redirect;
+    }
+
+    @PostMapping("/qty/remove/{productId}")
+    public String postQtyRemoveProduct(@PathVariable long productId,
+                                      @RequestParam String redirect,
+                                      @RequestParam int quantity,
+                                      HttpSession session) throws JsonProcessingException {
+        if (!UserViewController.userInSession(session)) return "redirect:/user/profile";
+
+        Optional<Product> productOpt = this.productService.findById(productId);
+        if (productOpt.isEmpty()) return "redirect:/home";
+
+        JsonNode json_basket = (JsonNode) session.getAttribute(SESSION_BASKET);
+        Basket basket = json_basket == null ? new Basket() : objectMapper.treeToValue(json_basket, Basket.class);
+
+        //basket.removeProductQty(productId, quantity);
+
+        session.setAttribute(SESSION_BASKET, objectMapper.valueToTree(basket));
+
+        logger.info("Well added to basket");
+        return "redirect:"+redirect;
+    }
+
+    @PostMapping("/remove/{productId}")
+    public String postRemoveProduct(@PathVariable long productId,
+                                      @RequestParam String redirect,
+                                      HttpSession session) throws JsonProcessingException {
+        if (!UserViewController.userInSession(session)) return "redirect:/user/profile";
+
+        Optional<Product> productOpt = this.productService.findById(productId);
+        if (productOpt.isEmpty()) return "redirect:/home";
+
+        JsonNode json_basket = (JsonNode) session.getAttribute(SESSION_BASKET);
+        Basket basket = json_basket == null ? new Basket() : objectMapper.treeToValue(json_basket, Basket.class);
+
+        //basket.removeProduct(productId);
+
+        session.setAttribute(SESSION_BASKET, objectMapper.valueToTree(basket));
+
+        logger.info("Well added to basket");
+        return "redirect:"+redirect;
     }
 }

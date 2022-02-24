@@ -17,7 +17,7 @@ import java.util.Optional;
 import static com.videoGamesWeb.vgweb.VgWebApplication.SESSION_USER_ID;
 
 @Controller
-@RequestMapping(value = "/user")
+@RequestMapping("/user")
 public class UserViewController extends GenericController{
 
     private final static Logger logger = LoggerFactory.getLogger(UserViewController.class);

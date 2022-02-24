@@ -6,14 +6,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 
 @RestController
+@RequestMapping( "/image")
 public class ImageController {
 
-    @GetMapping("/image/{imgName}")
+    @GetMapping("/{imgName}")
     public ResponseEntity<byte[]> getImage(@PathVariable String imgName){
         ClassPathResource imgFile = new ClassPathResource("/images/" + imgName + ".png");
         byte[] bytes = new byte[0];

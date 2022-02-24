@@ -11,7 +11,7 @@ public class Basket {
 
     private Map<Long, Integer> qtyByProduct = new HashMap<>();
 
-    public void addProduct(Long productId, int quantity){
+    public void addProductQty(Long productId, int quantity){
         this.qtyByProduct.put(productId, (this.qtyByProduct.getOrDefault(productId, 0)) + quantity);
     }
 
