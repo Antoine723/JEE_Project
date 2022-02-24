@@ -68,7 +68,7 @@
                                     <label for="${6-i}">★</label>
                                 </c:forEach>
                             </div>
-                            <input id="comment" type="text" name="newComment" placeholder="Ajouter un commentaire" required/>
+                            <textarea id="comment" name="newComment" rows="5" cols="33" placeholder="Ajouter un commentaire" required></textarea>
                             <br><br>
                             <input class="btn" type="submit" value="Ajouter">
                         </form>

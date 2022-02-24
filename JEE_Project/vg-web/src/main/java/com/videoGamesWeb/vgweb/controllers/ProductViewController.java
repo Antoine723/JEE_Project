@@ -81,7 +81,7 @@ public class ProductViewController extends GenericController{
         comment.setUser(userOpt.get());
         comment.setProduct(productOpt.get());
         comment.setRating(rating);
-        comment.setContent(newComment);
+        comment.setContent(newComment.replaceAll("\n", "<br>"));
 
         this.commentService.addComment(comment);
         return "redirect:/product/"+id+"/"+consoleUrl;
