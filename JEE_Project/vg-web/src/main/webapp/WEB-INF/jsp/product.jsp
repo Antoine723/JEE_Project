@@ -19,7 +19,6 @@
 </head>
 <body>
     <section>
-        <input type="hidden" id="urlPrefix" value="${prefix}">
         <input type="hidden" id="productId" value="${product.id}">
         <input type="hidden" id="productQuantity" value="${product.quantity}">
         <h1 class="center">Fiche produit</h1>

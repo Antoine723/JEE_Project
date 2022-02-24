@@ -1,7 +1,6 @@
 package com.videoGamesWeb.vgweb.controllers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.videoGamesWeb.vgcore.dto.BasketDTO;
 import com.videoGamesWeb.vgcore.entity.Basket;
 import com.videoGamesWeb.vgcore.entity.Product;
@@ -12,7 +11,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
