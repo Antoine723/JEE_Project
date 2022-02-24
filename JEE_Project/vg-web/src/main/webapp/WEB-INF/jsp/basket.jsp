@@ -7,23 +7,37 @@
     <link href="<c:url value="/css/basket.css"/>" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <section>
+    <section class="center">
         <c:choose>
             <c:when test="${qtyByProduct.isEmpty()}">
                 <p>Votre panier est vide</p>
             </c:when>
             <c:otherwise>
-                <c:forEach items="${qtyByProduct}" var="mapValue" varStatus="loop">
-                    <div>
-                        <h3>${mapValue.key.name}</h3>
-                        <img src="image/${mapValue.key.img}" alt="product_img"/>
-                        <p>Prix unitaire : ${mapValue.key.price}€</p>
-                        <p>Quantité : ${mapValue.value}</p>
-                    </div>
-                    <c:if test="${!loop.last}"><hr></c:if>
-                </c:forEach>
+                <table>
+                    <tr>
+                        <th>Produit</th>
+                        <th>Prix unitaire</th>
+                        <th>Quantité</th>
+                        <th>Sous-total</th>
+                        <th></th>
+                    </tr>
+                    <c:forEach items="${qtyByProduct}" var="mapValue" varStatus="loop">
+                        <tr>
+                            <td><a href="/product/${mapValue.key.id}">${mapValue.key.name}</a></td>
+                            <td>${mapValue.key.price}€</td>
+                            <td>${mapValue.value}</td>
+                            <td>${mapValue.key.price*mapValue.value}€</td>
+                            <td>
+                                <button>-</button>
+                                <button>+</button>
+                                <button>x</button>
+                            </td>
+                        </tr>
+                        <c:if test="${!loop.last}"><hr></c:if>
+                    </c:forEach>
+                </table>
                 <hr>
-                <p>Total : ${totalAmount} €</p>
+                <p><span class="bold">Total :</span> ${totalAmount} €</p>
                 <a href="/payment"><button>Acheter</button></a>
             </c:otherwise>
         </c:choose>

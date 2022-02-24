@@ -1,4 +1,11 @@
-section img {
-    max-height: 200px;
-    max-width: 200px;
+section table {
+    margin: auto;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+section table th,
+section table td {
+    border: 1px solid #333;
+    padding: 2px 10px;
 }
