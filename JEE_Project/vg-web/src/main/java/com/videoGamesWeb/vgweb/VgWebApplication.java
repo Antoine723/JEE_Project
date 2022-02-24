@@ -11,6 +11,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 public class VgWebApplication {
 	public final static String SESSION_USER_ID = "userID";
 	public final static String SESSION_BASKET = "basket";
+	public final static String ERROR_MSG = "error_msg";
 
 	public static void main(String[] args) {
 		SpringApplication.run(VgWebApplication.class, args);

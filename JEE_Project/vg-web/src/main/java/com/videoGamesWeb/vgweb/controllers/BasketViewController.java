@@ -21,14 +21,17 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import static com.videoGamesWeb.vgweb.VgWebApplication.SESSION_BASKET;
-import static com.videoGamesWeb.vgweb.VgWebApplication.SESSION_USER_ID;
+import static com.videoGamesWeb.vgweb.VgWebApplication.*;
 
 @Controller
 @RequestMapping("/basket")
 public class BasketViewController extends GenericController{
 
     private final static Logger logger = LoggerFactory.getLogger(BasketViewController.class);
+
+    private final static String BASKET_PAGE = "basket";
+    private final static String PAYMENT_PAGE = "payment";
+
     private final ObjectMapper objectMapper = new ObjectMapper();
     private final UserService userService;
     private final ProductService productService;
@@ -78,7 +81,7 @@ public class BasketViewController extends GenericController{
         model.addAttribute("qtyByProduct", qtyByProduct);
         model.addAttribute("totalAmount", total);
         model.addAttribute("prefix", this.prefix);
-        return "basket";
+        return BASKET_PAGE;
     }
 
     @PostMapping("/update/{productId}")
@@ -98,7 +101,7 @@ public class BasketViewController extends GenericController{
 
         session.setAttribute(SESSION_BASKET, objectMapper.valueToTree(basket));
 
-        logger.info("Well added to basket");
+        logger.info("Well updated basket");
         return "redirect:"+redirect;
     }
 
@@ -120,8 +123,27 @@ public class BasketViewController extends GenericController{
         return "redirect:/basket";
     }
 
-    @PostMapping("/confirm")
-    public String postConfirm(@RequestParam String selectedName,
+    @GetMapping("/payment")
+    public String getPayment(Model model, HttpSession session){
+        long userId;
+        try {
+            userId = (long) session.getAttribute(SESSION_USER_ID);
+        } catch (NullPointerException | NumberFormatException ignore) {
+            return "redirect:/user/connect";
+        }
+
+        Optional<User> userOpt = userService.findById(userId);
+        if (userOpt.isEmpty()) {
+            return "redirect:/user/disconnect";
+        }
+
+        model.addAttribute("user", userOpt.get());
+        return PAYMENT_PAGE;
+    }
+
+    @PostMapping("/payment")
+    public String postPayment(Model model,
+                              @RequestParam String selectedName,
                               @RequestParam(required = false) String otherName,
                               @RequestParam(required = false) String selectedAddress,
                               @RequestParam(required = false) String otherAddress,
@@ -146,7 +168,10 @@ public class BasketViewController extends GenericController{
         String name = "current".equals(selectedName) ? userOpt.get().getName() : otherName;
         String address = "current".equals(selectedAddress) ? userOpt.get().getAddress() : otherAddress;
 
-        if ("".equals(name) || "".equals(address)) return "redirect:/payment";
+        if ("".equals(name) || "".equals(address)) {
+            model.addAttribute(ERROR_MSG, "Informations incomplètes");
+            return "payment";
+        }
 
         logger.info("use '{}' '{}'", name, address);
         // convert basket to order

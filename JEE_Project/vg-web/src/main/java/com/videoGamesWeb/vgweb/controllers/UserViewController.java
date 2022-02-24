@@ -14,6 +14,7 @@ import java.security.SecureRandom;
 import java.util.Objects;
 import java.util.Optional;
 
+import static com.videoGamesWeb.vgweb.VgWebApplication.ERROR_MSG;
 import static com.videoGamesWeb.vgweb.VgWebApplication.SESSION_USER_ID;
 
 @Controller
@@ -62,15 +63,15 @@ public class UserViewController extends GenericController{
 
         model.addAttribute("prefix", this.prefix);
         if (name.isEmpty() || password.isEmpty() || confirm_password.isEmpty()) {
-            model.addAttribute("error_msg", "Champ(s) vide(s)");
+            model.addAttribute(ERROR_MSG, "Champ(s) vide(s)");
             return CREATE_PAGE;
         }
         if (!Objects.equals(password, confirm_password)) {
-            model.addAttribute("error_msg", "Mots de passes différents");
+            model.addAttribute(ERROR_MSG, "Mots de passes différents");
             return CREATE_PAGE;
         }
         if (this.userService.existByName(name)) {
-            model.addAttribute("error_msg", "Nom déjà utilisé");
+            model.addAttribute(ERROR_MSG, "Nom déjà utilisé");
             return CREATE_PAGE;
         }
 
@@ -105,12 +106,12 @@ public class UserViewController extends GenericController{
         if (UserViewController.userInSession(session)) return "redirect:/user/profile";
 
         if (name.isEmpty() || password.isEmpty()) {
-            model.addAttribute("error_msg", "Champ(s) vide(s)");
+            model.addAttribute(ERROR_MSG, "Champ(s) vide(s)");
             return CONNECT_PAGE;
         }
         User user = this.userService.getByName(name);
         if (user == null || !this.bCryptPasswordEncoder.matches(password, user.getPassword())) {
-            model.addAttribute("error_msg", "Informations invalides");
+            model.addAttribute(ERROR_MSG, "Informations invalides");
             return CONNECT_PAGE;
         }
 
@@ -193,7 +194,7 @@ public class UserViewController extends GenericController{
         User user = userOpt.get();
 
         if (!Objects.equals(password, confirm_password)) {
-            model.addAttribute("error_msg", "Mots de passes différents");
+            model.addAttribute(ERROR_MSG, "Mots de passes différents");
             model.addAttribute("user", user);
             return UPDATE_PAGE;
         }

@@ -9,7 +9,7 @@
 <body>
     <section class="center">
         <h1>Informations de livraison :</h1>
-        <form method="POST" action="/basket/confirm">
+        <form method="POST" action="/basket/payment">
             <table>
                 <tr><th>Choisissez le nom du destinataire</th></tr>
                 <tr>

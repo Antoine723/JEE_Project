@@ -46,7 +46,7 @@
                 </table>
                 <br>
                 <p><span class="bold">Total :</span> ${totalAmount} €</p>
-                <a href="/payment"><button class="big">Acheter</button></a>
+                <a href="/basket/payment"><button class="big">Acheter</button></a>
             </c:otherwise>
         </c:choose>
     </section>

@@ -16,6 +16,8 @@ public class HomeViewController extends GenericController {
 
     private static final Logger logger = LoggerFactory.getLogger(HomeViewController.class);
 
+    private final static String HOME_PAGE = "home";
+
     private final ProductService productService;
     private final ConsoleService consoleService;
 
@@ -29,6 +31,6 @@ public class HomeViewController extends GenericController {
         model.addAttribute("price_min", productService.getPriceMin());
         model.addAttribute("price_max", productService.getPriceMax());
         model.addAttribute("console_names", consoleService.getNames());
-        return "home";
+        return HOME_PAGE;
     }
 }

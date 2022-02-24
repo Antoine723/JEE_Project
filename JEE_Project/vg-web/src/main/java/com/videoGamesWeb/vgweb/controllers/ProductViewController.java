@@ -24,6 +24,8 @@ public class ProductViewController extends GenericController{
 
     private final static Logger logger = LoggerFactory.getLogger(ProductViewController.class);
 
+    private final static String PRODUCT_PAGE = "product";
+
     private final ProductService productService;
     private final CommentService commentService;
     private final UserService userService;
@@ -37,18 +39,15 @@ public class ProductViewController extends GenericController{
     @GetMapping({"/{id}", "/{id}/{consoleGameName}"})
     public String getProduct(@PathVariable long id, @PathVariable(required = false) String consoleGameName, Model model){
         Optional<Product> productOpt = this.productService.findById(id);
-        if (productOpt.isEmpty()){
-            model.addAttribute("productNotFound", true);
-            return "product";
-        }
-        if (consoleGameName != null){
+        if (productOpt.isEmpty()) return "redirect:/";
+
+        if (consoleGameName != null) {
             model.addAttribute("consoleGameName", consoleGameName);
         }
-        Product product = productOpt.get();
-        model.addAttribute("product", product);
+
+        model.addAttribute("product", productOpt.get());
         model.addAttribute("dateFormat", new SimpleDateFormat("dd MMM yyyy"));
-        model.addAttribute("prefix", this.prefix);
-        return "product";
+        return PRODUCT_PAGE;
     }
 
     @PostMapping("/{productId}/comment")
