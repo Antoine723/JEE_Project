@@ -212,11 +212,11 @@ public class UserViewController extends GenericViewController {
             user.setPassword(this.bCryptPasswordEncoder.encode(password));
             update = true;
         }
-        if (!mail.isEmpty()) {
+        if (!Objects.equals(user.getMail(), mail)) {
             user.setMail(mail);
             update = true;
         }
-        if (!address.isEmpty()) {
+        if (!Objects.equals(user.getAddress(), address)) {
             user.setAddress(address);
             update = true;
         }
