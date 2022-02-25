@@ -46,7 +46,7 @@
                     <div>
                         <label id="price_min_val" for="price_min"></label>
                         <input type="hidden" id="price_min_abs" value="${price_min-6}">
-                        <input class="search_btn" type="range" id="price_min" name="price_min" min="${price_min-6}" max="${price_max}" value="${price_max}" step="10" dir="rtl">
+                        <input class="search_btn" type="range" id="price_min" name="price_min" min="${price_min-6}" max="${price_max}" value="${price_max}" step="5" dir="rtl">
                         <input class="search_btn" type="range" id="price_max" name="price_max" max="${price_max+6}" value="${price_max}" step="10">
                         <label id="price_max_val" for="price_max"></label>
                     </div>

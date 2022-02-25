@@ -71,6 +71,9 @@ public class ProductsController {
             results = results.stream().sorted(comparator).collect(Collectors.toList());
         }
 
+        Game.minPrice = searchDTO.getMin_price();
+        Game.maxPrice = searchDTO.getMax_price();
+
         return ResponseEntity.ok(mapper.writeValueAsString(results));
     }
 }
