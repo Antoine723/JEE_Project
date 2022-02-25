@@ -31,7 +31,6 @@ public class HomeViewController extends GenericViewController {
 
     @GetMapping("")
     public String getPage(Model model){
-        logger.info("Cons : {}", this.gameService.findAll().get(0).getGameConsoles());
         model.addAttribute("price_min", productService.getPriceMin());
         model.addAttribute("price_max", productService.getPriceMax());
         model.addAttribute("console_names", consoleService.getNames());

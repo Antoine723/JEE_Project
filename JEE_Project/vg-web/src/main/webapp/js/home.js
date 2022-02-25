@@ -67,25 +67,29 @@ $(() => {
                     const consoles = item["consoles"].filter(function (elem) {
                         return selected.length === 0 ? true : $.inArray(elem, selected) !== -1;
                     });
+
+                    $(`#result article#${item["id"]} .carrousel`)
+                        .append('<div class="image-holder" style="width: '+200*consoles.length+'px;"> </div>');
+                    for(let i = 0; i < consoles.length; ++i) {
+                        $(`#result article#${item["id"]} .carrousel .image-holder`).append(
+                            '<a href="/product/'+item["id"]+"/"+consoles[i]+'">'+
+                                '<img src="/image/'+item["gameImg"][Object.keys(item["gameImg"])[i]]+'" alt="product_img"/>'+
+                            '</a>'
+                        )
+                    }
                     $(`#result article#${item["id"]} .carrousel`).append(
-                        '<div class="image-holder" style="width: '+200*consoles.length+'px;">'+
-                            consoles.reduce((subtotal, subitem) => subtotal +=
-                                '<a href="/product/'+item["id"]+"/"+subitem+'">'+
-                                    '<img src="/image/'+item["img"]+"_"+subitem+'" alt="product_'+subitem+'_img"/>'+
-                                '</a>'
-                            , "")+
-                        '</div>'+
                         '<div class="button-holder" style="width: '+3*consoles.length+'em;">'+
-                            consoles.reduce((subtotal, subitem, i) => subtotal +=
+                        consoles.reduce((subtotal, subitem, i) => subtotal +=
                                 '<div id="carousel-btn'+item["id"]+'_'+i+'">'+subitem+'</div>'
                             , "")+
                         '</div>'
-                    );
+                    )
 
                     for(let i = 0; i < consoles.length; ++i) {
                         $(`.carrousel #carousel-btn${item["id"]}_${i}`).on("click", () => {
-                            $("article[id='"+ item["id"]+"']").
-                            find("p[class='price']").text("Prix : " + item["gamePrice"][Object.keys(item["gamePrice"])[i]] + "€");
+                            $("article[id='"+ item["id"]+"']")
+                                .find("p[class='price']")
+                                .text("Prix : " + item["gamePrice"][Object.keys(item["gamePrice"])[i]] + "€");
                             $(`article#${item["id"]} .image-holder`).css({"left": -200*i+"px"});
                         });
                     }
