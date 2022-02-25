@@ -31,4 +31,8 @@ public class OrderService {
     public List<Order> findAllByUserId(long userId) {
         return this.orderRepository.findAllByUserId(userId);
     }
+
+    public void deleteAllByUserId(long userId) {
+        this.orderRepository.deleteAllByUserId(userId);
+    }
 }

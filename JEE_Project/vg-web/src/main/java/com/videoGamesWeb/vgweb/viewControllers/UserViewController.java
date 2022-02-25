@@ -240,6 +240,7 @@ public class UserViewController extends GenericViewController {
         }
         if (this.userService.existById(userId)) {
             logger.info("{} - delete user {}", logger_anchor, userId);
+            this.orderService.deleteAllByUserId(userId);
             this.userService.deleteById(userId);
         }
 

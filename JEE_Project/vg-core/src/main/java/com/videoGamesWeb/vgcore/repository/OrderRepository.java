@@ -11,4 +11,7 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
 
     @Query("SELECT o FROM Order o WHERE o.user.id=:userId")
     List<Order> findAllByUserId(long userId);
+
+    @Query("DELETE FROM Order o WHERE o.user.id=:userId")
+    void deleteAllByUserId(long userId);
 }
