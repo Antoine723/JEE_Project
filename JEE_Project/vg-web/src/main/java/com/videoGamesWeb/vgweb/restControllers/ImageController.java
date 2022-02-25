@@ -1,4 +1,4 @@
-package com.videoGamesWeb.vgweb.controllers;
+package com.videoGamesWeb.vgweb.restControllers;
 
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.MediaType;

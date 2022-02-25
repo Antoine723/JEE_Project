@@ -1,4 +1,4 @@
-package com.videoGamesWeb.vgweb.controllers;
+package com.videoGamesWeb.vgweb.viewControllers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -23,7 +23,7 @@ import static com.videoGamesWeb.vgweb.VgWebApplication.*;
 
 @Controller
 @RequestMapping("/basket")
-public class BasketViewController extends GenericController{
+public class BasketViewController extends GenericViewController {
 
     private final static Logger logger = LoggerFactory.getLogger(BasketViewController.class);
 

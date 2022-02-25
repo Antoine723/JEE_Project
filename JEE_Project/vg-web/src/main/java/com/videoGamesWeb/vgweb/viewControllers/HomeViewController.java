@@ -1,4 +1,4 @@
-package com.videoGamesWeb.vgweb.controllers;
+package com.videoGamesWeb.vgweb.viewControllers;
 
 import com.videoGamesWeb.vgcore.service.ConsoleService;
 import com.videoGamesWeb.vgcore.service.ProductService;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/")
-public class HomeViewController extends GenericController {
+public class HomeViewController extends GenericViewController {
 
     private static final Logger logger = LoggerFactory.getLogger(HomeViewController.class);
 

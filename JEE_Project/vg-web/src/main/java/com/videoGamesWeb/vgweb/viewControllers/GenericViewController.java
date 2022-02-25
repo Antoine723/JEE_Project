@@ -1,9 +1,9 @@
-package com.videoGamesWeb.vgweb.controllers;
+package com.videoGamesWeb.vgweb.viewControllers;
 
 
 import org.springframework.beans.factory.annotation.Value;
 
-public class GenericController {
+public class GenericViewController {
 
     @Value("${prefix}")
     protected String prefix;

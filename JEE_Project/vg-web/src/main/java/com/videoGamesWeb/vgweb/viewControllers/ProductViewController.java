@@ -1,4 +1,4 @@
-package com.videoGamesWeb.vgweb.controllers;
+package com.videoGamesWeb.vgweb.viewControllers;
 
 import com.videoGamesWeb.vgcore.entity.Comment;
 import com.videoGamesWeb.vgcore.entity.Product;
@@ -22,7 +22,7 @@ import static com.videoGamesWeb.vgweb.VgWebApplication.SESSION_USER_ID;
 
 @Controller
 @RequestMapping(value = "/product")
-public class ProductViewController extends GenericController{
+public class ProductViewController extends GenericViewController {
 
     private final static Logger logger = LoggerFactory.getLogger(ProductViewController.class);
 

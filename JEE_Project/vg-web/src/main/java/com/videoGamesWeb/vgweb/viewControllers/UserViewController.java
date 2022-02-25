@@ -1,4 +1,4 @@
-package com.videoGamesWeb.vgweb.controllers;
+package com.videoGamesWeb.vgweb.viewControllers;
 
 import com.videoGamesWeb.vgcore.entity.User;
 import com.videoGamesWeb.vgcore.service.OrderService;
@@ -20,7 +20,7 @@ import static com.videoGamesWeb.vgweb.VgWebApplication.SESSION_USER_ID;
 
 @Controller
 @RequestMapping("/user")
-public class UserViewController extends GenericController{
+public class UserViewController extends GenericViewController {
 
     private final static Logger logger = LoggerFactory.getLogger(UserViewController.class);
 

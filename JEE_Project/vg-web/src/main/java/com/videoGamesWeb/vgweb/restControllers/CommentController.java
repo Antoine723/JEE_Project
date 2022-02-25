@@ -1,4 +1,4 @@
-package com.videoGamesWeb.vgweb.controllers;
+package com.videoGamesWeb.vgweb.restControllers;
 
 import com.videoGamesWeb.vgcore.dto.CommentDTO;
 import com.videoGamesWeb.vgcore.entity.Comment;

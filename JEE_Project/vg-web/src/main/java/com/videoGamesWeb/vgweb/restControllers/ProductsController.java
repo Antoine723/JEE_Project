@@ -1,4 +1,4 @@
-package com.videoGamesWeb.vgweb.controllers;
+package com.videoGamesWeb.vgweb.restControllers;
 
 
 import com.fasterxml.jackson.core.JsonProcessingException;
