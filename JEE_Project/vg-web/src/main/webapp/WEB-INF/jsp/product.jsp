@@ -50,11 +50,26 @@
                     </p>
                     <p><input type="submit" class="btn big" value="Ajouter au panier"></p>
                 </form>
+                <div class="success_message" <c:if test="${empty addedToBasket}">style="display:none;"</c:if>>
+                    ${addedToBasket}
+                </div>
             </div>
         </div>
         <br>
         <hr>
         <h1 class="center">Commentaires</h1>
+
+        <div class="success_message"
+             <c:choose>
+                 <c:when test="${empty reviewAdded}">
+                     style="display:none;">
+                 </c:when>
+                 <c:otherwise>
+                     style="display: flex; justify-content: center;">
+                 </c:otherwise>
+             </c:choose>
+            ${reviewAdded}
+        </div>
         <div id="comments">
             <div>
                 <h3 class="center"><label for="comment">Votre commentaire</label></h3>

@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.util.*;
@@ -101,7 +102,8 @@ public class BasketViewController extends GenericController{
                                     @PathVariable long consoleId,
                                     @RequestParam int quantity,
                                     @RequestParam String redirect,
-                                    HttpSession session) throws JsonProcessingException {
+                                    HttpSession session,
+                                    RedirectAttributes redirectAttributes) throws JsonProcessingException {
         if (!UserViewController.userInSession(session)) return "redirect:/user/profile";
 
         Optional<Product> productOpt = this.productService.findById(productId);
@@ -113,6 +115,7 @@ public class BasketViewController extends GenericController{
         basket.updateProductQty(productId, consoleId, quantity, productOpt.get().getQuantity());
 
         session.setAttribute(SESSION_BASKET, objectMapper.valueToTree(basket));
+        redirectAttributes.addAttribute("productAdded",true);
 
         logger.info("Well updated basket");
         return "redirect:"+redirect;

@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
@@ -43,7 +44,9 @@ public class ProductViewController extends GenericController{
     }
 
     @GetMapping({"/{id}", "/{id}/{consoleGameName}"})
-    public String getProduct(@PathVariable long id, @PathVariable(required = false) String consoleGameName, Model model){
+    public String getProduct(@PathVariable long id, @PathVariable(required = false) String consoleGameName, Model model,
+                             @ModelAttribute("productAdded") String productAdded,
+                             @ModelAttribute("reviewAdded") String reviewAdded){
         Optional<Product> productOpt = this.productService.findById(id);
         if (productOpt.isEmpty()) return "redirect:/";
 
@@ -51,6 +54,12 @@ public class ProductViewController extends GenericController{
         if (consoleGameName != null) {
             model.addAttribute("consoleGameName", consoleGameName);
             consoleId = this.consoleService.findIdByName(consoleGameName);
+        }
+
+        if (!productAdded.isEmpty()){
+            model.addAttribute("addedToBasket", "Ajouté au panier avec succès");
+        } else if(!reviewAdded.isEmpty()){
+            model.addAttribute("reviewAdded", "Avis envoyé avec succès");
         }
 
         model.addAttribute("product", productOpt.get());
@@ -64,7 +73,8 @@ public class ProductViewController extends GenericController{
                                      @RequestParam String consoleUrl,
                                      @RequestParam int rating,
                                      @RequestParam String newComment,
-                                     HttpSession session) {
+                                     HttpSession session,
+                                     RedirectAttributes redirectAttributes) {
         long userId;
         try {
             userId = (long) session.getAttribute(SESSION_USER_ID);
@@ -89,6 +99,7 @@ public class ProductViewController extends GenericController{
         comment.setContent(newComment.replaceAll("\n", "<br>"));
 
         this.commentService.addComment(comment);
+        redirectAttributes.addAttribute("reviewAdded", true);
         return "redirect:/product/"+productId+"/"+consoleUrl;
     }
 }

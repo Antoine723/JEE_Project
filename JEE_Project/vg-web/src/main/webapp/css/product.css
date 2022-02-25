@@ -78,3 +78,8 @@ section img {
 #commentList .rated .colored {
     color: peru;
 }
+
+.success_message {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+}
