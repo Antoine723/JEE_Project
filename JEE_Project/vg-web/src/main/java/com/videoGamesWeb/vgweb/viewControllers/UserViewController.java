@@ -207,8 +207,8 @@ public class UserViewController extends GenericViewController {
             user.setName(name);
             update = true;
         }
-        if (!password.isEmpty() && !this.bCryptPasswordEncoder.matches(password, user.getPassword())) {
-            user.setPassword(this.bCryptPasswordEncoder.encode(password));
+        if (!password.isEmpty() && !B_CRYPT_PASSWORD_ENCODER.matches(password, user.getPassword())) {
+            user.setPassword(B_CRYPT_PASSWORD_ENCODER.encode(password));
             update = true;
         }
         if (!Objects.equals(user.getMail(), mail)) {
