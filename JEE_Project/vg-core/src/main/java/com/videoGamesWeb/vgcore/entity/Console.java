@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Entity
@@ -17,12 +18,12 @@ import java.util.stream.Collectors;
 @Table(name="console")
 public class Console extends Product {
 
+    @Column(name = "img")
+    private String img;
+
     @JsonIgnore
-    @ManyToMany
-    @JoinTable(name="games_on_consoles",
-            joinColumns = @JoinColumn(name = "console_id"),
-            inverseJoinColumns = @JoinColumn(name="game_id"))
-    private List<Game> games;
+    @OneToMany(mappedBy = "console")
+    private Set<GameConsole> games;
 
     public Console(long id){
         this.id = id;

@@ -1,13 +1,13 @@
 package com.videoGamesWeb.vgcore.entity;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Entity
@@ -22,15 +22,31 @@ public class Game extends Product {
     @Column(name="online_players_number")
     private int onlinePlayersNumber;
 
-    @ManyToMany
-    @JoinTable(name="games_on_consoles",
-            joinColumns = @JoinColumn(name = "game_id"),
-            inverseJoinColumns = @JoinColumn(name="console_id"))
-    private List<Console> consoles;
+    @JsonIgnore
+    @OneToMany(mappedBy = "game")
+    private Set<GameConsole> gameConsoles;
+
+    @JsonGetter("gamePrice")
+    public Map<String, Float> gamePrice(){
+        Map<String, Float> map = new HashMap();
+        this.gameConsoles.forEach(gc -> {
+            map.put(gc.getConsole().getName(), gc.getPrice());
+        });
+        return map;
+    }
+
+    @JsonGetter("gameImg")
+    public Map<String, String> gameImg(){
+        Map<String, String> map = new HashMap();
+        this.gameConsoles.forEach(gc -> {
+            map.put(gc.getConsole().getName(), gc.getImg());
+        });
+        return map;
+    }
 
     @JsonGetter("consoles")
     public List<String> jsonConsoles() {
-        return consoles.stream().map(Console::getName).sorted().collect(Collectors.toList());
+        return gameConsoles.stream().map(gameConsole -> gameConsole.getConsole().getName()).sorted().collect(Collectors.toList());
     }
 
     public Game(long id){

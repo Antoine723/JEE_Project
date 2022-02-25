@@ -4,6 +4,7 @@ package com.videoGamesWeb.vgweb.restControllers;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.videoGamesWeb.vgcore.dto.SearchDTO;
+import com.videoGamesWeb.vgcore.entity.Game;
 import com.videoGamesWeb.vgcore.entity.Product;
 import com.videoGamesWeb.vgcore.service.ProductService;
 import org.slf4j.Logger;
@@ -46,8 +47,8 @@ public class ProductsController {
                     searchDTO.getMin_score(),
                     searchDTO.getConsoles());
         }
-
         boolean sort_asc = Boolean.parseBoolean(searchDTO.getSort_asc());
+
         Comparator<Product> comparator = null;
         switch(searchDTO.getSort_by()) {
             case "name":

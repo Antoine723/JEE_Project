@@ -32,9 +32,6 @@ public abstract class Product {
     @Column(name = "rating")
     private Float rating;
 
-    @Column(name = "img")
-    private String img;
-
     @Column(name = "release_date")
     private Date releaseDate;
 

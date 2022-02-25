@@ -15,7 +15,6 @@ $(() => {
 
         const sort_by = $("input[name='sort_by']:checked").val();
         const order_by = $("input[name='order_by']").is(":checked");
-
         const selected = [];
         $("input[name='console_choice']:checked").each(function() { selected.push($(this).val()); });
 
@@ -49,10 +48,14 @@ $(() => {
                     html = result.reduce((total, item) => total +=
                             '<article id="'+item["id"]+'">'+
                                 (item.hasOwnProperty("consoles") ? '<div class="carrousel"></div>'
-                                : '<a href="/product/'+item["id"]+'"><img src="/image/'+item["img"]+'" alt="product_img"/></a>')+
+                                : '<a href="/product/'+item["id"]+'"><img src="/image/'+
+                                    (item.hasOwnProperty("gameImg") ? item["gameImg"][Object.keys(item["gameImg"])[0]]
+                                        : item["img"]) + '"' +
+                                    'alt="product_img"/></a>')+
                                 '<h3>'+item["name"]+'</h3>'+
                                 '<p>Note utilisateurs : '+(item["rating"] === null ? 'N/A' : item["rating"]+'/5')+'</p>'+
-                                '<p>Prix : '+item["price"]+' €</p>'+
+                                '<p class="price">Prix : '+ (item.hasOwnProperty("gamePrice") ? item["gamePrice"][Object.keys(item["gamePrice"])[0]]
+                                : item["price"]) + '€ </p>'+
                             '</article>',
                         "");
                 }
@@ -81,6 +84,8 @@ $(() => {
 
                     for(let i = 0; i < consoles.length; ++i) {
                         $(`.carrousel #carousel-btn${item["id"]}_${i}`).on("click", () => {
+                            $("article[id='"+ item["id"]+"']").
+                            find("p[class='price']").text("Prix : " + item["gamePrice"][Object.keys(item["gamePrice"])[i]] + "€");
                             $(`article#${item["id"]} .image-holder`).css({"left": -200*i+"px"});
                         });
                     }

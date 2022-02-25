@@ -1,6 +1,7 @@
 package com.videoGamesWeb.vgweb.viewControllers;
 
 import com.videoGamesWeb.vgcore.service.ConsoleService;
+import com.videoGamesWeb.vgcore.service.GameService;
 import com.videoGamesWeb.vgcore.service.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,14 +21,17 @@ public class HomeViewController extends GenericViewController {
 
     private final ProductService productService;
     private final ConsoleService consoleService;
+    private final GameService gameService;
 
-    public HomeViewController(ProductService productService, ConsoleService consoleService) {
+    public HomeViewController(ProductService productService, ConsoleService consoleService, GameService gameService) {
         this.productService = productService;
         this.consoleService = consoleService;
+        this.gameService = gameService;
     }
 
     @GetMapping("")
     public String getPage(Model model){
+        logger.info("Cons : {}", this.gameService.findAll().get(0).getGameConsoles());
         model.addAttribute("price_min", productService.getPriceMin());
         model.addAttribute("price_max", productService.getPriceMax());
         model.addAttribute("console_names", consoleService.getNames());
