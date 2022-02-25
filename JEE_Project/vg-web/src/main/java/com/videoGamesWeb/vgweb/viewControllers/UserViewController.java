@@ -6,7 +6,6 @@ import com.videoGamesWeb.vgcore.service.OrderService;
 import com.videoGamesWeb.vgcore.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,8 +14,7 @@ import javax.servlet.http.HttpSession;
 import java.security.SecureRandom;
 import java.util.*;
 
-import static com.videoGamesWeb.vgweb.VgWebApplication.ERROR_MSG;
-import static com.videoGamesWeb.vgweb.VgWebApplication.SESSION_USER_ID;
+import static com.videoGamesWeb.vgweb.VgWebApplication.*;
 
 @Controller
 @RequestMapping("/user")
@@ -31,8 +29,6 @@ public class UserViewController extends GenericViewController {
 
     private final UserService userService;
     private final OrderService orderService;
-
-    BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(10, new SecureRandom());
 
     public static boolean userInSession(HttpSession session) {
         return session.getAttribute(SESSION_USER_ID) instanceof Long;
@@ -81,7 +77,7 @@ public class UserViewController extends GenericViewController {
         logger.info("{} - start creating instance", logger_anchor);
         User user = new User();
         user.setName(name);
-        user.setPassword(this.bCryptPasswordEncoder.encode(password));
+        user.setPassword(B_CRYPT_PASSWORD_ENCODER.encode(password));
         user.setMail(mail != null ? mail : "");
         user.setAddress(address != null ? address : "");
         this.userService.save(user);
@@ -112,13 +108,13 @@ public class UserViewController extends GenericViewController {
             model.addAttribute(ERROR_MSG, "Champ(s) vide(s)");
             return CONNECT_PAGE;
         }
-        User user = this.userService.getByName(name);
-        if (user == null || !this.bCryptPasswordEncoder.matches(password, user.getPassword())) {
+        Optional<User> userOpt = this.userService.findByName(name);
+        if (userOpt.isEmpty() || !B_CRYPT_PASSWORD_ENCODER.matches(password, userOpt.get().getPassword())) {
             model.addAttribute(ERROR_MSG, "Informations invalides");
             return CONNECT_PAGE;
         }
 
-        session.setAttribute(SESSION_USER_ID, user.getId());
+        session.setAttribute(SESSION_USER_ID, userOpt.get().getId());
 
         return "redirect:/user/profile";
     }
