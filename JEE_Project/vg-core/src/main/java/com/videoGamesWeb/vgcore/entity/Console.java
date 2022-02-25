@@ -18,9 +18,6 @@ import java.util.stream.Collectors;
 @Table(name="console")
 public class Console extends Product {
 
-    @Column(name = "img")
-    private String img;
-
     @JsonIgnore
     @OneToMany(mappedBy = "console")
     private Set<GameConsole> games;

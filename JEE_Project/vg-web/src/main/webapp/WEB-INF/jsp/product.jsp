@@ -23,7 +23,14 @@
         <input type="hidden" id="productQuantity" value="${product.quantity}">
         <h1 class="center">Fiche produit</h1>
         <div class="card">
-            <img src="/image/${product.img}<c:if test="${not empty consoleGameName}">_${consoleGameName}</c:if>" alt="product_img"/>
+            <c:choose>
+                <c:when test="${empty consoleGameName}">
+                    <img src="/image/${product.img}" alt="product_img"/>
+                </c:when>
+                <c:otherwise>
+                    <img src="/image/${gameConsole.img}" alt="product_img"/>
+                </c:otherwise>
+            </c:choose>
             <div>
                 <p><span class="bold">Nom :</span> ${product.name}</p>
                 <p><span class="bold">Date de sortie :</span> ${dateFormat.format(product.releaseDate)}</p>
@@ -39,7 +46,9 @@
                     </c:choose>
                 </p>
                 <p><span class="bold">Nombre de commentaires :</span> ${product.comments.size()}</p>
-                <p><span class="bold">Prix :</span> ${product.price} €</p>
+                <p><span class="bold">Prix :</span>
+                    ${empty consoleGameName ? product.price : gameConsole.price} €
+                </p>
                 <form method="POST" action="/basket/update/${product.id}/${consoleId}">
                     <input type="hidden" name="redirect" value="/product/${product.id}/${consoleGameName}">
                     <p>

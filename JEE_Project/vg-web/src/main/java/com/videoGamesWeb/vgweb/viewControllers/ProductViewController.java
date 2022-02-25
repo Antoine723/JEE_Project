@@ -1,8 +1,6 @@
 package com.videoGamesWeb.vgweb.viewControllers;
 
-import com.videoGamesWeb.vgcore.entity.Comment;
-import com.videoGamesWeb.vgcore.entity.Product;
-import com.videoGamesWeb.vgcore.entity.User;
+import com.videoGamesWeb.vgcore.entity.*;
 import com.videoGamesWeb.vgcore.service.CommentService;
 import com.videoGamesWeb.vgcore.service.ConsoleService;
 import com.videoGamesWeb.vgcore.service.ProductService;
@@ -16,7 +14,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import static com.videoGamesWeb.vgweb.VgWebApplication.SESSION_USER_ID;
 
@@ -50,10 +50,16 @@ public class ProductViewController extends GenericViewController {
         Optional<Product> productOpt = this.productService.findById(id);
         if (productOpt.isEmpty()) return "redirect:/";
 
-        long consoleId = productOpt.get().getId();
+        Product product = productOpt.get();
+
+        long consoleId = product.getId();
         if (consoleGameName != null) {
             model.addAttribute("consoleGameName", consoleGameName);
             consoleId = this.consoleService.findIdByName(consoleGameName);
+            final long finalConsoleId = consoleId;
+            List<GameConsole> gameConsoles = ((Game)product).getGameConsoles().stream()
+                    .filter(gc -> gc.getConsole().getId() == finalConsoleId).collect(Collectors.toList());
+            model.addAttribute("gameConsole", gameConsoles.get(0));
         }
 
         if (!productAdded.isEmpty()){
@@ -62,7 +68,7 @@ public class ProductViewController extends GenericViewController {
             model.addAttribute("reviewAdded", "Avis envoyé avec succès");
         }
 
-        model.addAttribute("product", productOpt.get());
+        model.addAttribute("product", product);
         model.addAttribute("consoleId", consoleId);
         model.addAttribute("dateFormat", new SimpleDateFormat("dd MMM yyyy"));
         return PRODUCT_PAGE;

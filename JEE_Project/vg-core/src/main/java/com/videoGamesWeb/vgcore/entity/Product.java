@@ -20,6 +20,9 @@ public abstract class Product {
     @Column(name = "id", nullable = false)
     public long id;
 
+    @Column(name = "img")
+    private String img;
+
     @Column(name = "name")
     private String name;
 
