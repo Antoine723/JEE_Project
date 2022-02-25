@@ -39,9 +39,31 @@
                                     <c:otherwise>-</c:otherwise>
                                 </c:choose>
                             </td>
-                            <td>${mapValue.key.price}€</td>
+                            <c:choose>
+                                <c:when test="${empty mapValue.key.gameConsoles}">
+                                    <td>${mapValue.key.price}€</td>
+                                </c:when>
+                                <c:otherwise>
+                                    <c:forEach items="${mapValue.key.gameConsoles}" var="gc">
+                                        <c:if test="${gc.console.id == subMapValue.key.id}">
+                                            <td>${gc.price}€</td>
+                                        </c:if>
+                                    </c:forEach>
+                                </c:otherwise>
+                            </c:choose>
                             <td>${subMapValue.value}</td>
-                            <td>${mapValue.key.price*subMapValue.value}€</td>
+                            <c:choose>
+                                <c:when test="${empty mapValue.key.gameConsoles}">
+                                    <td>${mapValue.key.price}€</td>
+                                </c:when>
+                                <c:otherwise>
+                                    <c:forEach items="${mapValue.key.gameConsoles}" var="gc">
+                                        <c:if test="${gc.console.id == subMapValue.key.id}">
+                                            <td>${gc.price}€</td>
+                                        </c:if>
+                                    </c:forEach>
+                                </c:otherwise>
+                            </c:choose>
                             <td>
                                 <form method="POST" action="/basket/update/${mapValue.key.id}/${subMapValue.key.id}">
                                     <input type="hidden" name="redirect" value="/basket">

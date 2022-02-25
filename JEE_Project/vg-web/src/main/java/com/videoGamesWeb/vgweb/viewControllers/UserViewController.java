@@ -1,5 +1,6 @@
 package com.videoGamesWeb.vgweb.viewControllers;
 
+import com.videoGamesWeb.vgcore.entity.Order;
 import com.videoGamesWeb.vgcore.entity.User;
 import com.videoGamesWeb.vgcore.service.OrderService;
 import com.videoGamesWeb.vgcore.service.UserService;
@@ -10,8 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.util.Objects;
-import java.util.Optional;
+import java.security.SecureRandom;
+import java.util.*;
 
 import static com.videoGamesWeb.vgweb.VgWebApplication.*;
 
@@ -144,7 +145,10 @@ public class UserViewController extends GenericViewController {
         }
 
         model.addAttribute("user", userOpt.get());
-        model.addAttribute("orders", orderService.findAllByUserId(userOpt.get().getId()));
+        List<Order> orders = orderService.findAllByUserId(userOpt.get().getId());
+        Map<Order, Float> ordersAndPrice = this.orderService.computeTotalAmountOfOrders(orders);
+
+        model.addAttribute("orders", ordersAndPrice);
         return PROFILE_PAGE;
     }
 
@@ -203,8 +207,8 @@ public class UserViewController extends GenericViewController {
             user.setName(name);
             update = true;
         }
-        if (!password.isEmpty() && !B_CRYPT_PASSWORD_ENCODER.matches(password, user.getPassword())) {
-            user.setPassword(B_CRYPT_PASSWORD_ENCODER.encode(password));
+        if (!password.isEmpty() && !this.bCryptPasswordEncoder.matches(password, user.getPassword())) {
+            user.setPassword(this.bCryptPasswordEncoder.encode(password));
             update = true;
         }
         if (!Objects.equals(user.getMail(), mail)) {
