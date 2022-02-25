@@ -27,8 +27,8 @@ public class UserService {
         this.userRepository.save(user);
     }
 
-    public User getByName(String name) {
-        return this.userRepository.getByName(name);
+    public Optional<User> findByName(String name) {
+        return this.userRepository.findByName(name);
     }
 
     public Optional<User> findById(long userId) {
