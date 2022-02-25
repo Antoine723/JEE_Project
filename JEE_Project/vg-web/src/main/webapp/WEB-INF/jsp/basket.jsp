@@ -54,12 +54,12 @@
                             <td>${subMapValue.value}</td>
                             <c:choose>
                                 <c:when test="${mapValue.key['class'].simpleName == 'Console'}">
-                                    <td>${mapValue.key.price}€</td>
+                                    <td>${mapValue.key.price * subMapValue.value}€</td>
                                 </c:when>
                                 <c:otherwise>
                                     <c:forEach items="${mapValue.key.gameConsoles}" var="gc">
                                         <c:if test="${gc.console.id == subMapValue.key.id}">
-                                            <td>${gc.price}€</td>
+                                            <td>${gc.price * subMapValue.value}€</td>
                                         </c:if>
                                     </c:forEach>
                                 </c:otherwise>
