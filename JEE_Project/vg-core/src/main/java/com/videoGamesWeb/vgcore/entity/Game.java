@@ -24,7 +24,7 @@ public class Game extends Product {
 
     @JsonIgnore
     @OneToMany(mappedBy = "game")
-    private Set<GameConsole> gameConsoles;
+    private List<GameConsole> gameConsoles;
 
     @JsonGetter("gamePrice")
     public Map<String, Float> gamePrice(){

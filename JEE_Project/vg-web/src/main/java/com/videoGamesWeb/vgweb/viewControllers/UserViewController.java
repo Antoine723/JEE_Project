@@ -1,5 +1,6 @@
 package com.videoGamesWeb.vgweb.viewControllers;
 
+import com.videoGamesWeb.vgcore.entity.Order;
 import com.videoGamesWeb.vgcore.entity.User;
 import com.videoGamesWeb.vgcore.service.OrderService;
 import com.videoGamesWeb.vgcore.service.UserService;
@@ -12,8 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.security.SecureRandom;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
 import static com.videoGamesWeb.vgweb.VgWebApplication.ERROR_MSG;
 import static com.videoGamesWeb.vgweb.VgWebApplication.SESSION_USER_ID;
@@ -149,7 +149,10 @@ public class UserViewController extends GenericViewController {
         }
 
         model.addAttribute("user", userOpt.get());
-        model.addAttribute("orders", orderService.findAllByUserId(userOpt.get().getId()));
+        List<Order> orders = orderService.findAllByUserId(userOpt.get().getId());
+        Map<Order, Float> ordersAndPrice = this.orderService.computeTotalAmountOfOrders(orders);
+
+        model.addAttribute("orders", ordersAndPrice);
         return PROFILE_PAGE;
     }
 

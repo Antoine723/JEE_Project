@@ -46,11 +46,11 @@
                     <c:otherwise>
                         <c:forEach items="${orders}" var="order">
                             <article>
-                                <h3>${order.orderNumber}</h3>
-                                <p>Adresse de livraison : ${order.address}</p>
-                                <p>${order.products.size()} article(s)</p>
-                                <p>Total : - €</p>
-                                <a href="order/${order.id}"><button class="big">Voir tout</button></a>
+                                <h3>${order.key.orderNumber}</h3>
+                                <p>Adresse de livraison : ${order.key.address}</p>
+                                <p>${order.key.products.size()} article(s)</p>
+                                <p>Total : ${order.value} €</p>
+                                <a href="order/${order.key.id}"><button class="big">Voir tout</button></a>
                                 <!-- btn ou tableau récap -->
                             </article>
                         </c:forEach>
