@@ -88,7 +88,10 @@
 </html>
 
 <script>
-    computeTotalAmount();
+    $('document').ready(function(){
+        computeTotalAmount();
+
+    })
     function computeTotalAmount(){
         price = 0;
         $(".price").each(function(){
