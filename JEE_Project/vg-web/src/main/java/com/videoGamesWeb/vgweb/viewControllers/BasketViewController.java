@@ -86,7 +86,13 @@ public class BasketViewController extends GenericViewController {
 
                 int qty = subEntry.getValue();
                 Console console = consoleOpt.get();
-                total += product.getPrice() * qty;
+                List<GameConsole> gc = ((Game) product).getGameConsoles();
+                for (int i =0; i<gc.size() ; i++){
+                    if (gc.get(i).getConsole().equals(console)){
+                        total += gc.get(i).getPrice() * qty;
+                    }
+                }
+                //total += product.getPrice() * qty;
                 qtyByConsoleByProduct.get(product).put(console, qty);
             }
         }

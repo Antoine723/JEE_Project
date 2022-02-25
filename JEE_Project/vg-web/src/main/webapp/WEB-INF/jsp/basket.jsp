@@ -41,12 +41,12 @@
                             </td>
                             <c:choose>
                                 <c:when test="${empty mapValue.key.gameConsoles}">
-                                    <td class="price">${mapValue.key.price}€</td>
+                                    <td>${mapValue.key.price}€</td>
                                 </c:when>
                                 <c:otherwise>
                                     <c:forEach items="${mapValue.key.gameConsoles}" var="gc">
                                         <c:if test="${gc.console.id == subMapValue.key.id}">
-                                            <td class="price">${gc.price}€</td>
+                                            <td>${gc.price}€</td>
                                         </c:if>
                                     </c:forEach>
                                 </c:otherwise>
@@ -54,12 +54,12 @@
                             <td>${subMapValue.value}</td>
                             <c:choose>
                                 <c:when test="${empty mapValue.key.gameConsoles}">
-                                    <td class="price">${mapValue.key.price}€</td>
+                                    <td>${mapValue.key.price}€</td>
                                 </c:when>
                                 <c:otherwise>
                                     <c:forEach items="${mapValue.key.gameConsoles}" var="gc">
                                         <c:if test="${gc.console.id == subMapValue.key.id}">
-                                            <td class="price">${gc.price}€</td>
+                                            <t>${gc.price}€</t>
                                         </c:if>
                                     </c:forEach>
                                 </c:otherwise>
@@ -79,24 +79,10 @@
                     </c:forEach>
                 </table>
                 <br>
-                <p><span class="bold">Total :</span> <span id="totalAmount">${totalAmount}</span> €</p>
+                <p><span class="bold">Total :</span>${totalAmount}€</p>
                 <a href="/basket/payment"><button class="big">Acheter</button></a>
             </c:otherwise>
         </c:choose>
     </section>
 </body>
 </html>
-
-<script>
-    $('document').ready(function(){
-        computeTotalAmount();
-
-    })
-    function computeTotalAmount(){
-        price = 0;
-        $(".price").each(function(){
-            price += parseFloat($(this).val().split("€")[0]);
-        })
-        $("#totalAmount").val(price);
-    }
-</script>
