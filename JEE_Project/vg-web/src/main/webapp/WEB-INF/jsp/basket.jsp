@@ -59,7 +59,7 @@
                                 <c:otherwise>
                                     <c:forEach items="${mapValue.key.gameConsoles}" var="gc">
                                         <c:if test="${gc.console.id == subMapValue.key.id}">
-                                            <t>${gc.price}€</t>
+                                            <td>${gc.price}€</td>
                                         </c:if>
                                     </c:forEach>
                                 </c:otherwise>
