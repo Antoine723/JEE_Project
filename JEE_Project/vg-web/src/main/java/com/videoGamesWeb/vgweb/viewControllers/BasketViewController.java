@@ -194,6 +194,6 @@ public class BasketViewController extends GenericViewController {
 
         session.setAttribute(SESSION_BASKET, null);
 
-        return "redirect:/user/profile"; //see order list
+        return "redirect:/user/profile";
     }
 }

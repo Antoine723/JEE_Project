@@ -1,7 +1,6 @@
 package com.videoGamesWeb.vgweb.viewControllers;
 
 import com.videoGamesWeb.vgcore.service.ConsoleService;
-import com.videoGamesWeb.vgcore.service.GameService;
 import com.videoGamesWeb.vgcore.service.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,12 +20,10 @@ public class HomeViewController extends GenericViewController {
 
     private final ProductService productService;
     private final ConsoleService consoleService;
-    private final GameService gameService;
 
-    public HomeViewController(ProductService productService, ConsoleService consoleService, GameService gameService) {
+    public HomeViewController(ProductService productService, ConsoleService consoleService) {
         this.productService = productService;
         this.consoleService = consoleService;
-        this.gameService = gameService;
     }
 
     @GetMapping("")

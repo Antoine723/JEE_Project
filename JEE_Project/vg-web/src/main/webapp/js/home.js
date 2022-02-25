@@ -50,8 +50,8 @@ $(() => {
                                 (item.hasOwnProperty("consoles") ? '<div class="carrousel"></div>'
                                 : '<a href="/product/'+item["id"]+'"><img src="/image/'+
                                     (item.hasOwnProperty("gameImg") ? item["gameImg"][Object.keys(item["gameImg"])[0]]
-                                        : item["img"]) + '"' +
-                                    'alt="product_img"/></a>')+
+                                        : item["img"]) +
+                                    '" alt="product_img"/></a>')+
                                 '<h3>'+item["name"]+'</h3>'+
                                 '<p>Note utilisateurs : '+(item["rating"] === null ? 'N/A' : item["rating"]+'/5')+'</p>'+
                                 '<p class="price">Prix : '+ (item.hasOwnProperty("gamePrice") ? item["gamePrice"][Object.keys(item["gamePrice"])[0]]

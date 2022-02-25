@@ -28,25 +28,17 @@ public class Game extends Product {
 
     @JsonGetter("gamePrice")
     public Map<String, Float> gamePrice(){
-        Map<String, Float> map = new HashMap();
-        this.gameConsoles.forEach(gc -> {
-            map.put(gc.getConsole().getName(), gc.getPrice());
-        });
-        return map;
+        return this.gameConsoles.stream().collect(Collectors.toMap(gc -> gc.getConsole().getName(), GameConsole::getPrice));
     }
 
     @JsonGetter("gameImg")
     public Map<String, String> gameImg(){
-        Map<String, String> map = new HashMap();
-        this.gameConsoles.forEach(gc -> {
-            map.put(gc.getConsole().getName(), gc.getImg());
-        });
-        return map;
+        return this.gameConsoles.stream().collect(Collectors.toMap(gc -> gc.getConsole().getName(), GameConsole::getImg));
     }
 
     @JsonGetter("consoles")
     public List<String> jsonConsoles() {
-        return gameConsoles.stream().map(gameConsole -> gameConsole.getConsole().getName()).sorted().collect(Collectors.toList());
+        return this.gameConsoles.stream().map(gameConsole -> gameConsole.getConsole().getName()).sorted().collect(Collectors.toList());
     }
 
     public Game(long id){

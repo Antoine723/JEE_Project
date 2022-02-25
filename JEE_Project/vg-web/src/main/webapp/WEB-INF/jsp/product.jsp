@@ -23,14 +23,7 @@
         <input type="hidden" id="productQuantity" value="${product.quantity}">
         <h1 class="center">Fiche produit</h1>
         <div class="card">
-            <c:choose>
-                <c:when test="${empty consoleGameName}">
-                    <img src="/image/${product.img}" alt="product_img"/>
-                </c:when>
-                <c:otherwise>
-                    <img src="/image/${gameConsole.img}" alt="product_img"/>
-                </c:otherwise>
-            </c:choose>
+            <img src="/image/${empty consoleGameName ? product.img : gameConsole.img}" alt="product_img"/>
             <div>
                 <p><span class="bold">Nom :</span> ${product.name}</p>
                 <p><span class="bold">Date de sortie :</span> ${dateFormat.format(product.releaseDate)}</p>
@@ -68,15 +61,7 @@
         <hr>
         <h1 class="center">Commentaires</h1>
 
-        <div class="success_message"
-             <c:choose>
-                 <c:when test="${empty reviewAdded}">
-                     style="display:none;">
-                 </c:when>
-                 <c:otherwise>
-                     style="display: flex; justify-content: center;">
-                 </c:otherwise>
-             </c:choose>
+        <div class="success_message" style="${empty reviewAdded ? 'display:none;' : 'display: flex; justify-content: center;'}">
             ${reviewAdded}
         </div>
         <div id="comments">

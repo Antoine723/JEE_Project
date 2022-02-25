@@ -43,7 +43,7 @@ public abstract class Product {
     private List<Comment> comments;
 
     @JsonIgnore
-    @ManyToMany //TODO à lier avec panier plutôt ?
+    @ManyToMany
     @JoinTable(name="orders_products",
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name="order_id"))

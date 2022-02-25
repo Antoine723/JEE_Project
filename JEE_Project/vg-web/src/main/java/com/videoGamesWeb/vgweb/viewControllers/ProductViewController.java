@@ -63,9 +63,9 @@ public class ProductViewController extends GenericViewController {
         }
 
         if (!productAdded.isEmpty()){
-            model.addAttribute("addedToBasket", "Ajouté au panier avec succès");
+            model.addAttribute("addedToBasket", "Ajouté au panier");
         } else if(!reviewAdded.isEmpty()){
-            model.addAttribute("reviewAdded", "Avis envoyé avec succès");
+            model.addAttribute("reviewAdded", "Avis posté");
         }
 
         model.addAttribute("product", product);

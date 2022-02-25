@@ -2,7 +2,6 @@ package com.videoGamesWeb.vgcore.entity;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.util.Pair;
 
 import javax.persistence.*;
 import java.util.*;
@@ -27,7 +26,7 @@ public class Order {
     @Column(name = "address")
     private String address;
 
-    @ManyToMany //TODO A bouger dans "Panier" ?
+    @ManyToMany
     @JoinTable(name="orders_products",
             joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name="product_id"))
