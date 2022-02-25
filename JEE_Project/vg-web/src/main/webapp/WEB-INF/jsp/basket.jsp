@@ -40,7 +40,7 @@
                                 </c:choose>
                             </td>
                             <c:choose>
-                                <c:when test="${empty mapValue.key.gameConsoles}">
+                                <c:when test="${mapValue.key['class'].simpleName == 'Console'}">
                                     <td>${mapValue.key.price}€</td>
                                 </c:when>
                                 <c:otherwise>
@@ -53,7 +53,7 @@
                             </c:choose>
                             <td>${subMapValue.value}</td>
                             <c:choose>
-                                <c:when test="${empty mapValue.key.gameConsoles}">
+                                <c:when test="${mapValue.key['class'].simpleName == 'Console'}">
                                     <td>${mapValue.key.price}€</td>
                                 </c:when>
                                 <c:otherwise>
