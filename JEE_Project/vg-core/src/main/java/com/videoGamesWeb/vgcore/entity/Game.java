@@ -28,18 +28,33 @@ public class Game extends Product {
 
     @JsonGetter("gamePrice")
     public Map<String, Float> gamePrice(){
-        return this.gameConsoles.stream().collect(Collectors.toMap(gc -> gc.getConsole().getName(), GameConsole::getPrice));
+        return this.gameConsoles.stream()
+                .filter(gameConsole -> gameConsole.getPrice() > Game.minPrice)
+                .filter(gameConsole -> gameConsole.getPrice() < Game.maxPrice)
+                .collect(Collectors.toMap(gc -> gc.getConsole().getName(), GameConsole::getPrice));
     }
 
     @JsonGetter("gameImg")
     public Map<String, String> gameImg(){
-        return this.gameConsoles.stream().collect(Collectors.toMap(gc -> gc.getConsole().getName(), GameConsole::getImg));
+        return this.gameConsoles.stream()
+                .filter(gameConsole -> gameConsole.getPrice() > Game.minPrice)
+                .filter(gameConsole -> gameConsole.getPrice() < Game.maxPrice)
+                .collect(Collectors.toMap(gc -> gc.getConsole().getName(), GameConsole::getImg));
     }
 
     @JsonGetter("consoles")
     public List<String> jsonConsoles() {
-        return this.gameConsoles.stream().map(gameConsole -> gameConsole.getConsole().getName()).sorted().collect(Collectors.toList());
+        return this.gameConsoles.stream()
+                .filter(gameConsole -> gameConsole.getPrice() > Game.minPrice)
+                .filter(gameConsole -> gameConsole.getPrice() < Game.maxPrice)
+                .map(gameConsole -> gameConsole.getConsole().getName()).sorted().collect(Collectors.toList());
     }
+
+    @Transient
+    public static float minPrice = 0;
+
+    @Transient
+    public static float maxPrice = Float.MAX_VALUE;
 
     public Game(long id){
         this.id = id;
