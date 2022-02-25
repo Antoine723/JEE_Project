@@ -48,7 +48,7 @@
                             <article>
                                 <h3>${order.orderNumber}</h3>
                                 <p>Adresse de livraison : ${order.address}</p>
-                                <p>${order.products.size()} article(s)</p>
+                                <p>${order.orderProducts.size()} article(s)</p>
                                 <p>Total : - €</p>
                                 <a href="order/${order.id}"><button class="big">Voir tout</button></a>
                                 <!-- btn ou tableau récap -->

@@ -6,7 +6,9 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -43,9 +45,6 @@ public abstract class Product {
     private List<Comment> comments;
 
     @JsonIgnore
-    @ManyToMany //TODO à lier avec panier plutôt ?
-    @JoinTable(name="orders_products",
-            joinColumns = @JoinColumn(name = "product_id"),
-            inverseJoinColumns = @JoinColumn(name="order_id"))
-    List<Order> orders;
+    @OneToMany(mappedBy = "product")
+    private Set<OrderProduct> orderProducts = new HashSet<>();
 }

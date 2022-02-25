@@ -5,7 +5,6 @@ drop table if exists game;
 drop table if exists game_console;
 drop table if exists hibernate_sequence;
 drop table if exists orders;
-drop table if exists orders_products;
 drop table if exists users;
 SET FOREIGN_KEY_CHECKS = 1;
 
@@ -15,7 +14,6 @@ create table game (id bigint not null auto_increment, img varchar(255), name var
 create table game_console (game_id bigint not null, console_id bigint not null, img varchar(255), price float);
 create table hibernate_sequence (next_val bigint);
 create table orders (id bigint not null auto_increment, address varchar(255), order_number binary(255), user_id bigint, primary key (id));
-create table orders_products (order_id bigint not null, product_id bigint not null);
 create table users (id bigint not null auto_increment, address varchar(255), mail varchar(255), name varchar(255), password varchar(255), primary key (id));
 
 insert into hibernate_sequence values ( 1 );
@@ -24,4 +22,3 @@ alter table comment add constraint FK8kcum44fvpupyw6f5baccx25c foreign key (user
 alter table game_console add constraint FKfkdp40taw91m0hd9nrrcy8vyr foreign key (console_id) references console (id);
 alter table game_console add constraint FKc9rccrnuycxbrjqbg5ydhoytp foreign key (game_id) references game (id);
 alter table orders add constraint FKel9kyl84ego2otj2accfd8mr7 foreign key (user_id) references users (id);
-alter table orders_products add constraint FKe4y1sseio787e4o5hrml7omt5 foreign key (order_id) references orders (id);

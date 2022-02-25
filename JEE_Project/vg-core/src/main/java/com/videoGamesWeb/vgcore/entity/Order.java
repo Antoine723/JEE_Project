@@ -1,5 +1,6 @@
 package com.videoGamesWeb.vgcore.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.util.Pair;
@@ -13,7 +14,13 @@ import java.util.*;
 public class Order {
 
     public Order(){
+    }
+
+    public Order(String address, User user){
         this.orderNumber = UUID.randomUUID();
+        this.address = address;
+        this.user = user;
+        this.orderProducts = new HashSet<>();
     }
 
     @Id
@@ -27,11 +34,8 @@ public class Order {
     @Column(name = "address")
     private String address;
 
-    @ManyToMany //TODO A bouger dans "Panier" ?
-    @JoinTable(name="orders_products",
-            joinColumns = @JoinColumn(name = "order_id"),
-            inverseJoinColumns = @JoinColumn(name="product_id"))
-    private List<Product> products = new ArrayList<>();
+    @OneToMany(mappedBy = "order")
+    private Set<OrderProduct> orderProducts;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

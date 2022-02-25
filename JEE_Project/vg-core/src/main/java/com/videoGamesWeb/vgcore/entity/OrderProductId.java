@@ -10,12 +10,11 @@ import java.io.Serializable;
 @Data
 @Embeddable
 @NoArgsConstructor
-public class GameConsoleId implements Serializable {
+public class OrderProductId implements Serializable {
 
-    @Column(name = "game_id")
-    private long gameId;
+    @Column(name = "order_id")
+    private long orderId;
 
-    @Column(name = "console_id")
-    private long consoleId;
-
+    @Column(name = "product_id")
+    private long productId;
 }
